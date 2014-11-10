@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="wedding">
 <head>
-	<title></title>
+	<title>Forever Planned</title>
 </head>
 <body>
+
+<div ui-view></div>
+<a ui-sref="Login">Login</a>
+<a ui-sref="Signup">Signup</a>
+<script src="/bower_components/angular/angular.js"></script>
+<script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="Public/Login/loginCtrl.js"></script>
 </body>
 </html>

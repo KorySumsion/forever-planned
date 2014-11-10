@@ -1,9 +1,14 @@
-var app = angular.module("wedding", []);
+var app = angular.module("wedding", [ui.router]);
 
-app.config(function($routeProvider){
-	$routeProvider
-	.when("/", {
-		templateUrl: "/Login/login.html", 
+app.config(function($stateProvider, $urlRouterProvider){
+	$urlRouterProvider.otherwise("/login");
+	
+	$stateProvider
+	.state("Login", {
+		templateUrl: "/Login/login.html",
 		controller: "loginCtrl"
+	}).state("Signup", {
+		templateUrl: "/Signup/signup.html",
+		controller: "signupCtrl"
 	})
 })
