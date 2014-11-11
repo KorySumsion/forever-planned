@@ -1,1 +1,36 @@
-signup.html
+
+<!-- IF this is on the same page as login, make it impossible for the user to input data on both sides -->
+<div class="container">
+	<div class="row">
+		<h3> Welcome to ForeverPlanned</h3>
+
+		<form name="signupForm" novalidate>
+
+		  	<div class="form-group">
+		    	<label>Name</label>
+		    	<input type="text" ng-model="user.name" class="form-control" placeholder="Your Name" requireds>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<label>Email</label>
+		    	<input type="email" ng-model="user.email" class="form-control" placeholder="Enter Email" required>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<label>Password</label>
+		    	<input type="password" ng-model="user.password" class="form-control" placeholder="Enter Password" required>
+		  	</div>
+
+		  	<div class="form-group">
+		    	<label>Password Confirm</label>
+		    	<input type="password" ng-model="user.password2" class="form-control" placeholder="Enter Password Again" required>
+		  	</div>
+
+		  	<button ng-click="signUp()" ng-disabled="signupForm.$invalid">Sign Up</button>
+
+		</form>
+
+	</div>
+
+
+</div>
