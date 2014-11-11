@@ -1,7 +1,8 @@
-bower_components
-node_modules
+bower_components/
+node_modules/
 npm_debug.log
 Public/.DS_Store
 package.json
-
+.DS_Store
+.bowercc
 
