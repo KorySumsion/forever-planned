@@ -1,5 +1,5 @@
 
-var app = angular.module("wedding", ['ui.router', 'ngCookies' 'ngAnimate']);
+var app = angular.module("wedding", ['ui.router', 'ngCookies', 'ngAnimate']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise("/");

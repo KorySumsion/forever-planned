@@ -9,7 +9,7 @@ app.controller('loginCtrl', function($scope, $cookieStore, authService){
 			if(res.errorMessage){
 				$scope.error = res.errorMessage;
 			} else {
-				$location.path('/')
+				$location.path('/setup')
 			}
 		})
 		
