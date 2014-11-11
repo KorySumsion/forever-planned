@@ -1,4 +1,4 @@
-var app = angular.module("wedding", ['ui.router', '$cookieStore']);
+var app = angular.module("wedding", ['ui.router', 'ngCookies']);
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise("/");
 	

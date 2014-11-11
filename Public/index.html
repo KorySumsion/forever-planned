@@ -3,17 +3,35 @@
 <head>
 	<title>Forever Planned</title>
 	<link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="Styles/styles.css">
 </head>
 <body>
-WHAT IS THIS DOING?
 <!-- <div ui-view></div> -->
-<a ui-sref="Login">Login</a>
-<a ui-sref="Signup">Signup</a>
+<div class="container">
+<div id="navigation_container">
+ <div class="l-triangle-top"></div>
+   <div class="l-triangle-bottom"></div>
+	<div class="rectangle">
 
+	<ul id="navigation">
+		<li><a class="login-route" ui-sref="Login">Login </a></li>
+		<li><p>Forever Planned</p> </li>
+		<li><a class="signup-route" ui-sref="Signup">Signup</a></li>
+	</ul>
+	</div>
+	<div class="r-triangle-top"></div>
+    <div class="r-triangle-bottom"></div>
+
+</div>
+
+
+</div>
 <div ui-view></div>
 
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_coponents/angualr-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="app.js"></script>
 <script src="Login/loginCtrl.js"></script>
 <script src="Signup/signupCtrl.js"></script>

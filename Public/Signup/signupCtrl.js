@@ -12,11 +12,9 @@ app.controller('signupCtrl', function($scope, $cookieStore, authService){
 		delete $scope.user.password2
 		authService.signupUser($scope.user)
 		.then(function(res){
-			var user = res;
-			$cookieStore.put('user', user);
+			//$location.path('whatever easy setup path is')
+
 		})
-		//$scope.user - delete password2, the user model won't accept it.
-		//talk to service to submit data
-		//$cookieStore.put('user', returned user data from promise from service);
+
 	}
 })
