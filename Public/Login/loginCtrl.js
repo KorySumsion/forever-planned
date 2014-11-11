@@ -1,15 +1,19 @@
 var app = angular.module('wedding');
 
-app.controller('loginCtrl', function($scope, $cookieStore){
+
+app.controller('loginCtrl', function($scope, $cookieStore, authService){
+
 	
 	$scope.login = function(){
 		authService.loginUser($scope.user).then(function(res){
 			if(res.errorMessage){
 				$scope.error = res.errorMessage;
 			} else {
-				$location.path('/')
+				$location.path('/setup')
 			}
 		})
 		
 	}
+})
+
 

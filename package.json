@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jpsiepert/forever-planned",
   "dependencies": {
+    "bcrypt": "^0.8.0",
     "bluebird": "^2.3.11",
     "body-parser": "^1.9.2",
     "express": "^4.10.2",

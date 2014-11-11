@@ -12,7 +12,7 @@ app.controller('signupCtrl', function($scope, $cookieStore, authService){
 		delete $scope.user.password2
 		authService.signupUser($scope.user)
 		.then(function(res){
-			//$location.path('whatever easy setup path is')
+			$location.path('/setup')
 
 		})
 
