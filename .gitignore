@@ -1,4 +1,7 @@
 bower_components
 node_modules
-.DS_Store
+npm_debug.log
+Public/.DS_Store
+package.json
+
 
