@@ -18,4 +18,4 @@ app.config(function($stateProvider, $urlRouterProvider){
 		templateUrl: "/setup/setup.html",
 		controller: "setupController"
 	})
-})
+});
