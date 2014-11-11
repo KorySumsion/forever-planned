@@ -1,1 +1,7 @@
-loginCtrl.js
+var app = angular.module('wedding');
+
+app.controller('loginCtrl', function($scope){
+
+	
+	
+})

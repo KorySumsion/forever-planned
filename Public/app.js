@@ -1,4 +1,4 @@
-var app = angular.module("wedding", ['ui.router', '$cookieStore']);
+var app = angular.module("wedding", ['ui.router', 'ngAnimate']);
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise("/");
 	
@@ -11,5 +11,9 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: "/signup",
 		templateUrl: "/Signup/signup.html",
 		controller: "signupCtrl"
+	}).state("Setup", {
+		url:"/setup",
+		templateUrl: "/setup/setup.html",
+		controller: "setupController"
 	})
 })
