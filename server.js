@@ -4,7 +4,12 @@ var BodyParser = require('body-parser');
 var Passport = require('passport');
 var Session = require('express-session');
 var Mongoose = require('mongoose');
+
 var LocalStrategy = require('passport-local').Strategy;
+
+var User = require('./lib/models/userModel');
+
+
 var Schema = Mongoose.Schema;
 var mongoUri = 'mongodb://localhost:27017/WeddingPlans';
 
@@ -13,6 +18,7 @@ var connection = Mongoose.connection;
 connection.once('open', function(){
 	console.log('mongo listening on ' + mongoUri);
 })
+
 
 var app = Express();
 
@@ -24,8 +30,12 @@ app.use(Session ({ secret: 'wedding secrets'}));
 app.use(Passport.initialize());
 app.use(Passport.session());
 
+
 /* Controllers for Routes*/
-var AuthController = require('./lib/controllers/auth-controller');
+
+
+var AuthController = require('./lib/auth/auth-controller');
+
 
 
 /* User Model Reference for Passport*/

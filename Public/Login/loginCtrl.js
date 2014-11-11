@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.controller('signupCtrl', function($scope, $cookieStore){
+app.controller('loginCtrl', function($scope, $cookieStore){
 	
 	$scope.login = function(){
 		authService.loginUser($scope.user).then(function(res){
