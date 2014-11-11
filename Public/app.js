@@ -1,13 +1,14 @@
 var app = angular.module("wedding", ['ui.router', '$cookieStore']);
-
 app.config(function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise("/login");
+	$urlRouterProvider.otherwise("/");
 	
 	$stateProvider
 	.state("Login", {
-		templateUrl: "/Login/login.html",
+		url: "/login",
+		templateUrl: "Login/login.html",
 		controller: "loginCtrl"
 	}).state("Signup", {
+		url: "/signup",
 		templateUrl: "/Signup/signup.html",
 		controller: "signupCtrl"
 	})
