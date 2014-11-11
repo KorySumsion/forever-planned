@@ -1,9 +1,9 @@
 "use-strict"
 var Promise = require('bluebird');
-//var User = require(user model file)
+var User = require('../models/userModel.js')
 
-Promise.promisify(User)
-Promise.promisify(User.prototype)
+Promise.promisifyAll(User)
+Promise.promisifyAll(User.prototype)
 
 module.exports.createUser = function(User){
 	return new User(user).saveAsync();
