@@ -1,6 +1,6 @@
 "use-strict"
 var AuthService = require('./auth-service')
-//var User = require('..models/usermodelfile)
+var User = require('../models/userModel.js')
 
 module.exports.login = function(req, res){
 	var reqUser = req.body

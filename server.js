@@ -5,7 +5,10 @@ var Passport = require('passport');
 var Session = require('express-session');
 var Mongoose = require('mongoose');
 
-var User = require('./lib/models/userModel');
+var LocalStrategy = require('passport-local').Strategy;
+
+//var User = require('./Lib/models/userModel');
+
 
 var Schema = Mongoose.Schema;
 var mongoUri = 'mongodb://localhost:27017/WeddingPlans';
@@ -27,10 +30,57 @@ app.use(Session ({ secret: 'wedding secrets'}));
 app.use(Passport.initialize());
 app.use(Passport.session());
 
+
+/* Controllers for Routes*/
+
+
 var AuthController = require('./lib/auth/auth-controller');
 
+
+
+/* User Model Reference for Passport*/
+
+//var User = require(usermodelfile)
+
+Passport.serializeUser(function(user, done) {
+  
+  done(null, user);
+});
+
+Passport.deserializeUser(function(user, done) {
+
+  done(null, user);
+});
+
+
+Passport.use(new LocalStrategy(
+	{
+		usernameField: "email"
+		passwordField: "password"
+	},
+  function(email, password, done) {
+    User.findOne({ email: email }, function (err, user) {
+    	if(err) {
+    		console.log(err)
+    		return done(err)
+    	} else {
+    		user.comparePassword(password, function(err, isMatch){
+    			if(err){
+    				return done(err)
+    			} else {
+    				if(!isMatch){
+    					return done(false)
+    				} else {
+    					return done(null, user);
+    				}
+    			}
+    		})
+    	}
+));
+
+
 /*Authorization Routes*/
-app.post('/api/login', AuthController.login);
+app.post('/api/login', Passport.authenticate('local'));
 app.post('/api/newUser', AuthController.createUser)
 
 
