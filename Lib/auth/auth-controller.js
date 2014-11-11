@@ -7,5 +7,6 @@ module.exports.authorize = function(req, res){
 		if(user === null){
 		
 		}
-	})
+		
+    })
 }
