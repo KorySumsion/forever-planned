@@ -10,6 +10,6 @@ var User = new Schema ({
 	weddingDate: {type: Number},
 	ideas: [{type: String}],
 	todo:[{type: String}]
-})
+});
 
-module.exports = Mongoose.model("User", User);
+module.exports = Mongoose.model('User', User);

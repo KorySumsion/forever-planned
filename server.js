@@ -5,9 +5,10 @@ var Passport = require('passport');
 var Session = require('express-session');
 var Mongoose = require('mongoose');
 
+var Schema = Mongoose.Schema
+
 var User = require('./lib/models/userModel');
 
-var Schema = Mongoose.Schema;
 var mongoUri = 'mongodb://localhost:27017/WeddingPlans';
 
 Mongoose.connect(mongoUri);
@@ -27,6 +28,9 @@ app.use(Session ({ secret: 'wedding secrets'}));
 app.use(Passport.initialize());
 app.use(Passport.session());
 
+
+
+User.findOne({email: 'email'})
 var AuthController = require('./lib/auth/auth-controller');
 
 /*Authorization Routes*/
