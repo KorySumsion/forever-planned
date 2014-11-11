@@ -1,3 +1,11 @@
-<input type="username" name="user.username" placeholder="username">
-<input type="password" name="user.pw" placeholder="password">
-<button>Log In</button>
+
+
+<div class="login-form">
+  <form role="form" name="login">
+  	<label>Email</label>
+		<input type="email" name="user.email" placeholder="email">
+	<label>Password</label>
+		<input type="password" name="user.password" placeholder="password">
+	<button type="submit" class="btn btn-default" ng-click="login()">Log In</button>
+  </form>	
+</div>
