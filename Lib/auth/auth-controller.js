@@ -14,7 +14,6 @@ module.exports.login = function(req, res){
 		} else {
 			res.status(200).send(user);
 		}
-
 	}).catch(function(err){
 		console.log(err)
 	})
@@ -28,4 +27,5 @@ module.exports.createUser = function(req, res){
 	}).catch(function(err){
 		console.log('err adding user ', err)
 	})
+
 }
