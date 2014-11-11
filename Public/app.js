@@ -12,4 +12,4 @@ app.config(function($stateProvider, $urlRouterProvider){
 		templateUrl: "/Signup/signup.html",
 		controller: "signupCtrl"
 	})
-})
+});
