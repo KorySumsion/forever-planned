@@ -12,3 +12,4 @@ app.controller('signupCtrl', function($scope, $cookieStore){
 		})
 		
 	}
+
