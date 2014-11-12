@@ -1,0 +1,70 @@
+/* when hiding the thing */
+.ng-hide-remove         { 
+  -webkit-animation:0.5s lightSpeedIn ease; 
+  animation:0.5s lightSpeedIn ease; 
+}
+
+/* when showing the thing */
+.ng-hide-add      { 
+  -webkit-animation:0.5s lightSpeedOut ease; 
+  animation:0.5s lightSpeedOut ease; 
+}
+
+/* ANIMATIONS (FROM ANIMATE.CSS) */
+
+/* light speed out */
+@-webkit-keyframes lightSpeedIn {
+  0% {
+    opacity: 1;
+  }
+
+  0% {
+    -webkit-transform: translate3d(-100%, -100%, 0) skewX(30deg);
+    transform: translate3d(-100%, -100%, 0) skewX(30deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes lightSpeedOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translate3d(100%, -100%, 0) skewX(30deg);
+    transform: translate3d(100%, -100%, 0) skewX(30deg);
+    opacity: 0;
+  }
+}
+
+body {
+  background: #ccc;
+}
+.form-inline
+.form-group
+{
+  margin-left: 75px;
+}
+
+.setup-font {
+  font-family: cursive;
+}
+
+.panel-heading{
+  border-bottom: none;
+  background-color: none;
+  padding: 7px 15px;
+}
+.panel {
+  border-radius: 70px;
+  height: 9em;
+}
+.panel-title {
+  font-size: 26px;
+}
+.glyphicon {
+  font-size: xx-large;
+  top: -9px;
+}
+.form-control {
+  border-radius: 20px;
+}
