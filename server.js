@@ -35,12 +35,8 @@ User.findOne({email: 'email'})
 /* Controllers for Routes*/
 
 
-<<<<<<< HEAD
-
-var AuthController = require('./lib/auth/auth-controller');
-=======
 var AuthController = require('./Lib/auth/auth-controller');
->>>>>>> 3231c303d2bff01c56b5dc7341c763359235dfcc
+
 
 
 
