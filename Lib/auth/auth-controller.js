@@ -1,6 +1,6 @@
-"use-strict"
+
 var AuthService = require('./auth-service')
-var User = require('../models/userModel.js')
+var User = require('./../models/userModel')
 
 module.exports.login = function(req, res){
 	var reqUser = req.body
@@ -21,7 +21,7 @@ module.exports.login = function(req, res){
 }
 
 module.exports.createUser = function(req, res){
-	AuthService.createUser(user)
+	AuthService.createUser(req.body)
 	.then(function(user){
 		res.status(200).send(user)
 	}).catch(function(err){

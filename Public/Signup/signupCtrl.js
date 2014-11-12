@@ -1,9 +1,10 @@
 var app = angular.module('wedding');
-app.controller('signupCtrl', function($scope, $cookieStore, authService){
+app.controller('signupCtrl', function($scope, $cookieStore, $location, authService){
 	$scope.user = {}
 
 
-	var signUp = function(){
+	$scope.signUp = function(){
+		debugger;
 		if($scope.user.password !== $scope.user.password2){
 			$scope.user.password2 = '';
 			alert('Your passwords do not match');
@@ -11,10 +12,11 @@ app.controller('signupCtrl', function($scope, $cookieStore, authService){
 		}
 		delete $scope.user.password2
 		authService.signupUser($scope.user)
+		
 		.then(function(res){
 			$location.path('/setup')
 
 		})
-
+		$scope.user = '';
 	}
 })

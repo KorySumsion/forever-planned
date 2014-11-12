@@ -6,9 +6,10 @@ app.service('authService', function($http, $q, $cookieStore){
 		$http({
 			method: 'POST',
 			url: '/api/login',
-			data: user
+			data: userObj
 		}).then(function(res){
-			$cookieStore.put('user', user)
+			console.log(res.data)
+			$cookieStore.put('user', res.data)
 			return deferred.resolve(res.data);
 		})
 		return deferred.promise;
@@ -19,9 +20,10 @@ app.service('authService', function($http, $q, $cookieStore){
 		$http({
 			method: 'POST',
 			url: '/api/newUser',
-			data: user
+			data: userObj
 		}).then(function(res){
-			$cookieStore.put('user', user)
+			console.log(res.data);
+			$cookieStore.put('user', res.data);
 			return deferred.resolve(res.data);
 		})
 		return deferred.promise;
