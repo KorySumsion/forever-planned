@@ -1,4 +1,4 @@
-"use-strict"
+
 var Express = require('express');
 var BodyParser = require('body-parser');
 var Passport = require('passport');
@@ -7,18 +7,10 @@ var Mongoose = require('mongoose');
 
 var LocalStrategy = require('passport-local').Strategy;
 
-//var User = require('./Lib/models/userModel');
+var User = require('./Lib/models/userModel');
 
 
-var Schema = Mongoose.Schema;
 var mongoUri = 'mongodb://localhost:27017/WeddingPlans';
-
-Mongoose.connect(mongoUri);
-var connection = Mongoose.connection;
-connection.once('open', function(){
-	console.log('mongo listening on ' + mongoUri);
-})
-
 
 var app = Express();
 
@@ -34,7 +26,7 @@ app.use(Passport.session());
 /* Controllers for Routes*/
 
 
-var AuthController = require('./lib/auth/auth-controller');
+var AuthController = require('./Lib/auth/auth-controller');
 
 
 
@@ -55,7 +47,7 @@ Passport.deserializeUser(function(user, done) {
 
 Passport.use(new LocalStrategy(
 	{
-		usernameField: "email"
+		usernameField: "email",
 		passwordField: "password"
 	},
   function(email, password, done) {
@@ -76,7 +68,8 @@ Passport.use(new LocalStrategy(
     			}
     		})
     	}
-));
+    })
+}));
 
 
 /*Authorization Routes*/
@@ -84,7 +77,12 @@ app.post('/api/login', Passport.authenticate('local'));
 app.post('/api/newUser', AuthController.createUser)
 
 
-
-app.listen(port, function(){
-	console.log("Knights of Camelot on port: ", port)
+Mongoose.connect(mongoUri);
+var connection = Mongoose.connection;
+connection.once('open', function(){
+    console.log('mongo listening on ' + mongoUri);
+    app.listen(port, function(){
+    console.log("Knights of Camelot on port: ", port)
 })
+})
+
