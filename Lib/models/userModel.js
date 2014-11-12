@@ -15,7 +15,7 @@ var User = new Schema ({
 });
 
 
-// module.exports = Mongoose.model('User', User);
+
 
 User.pre('save', function(next){
 

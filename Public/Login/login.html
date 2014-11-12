@@ -1,9 +1,9 @@
 <div class="login-form">
-  <form role="form" name="login">
+  <form role="form">
   	<label>Email</label>
-		<input type="email" name="user.email" placeholder="email">
+		<input type="text" ng-model="user.email"  placeholder="email">
 	<label>Password</label>
-		<input type="password" name="user.password" placeholder="password">
+		<input type="password" ng-model="user.password"  placeholder="password">
 	<button type="submit" class="btn btn-default" ng-click="login()">Log In</button>
   </form>	
 </div>
