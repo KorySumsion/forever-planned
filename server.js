@@ -46,16 +46,22 @@ Passport.deserializeUser(function(user, done) {
 
 
 Passport.use(new LocalStrategy(
+
 	{
 		usernameField: "email",
 		passwordField: "password"
 	},
   function(email, password, done) {
-    User.findOne({ email: email }, function (err, user) {
+    console.log('made it here ', email + password)
+    
+    User.findOne({email: email}, function (err, user) {
     	if(err) {
-    		console.log(err)
     		return done(err)
     	} else {
+            if(user === null){
+                console.log("this user don't exist")
+                return done(false) 
+            }
     		user.comparePassword(password, function(err, isMatch){
     			if(err){
     				return done(err)
@@ -73,16 +79,18 @@ Passport.use(new LocalStrategy(
 
 
 /*Authorization Routes*/
-app.post('/api/login', Passport.authenticate('local'));
-app.post('/api/newUser', AuthController.createUser)
+app.post('/api/login', Passport.authenticate('local'), function(req, res){
+    res.status(200).send()
+});
+app.post('/api/newUser', AuthController.createUser);
 
 
-Mongoose.connect(mongoUri);
-var connection = Mongoose.connection;
-connection.once('open', function(){
-    console.log('mongo listening on ' + mongoUri);
-    app.listen(port, function(){
-    console.log("Knights of Camelot on port: ", port)
-})
+    Mongoose.connect(mongoUri);
+    var connection = Mongoose.connection;
+    connection.once('open', function(){
+        console.log('mongo listening on ' + mongoUri);
+        app.listen(port, function(){
+        console.log("Knights of Camelot on port: ", port)
+    })
 })
 

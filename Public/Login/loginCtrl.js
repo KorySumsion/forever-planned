@@ -5,7 +5,7 @@ app.controller('loginCtrl', function($scope, $cookieStore, $location, authServic
 //alert("login")
 	//console.log($scope.user)
 	$scope.login = function(){
-		debugger;
+		
 		authService.loginUser($scope.user).then(function(res){
 			if(res.errorMessage){
 				$scope.error = res.errorMessage;
