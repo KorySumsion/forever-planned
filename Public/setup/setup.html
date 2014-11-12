@@ -1,16 +1,39 @@
-<div class="container-fluid">
-<div class="btn btn-primary" ng-click="step1 = !step1">setup</div>
+<div class="container-fluid setup-font">
+
+<button class="btn btn-primary" ng-click="showStep1()">setup</button>
 	<div class="row">
-
-		
-
-		<div class="col-md-6 col-md-offset-3" ng-show="step1">
-			<div class="panel panel-default" style="background-color: red;">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel" style="background-color: #5F808D;" ng-show="step1">
 				<div class="panel-heading">
 					<h4 class="panel-title text-center">Please Enter Mrs.Her and Mr.Him</h4>
 				</div>
-				<div class="panel-body">
-
+				<div class="panel-body ">
+					<form class="form-inline" role="form">
+						<div class="form-group">
+						  	<input type="text" class="form-control" placeholder="Mrs.Her">				
+					    </div>
+					    <div class="form-group ">
+    						<input type="text" class="form-control" placeholder="Mr.Him">
+ 						</div>
+ 						
+ 						<div class="goRight" style="float: right; font-size: 62px; margin-top: -37px; cursor: pointer;" ng-click="showStep2()"> >
+						</div>
+					</form>
+				</div>
+			</div>
+				
+			<div class="panel" style="background-color: #5F808D;" ng-show="step2">
+				<div class="panel-heading">
+					<h4 class="panel-title text-center">Pick the Magical Date</h4>
+				</div>
+				<div class="panel-body" style="text-align: center;">
+					<form class="form-inline" role="form">
+						<div ng-click="goToNames()" style="float: left; font-size: 62px; margin-top: -37px; cursor: pointer;"> <
+						</div>
+                    	<input type='date' class="form-control" style="margin-left: none;">
+                		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -37px; cursor: pointer;"> >
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

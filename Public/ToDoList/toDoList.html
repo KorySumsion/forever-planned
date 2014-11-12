@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Wedding Plan Assignments</h2>
+		</div>
+
+		<div class="col-md-5">
+			Bride's List
+			<!-- maybe just put the todos on separate $scope objects -->
+			<div ng-repeat="todo in bride.todos">
+				{{todo}}
+			</div>
+		</div>
+
+		<div class="col-md-5">
+			Groom's List
+			<div ng-repeat="todo in groom.todos">
+				{{todo}}
+			</div>
+		</div>
+
+	</div>
+</div>
