@@ -1,6 +1,21 @@
 
 var app = angular.module("wedding", ['ui.router', 'ngCookies', 'ngAnimate']);
 
+app.run(function($rootScope, $location, $state, $cookieStore){
+	$rootScope.$on("$stateChangeStart", function(evt, next, current){
+		if($cookieStore.get("currentUser")){
+			$rootScope.currentUser = $cookieStore.get("currentUser")
+			console.log($rootScope.currentUser)
+		} else if(next.templateUrl === "Signup/signup.html"){
+			$location.path("/signup")
+		} else {
+			$location.path("/login")
+		}
+	})
+})
+
+
+
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise("/");
 	
@@ -14,8 +29,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 		templateUrl: "/Signup/signup.html",
 		controller: "signupCtrl"
 	}).state("Setup", {
-		url:"/setup",
+		url:"/setup/:userId",
 		templateUrl: "/setup/setup.html",
-		controller: "setupController"
+		controller: "setupCtrl"
 	})
 });

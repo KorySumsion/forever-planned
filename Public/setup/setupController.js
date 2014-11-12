@@ -1,5 +1,6 @@
 var app = angular.module('wedding');
 
+
 app.controller('setupController', function($scope, $timeout){
 	$scope.step1 = false;
 	$scope.step2 = false;
@@ -18,4 +19,16 @@ app.controller('setupController', function($scope, $timeout){
 		$timeout(function(){
 			$scope.step1 = true;}, 500);
 	}
+
+
+	var getUser = function(){
+		console.log($scope.currentUser)
+		setupService.getUser($scope.currentUser)
+		.then(function(){
+			
+		})
+	}
+
+	getUser();
+
 })
