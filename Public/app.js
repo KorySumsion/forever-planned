@@ -17,7 +17,7 @@ app.run(function($rootScope, $location, $state, $cookieStore){
 
 
 app.config(function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise("/login");
 	
 	$stateProvider
 	.state("Login", {
@@ -32,5 +32,13 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url:"/setup/:userId",
 		templateUrl: "/setup/setup.html",
 		controller: "setupCtrl"
+	}).state("Todo", {
+		url: "/todo/:userId",
+		templateUrl: "/ToDoList.toDoList.html",
+		controller: "toDoCtrl"
+	}).state("Ideas", {
+		url: "/ideas/:userid",
+		templateUrl: "/ideaBoard/ideaBoard.html",
+		controller: "ideaBoardCtrl"
 	})
 });
