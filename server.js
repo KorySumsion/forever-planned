@@ -7,6 +7,7 @@ var Mongoose = require('mongoose');
 var Flash = require("connect-flash");
 var Cookie = require("cookie-parser");
 var LocalStrategy = require('passport-local').Strategy;
+var ideaBoardCtrl = require('./Lib/ideaboard/ideaBoard-Ctrl');
 
 var User = require('./Lib/models/userModel');
 
@@ -38,7 +39,9 @@ app.use(Cookie());
 
 var AuthController = require('./Lib/auth/auth-controller');
 
-var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
+
+
+// var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
 
 
 /* User Model Reference for Passport*/
@@ -124,6 +127,11 @@ app.get('/setup/:userId', requireAuth, function(req, res){
 app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
 app.put('/api/updateUser/:userId', AuthController.updateUser);
+
+app.post('/api/ideaBoard/:userId', ideaBoardCtrl.addBoard);
+
+app.get('/api/user/:userid', AuthController.findUser);
+
 
     Mongoose.connect(mongoUri);
     var connection = Mongoose.connection;

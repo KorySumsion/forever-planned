@@ -1,9 +1,9 @@
 var Mongoose = require('mongoose'),
-	Schema = Mongoose.Schema,
+	Schema = Mongoose.Schema;
 
 var Idea = new Schema ({
 	// image: {type: String},
-	title: {type: String},
+	title: {type: String, required: true},
 	listItem: [{type: String}],
 	price: {type: Number},
 	quantity: {type: Number},

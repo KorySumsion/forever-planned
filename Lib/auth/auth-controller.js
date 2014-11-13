@@ -47,5 +47,22 @@ module.exports.updateUser = function(req, res) {
 	})	
 }
 
+module.exports.findUser = function(req, res){
+	console.log('req.body ', req.params.userid)
+	var id = req.params.userid;
+
+	User.findById(id, function(err, user){
+		if(err){
+			console.log(err)
+		} else {
+			console.log('user ', user)
+			res.status(200).send(user);
+}
+
+})
+
+
+}
+
 
 
