@@ -8,7 +8,7 @@ app.controller('loginCtrl', function($scope, $cookieStore, $location, authServic
 		
 		authService.loginUser($scope.user).then(function(res){
 			console.log(res);			
-				$location.path('/setup/' + res._id);
+				$location.path('/ideas/' + res._id);
 		
 		})
 		
