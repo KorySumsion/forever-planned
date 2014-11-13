@@ -5,7 +5,7 @@ var Passport = require('passport');
 var Session = require('express-session');
 var Mongoose = require('mongoose');
 var Flash = require("connect-flash");
-var Cookie = require("cookie-parser");
+//var Cookie = require("cookie-parser");
 var LocalStrategy = require('passport-local').Strategy;
 var ideaBoardCtrl = require('./Lib/ideaboard/ideaBoard-Ctrl');
 
@@ -27,7 +27,7 @@ app.use(Session ({ secret: 'wedding secrets'}));
 app.use(Passport.initialize());
 app.use(Passport.session());
 app.use(Flash());
-app.use(Cookie());
+//app.use(Cookie());
 
 
 
@@ -39,14 +39,9 @@ app.use(Cookie());
 
 var AuthController = require('./Lib/auth/auth-controller');
 
-
-<<<<<<< HEAD
-
-// var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
-=======
 //var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
 
->>>>>>> 8060ea782613c3da550f0619f643b13eef73eb08
+
 
 
 /* User Model Reference for Passport*/
@@ -123,7 +118,7 @@ var requireAuth = function(req, res, next){
 }
 app.post('/api/login', authenticateUser);
 
-//app.get('/api/user/:userid', AuthController.findUserByEmail);
+app.get('/api/user/:userid', AuthController.findUser);
 
 app.get('/setup/:userId', requireAuth, function(req, res){
     console.log("made it to the get request")
@@ -132,6 +127,7 @@ app.get('/setup/:userId', requireAuth, function(req, res){
 app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
 app.put('/api/updateUser/:userId', AuthController.updateUser);
+
 
 app.post('/api/ideaBoard/:userId', ideaBoardCtrl.addBoard);
 

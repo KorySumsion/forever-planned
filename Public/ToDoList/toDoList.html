@@ -16,10 +16,11 @@
 
 </div>
 
+<h1>{{stuff}}</h1>
 
 </div>
 
-{{todos}}
+
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 todos">
@@ -32,10 +33,10 @@
 			<div>
 				<p>Add Task</p>
 				<input class="todo-input" ng-model="brideTask">
-				<button ng-click="addBrideTask()">Add</button>
+				<button class="btn" ng-click="addBrideTask()">Add</button>
 			</div>
 
-			<div ng-repeat="todo in todos.brideList">
+			<div ng-repeat="todo in brideList">
 				<ul>
 					<input type="checkbox" ng-click="brideCompleted(todo)">
 					{{todo}}
@@ -45,7 +46,7 @@
 			</div>
 
 			<h4 class="complete-margin"><u>Completed</u></h4>
-			<div ng-repeat="todo in todos.brideComplete">
+			<div ng-repeat="todo in brideComplete">
 				<ul>	
 					<li>{{todo}}</li>
 				</ul>
@@ -64,10 +65,10 @@
 			<div>
 				<p>Add Task</p>
 				<input class="todo-input" ng-model="groomTask">
-				<button ng-click="addGroomTask()">Add</button>
+				<button class="btn" ng-click="addGroomTask()">Add</button>
 			</div>
 
-			<div ng-repeat="todo in todos.groomList">
+			<div ng-repeat="todo in groomList">
 				<ul>
 				
 					<input type="checkbox"ng-click="groomCompleted(todo)">
@@ -77,7 +78,7 @@
 			</div>
 
 			<h4 class="complete-margin"><u>Completed</u></h4>
-			<div ng-repeat="todo in todos.groomComplete">
+			<div ng-repeat="todo in groomComplete">
 				<ul>	
 					<li>{{todo}}</li>
 				</ul>
