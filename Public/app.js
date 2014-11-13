@@ -17,7 +17,7 @@ app.run(function($rootScope, $location, $state, $cookieStore){
 
 
 app.config(function($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise("/");
+	$urlRouterProvider.otherwise("/login");
 	
 	$stateProvider
 	.state("Login", {
