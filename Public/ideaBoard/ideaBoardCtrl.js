@@ -3,21 +3,25 @@ var app = angular.module('wedding');
 app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 	$scope.addItemButton = false;
 	$scope.addItemInput = false;
+	$scope.newBoardTitle = false;
 
 
 	$scope.boards = [];
 
 	$scope.addBoard = function(){
-
-		$scope.boards.unshift({title: '', listItems: [], price: 0, quantity: 0, includeBudget: false, total: price*quantity});
-		$scope.addItemButton = true;
-		console.log($scope.boards)
+		ideaBoardService.addBoard($scope.board, $scope.currentUser)
+		.then(function(results){
+			$scope.boards = results.ideas.reverse();
+			console.log($scope.boards);
+		})
 	}
 
-	$scope.saveBoard = function(){
-		ideaBoardService.saveBoard($scope.board)
-	}
+	$scope.showNewBoard = function(){
 	
+		$scope.newBoardTitle = true;
+
+	}
+
 	$scope.showItemInput = function(){
 		$scope.addItemButton = false;
 		$scope.addItemInput = true;
