@@ -1,5 +1,6 @@
 var Mongoose = require('mongoose'),
 	Schema = Mongoose.Schema,
+	ObjectId = Schema.Types.ObjectId,
 	Bcrypt = require('bcrypt'),
 	SALT_WORK_FACTOR = 10;
 
@@ -10,7 +11,7 @@ var User = new Schema ({
 	bride: {type: String},
 	groom: {type: String},
 	weddingDate: {type: Number},
-	ideas: [{type: String}],
+	ideas: [{type: ObjectId, ref: 'Idea'}],
 	todo:[{type: String}]
 });
 
