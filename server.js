@@ -5,7 +5,7 @@ var Passport = require('passport');
 var Session = require('express-session');
 var Mongoose = require('mongoose');
 var Flash = require("connect-flash");
-var Cookie = require("cookie-parser");
+//var Cookie = require("cookie-parser");
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('./Lib/models/userModel');
@@ -26,7 +26,7 @@ app.use(Session ({ secret: 'wedding secrets'}));
 app.use(Passport.initialize());
 app.use(Passport.session());
 app.use(Flash());
-app.use(Cookie());
+//app.use(Cookie());
 
 
 
@@ -38,7 +38,6 @@ app.use(Cookie());
 
 var AuthController = require('./Lib/auth/auth-controller');
 
-var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
 
 
 /* User Model Reference for Passport*/
@@ -115,7 +114,7 @@ var requireAuth = function(req, res, next){
 }
 app.post('/api/login', authenticateUser);
 
-//app.get('/api/user/:userid', AuthController.findUserByEmail);
+app.get('/api/user/:userid', AuthController.findUser);
 
 app.get('/setup/:userId', requireAuth, function(req, res){
     console.log("made it to the get request")
@@ -125,9 +124,11 @@ app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
 app.put('/api/updateUser/:userId', AuthController.updateUser);
 
-    Mongoose.connect(mongoUri);
-    var connection = Mongoose.connection;
-    connection.once('open', function(){
+
+
+Mongoose.connect(mongoUri);
+var connection = Mongoose.connection;
+connection.once('open', function(){
         console.log('mongo listening on ' + mongoUri);
         app.listen(port, function(){
         console.log("Knights of Camelot on port: ", port)

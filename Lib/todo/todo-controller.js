@@ -27,22 +27,12 @@ var User = require('../models/userModel');
 
 
 module.exports.getTodos = function(req, res){
-	User.findOne({email: req.email}, function(err, user){
+	User.findOne({email: req.body.email}, function(err, user){
 		if(err){
 			console.log(err)
 		} else {
 
-			var arr = user.todo
-			Todo.find({
-				'_id' : { $in : arr }
-			}, function(err, todos){
-				if(err){
-					console.log(err)
-				} else {
-					res.status(200).send(todos)
-				}
-
-			})
+			res.status(200).send(user)
 		}
 	})
 }

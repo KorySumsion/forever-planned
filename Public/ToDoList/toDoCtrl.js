@@ -2,17 +2,16 @@ var app = angular.module('wedding');
 
 app.controller('toDoCtrl', function($scope, toDoService){
 	
-	$scope.todos = {
-		brideList : ["Find flowers", "marry groom"],
-		groomList : ["eat cake", "eat more cake"],
-		brideComplete: ["got engaged"],
-		groomComplete: ["put a ring on it"]
-	}
 
+	
 	$scope.getTodos = function(){
-		service.getTodos($scope.currentUser)
+		toDoService.getTodos($scope.currentUser)
 		.then(function(res){
-			$scope.todos = res.todo;
+			console.log(res)
+			$scope.brideList = res.brideList;
+			$scope.groomList = res.groomList;
+			$scope.groomComplete = res.groomComplete
+			$scope.brideComplete = res.brideComplete
 		})
 	}
 	$scope.getTodos();
@@ -21,22 +20,22 @@ app.controller('toDoCtrl', function($scope, toDoService){
 	//Add a todo
 	$scope.addBrideTask = function(){
 		if($scope.brideTask.length > 0){
-			$scope.todos.brideList.push($scope.brideTask)
+			$scope.brideList.push($scope.brideTask)
 
 			toDoService.editTodos()
 			.then(function(res){
-				$scope.todos = res.todo;
+				//$scope.todos = res.todo;
 			})
 		}
 	}
 
 	$scope.addGroomTask = function(){
 		if($scope.groomTask.length > 0){
-			$scope.todos.groomList.push($scope.groomTask)
+			$scope.groomList.push($scope.groomTask)
 			
 			toDoService.editTodos()
 			.then(function(res){
-				$scope.todos = res.todo;
+				//$scope.todos = res.todo;
 			})
 		}
 	}
@@ -44,18 +43,18 @@ app.controller('toDoCtrl', function($scope, toDoService){
 	//paramete expects bride or groom
 	$scope.brideCompleted = function(todo){
 
-		if($scope.todos.brideList.indexOf(todo !== -1)){
-			$scope.todos.brideList.splice($scope.todos.brideList.indexOf(todo),1);
-			$scope.todos.brideComplete.push(todo);
+		if($scope.brideList.indexOf(todo !== -1)){
+			$scope.brideList.splice($scope.brideList.indexOf(todo),1);
+			$scope.brideComplete.push(todo);
 			//$scope.getTodos();
 		}
 	}
 
 	$scope.groomCompleted = function(todo){
 
-		if($scope.todos.groomList.indexOf(todo !== -1)){
-			$scope.todos.groomList.splice($scope.todos.groomList.indexOf(todo),1);
-			$scope.todos.groomComplete.push(todo);
+		if($scope.groomList.indexOf(todo !== -1)){
+			$scope.groomList.splice($scope.groomList.indexOf(todo),1);
+			$scope.groomComplete.push(todo);
 			//$scope.getTodos();
 		}
 	}

@@ -1,15 +1,17 @@
 var app = angular.module('wedding');
 
 app.service('toDoService', function($http, $q){
+
 	this.getTodos = function(userObj){
+		
 		var deferred = $q.defer();
 		$http({
 			method: 'GET',
-			url: '/api/user/' +userObj._id,
-			data: userObj
+			url: '/api/user/' + userObj._id,
 		}).then(function(res){
 			return deferred.resolve(res.data);
 		})
+		
 		return deferred.promise
 	}
 
