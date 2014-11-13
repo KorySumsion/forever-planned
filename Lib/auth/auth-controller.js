@@ -54,12 +54,13 @@ module.exports.createUser = function(req, res){
 
 
 module.exports.updateUser = function(req, res) {
-	console.log(req.body);
+	var id = req.body._id;
+	delete req.body._id 
 	var userUpdate = req.body
-	delete userUpdate._id 
-	AuthService.updateUser(req.body._id, userUpdate)
+	console.log(userUpdate);
+	AuthService.updateUser(id, userUpdate)
 	.then(function(user){
-		console.log(user);
+		//console.log(user);
 		res.status(200).send(user);
 	}).catch(function(err){
 		console.log(err)

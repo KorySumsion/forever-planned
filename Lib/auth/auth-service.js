@@ -24,6 +24,7 @@ module.exports.findUserByEmail = function(userEmail){
 }
 
 
-module.exports.updateUser = function(userid, userobj){
-	return User.findByIdAndUpdateAsync(userid, userobj);
+module.exports.updateUser = function(userid, obj){
+	console.log('user id ', userid + ' and ' , obj);
+	return User.findByIdAndUpdateAsync(userid, obj);
 }
