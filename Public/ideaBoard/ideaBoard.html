@@ -1,0 +1,23 @@
+
+
+<div class="idea-container">
+	<div class="ideaRow">
+		<div class="row">
+		  <div class="col-sm-6 col-md-4" ng-repeat="idea in ideas">
+		    <div class="thumbnail">
+		      <img src="{{idea.image}}" alt="no image here">
+		      <div class="caption">
+		        <h3>{{idea.title}}</h3>
+		        <p>{{idea.text}}</p>
+		        <input ng-model="idea.price">
+		        <!-- Todo below - ng-click for checkbox needs to be sent to user budget -->
+		        <input type="checkbox" ng-click="checked()">Check to Include in your budget
+
+		        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#/" class="btn btn-default" role="button">Button</a></p>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+</div>

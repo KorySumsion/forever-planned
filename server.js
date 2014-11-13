@@ -8,8 +8,6 @@ var Mongoose = require('mongoose');
 
 var Schema = Mongoose.Schema
 
-var User = require('./lib/models/userModel');
-
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('./Lib/models/userModel');
@@ -30,7 +28,7 @@ app.use(Passport.session());
 
 
 
-User.findOne({email: 'email'})
+
 
 /* Controllers for Routes*/
 

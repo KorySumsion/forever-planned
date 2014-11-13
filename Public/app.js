@@ -17,5 +17,9 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url:"/setup",
 		templateUrl: "/setup/setup.html",
 		controller: "setupController"
+	}).state("ideaBoard", {
+		url: "/ideaBoard",
+		templateUrl: "/ideaBoard/ideaBoard.html",
+		controller: "ideaBoardCtrl"
 	})
 });
