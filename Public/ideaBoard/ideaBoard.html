@@ -17,18 +17,21 @@
 	</div>
 
 	<div class="add-button">
-		<i class="fa fa-plus" ng-click="addBoard()"></i>
+		<i class="fa fa-plus" ng-click="showNewBoard()"></i>
+	</div>
+
+	<div ng-show="newBoardTitle">
+		<input type="text" placeholder="Insert New Title" ng-model="board.title"  />
+		<button ng-click="addBoard()">Add Board</button>
 	</div>
 
 	<div class="idea-board" ng-repeat="board in boards">
-	{{board.listItems}}
 		<div class="list-group" ng-model="board">
 			<i class="fa fa-plus" ng-click="showItemInput()" ng-show="addItemButton"></i>
 			
 
 				
-				<input type="text" placeholder="Insert New Title" ng-model="board.title"  /><button ng-click="saveBoard()">Save Board</button>
-
+				
 				
 			
 			
