@@ -29,10 +29,15 @@ app.use(Flash());
 app.use(Cookie());
 
 
+
+
+
+
 /* Controllers for Routes*/
 
 
 var AuthController = require('./Lib/auth/auth-controller');
+
 
 
 
