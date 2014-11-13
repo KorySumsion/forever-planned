@@ -40,8 +40,13 @@ app.use(Cookie());
 var AuthController = require('./Lib/auth/auth-controller');
 
 
+<<<<<<< HEAD
 
 // var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
+=======
+//var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
+
+>>>>>>> 8060ea782613c3da550f0619f643b13eef73eb08
 
 
 /* User Model Reference for Passport*/
