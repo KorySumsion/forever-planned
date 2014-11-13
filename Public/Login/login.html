@@ -1,3 +1,26 @@
+
+
+<div class="container">
+<div id="navigation_container">
+ <div class="l-triangle-top"></div>
+   <div class="l-triangle-bottom"></div>
+	<div class="rectangle">
+
+
+	<ul id="navigation">
+		<li><a class="login-route" ui-sref="Login">Login </a></li>
+		<li><p>Forever Planned</p> </li>
+		<li><a class="signup-route" ui-sref="Signup">Signup</a></li>
+	</ul>
+	</div>
+	<div class="r-triangle-top"></div>
+    <div class="r-triangle-bottom"></div>
+
+</div>
+
+
+</div>
+
 <div class="login-form">
   <form role="form">
   	<label>Email</label>
@@ -6,4 +29,5 @@
 		<input type="password" ng-model="user.password"  placeholder="password">
 	<button type="submit" class="btn btn-default" ng-click="login()">Log In</button>
   </form>	
+  {{error}}
 </div>

@@ -8,11 +8,13 @@ app.service('authService', function($http, $q, $cookieStore){
 			method: 'POST',
 			url: '/api/login',
 			data: userObj
-		}).then(function(res){
-			console.log(res)
-			console.log(res.data)
-			$cookieStore.put('user', res.data)
-			return deferred.resolve(res.data);
+		}).then(function(user){
+			console.log(user)
+			if(user.status !== 200){
+				return deferred.reject(user.data)
+			}
+			$cookieStore.put('currentUser', user.data)
+			return deferred.resolve(user.data);
 		})
 		return deferred.promise;
 	}
@@ -24,9 +26,9 @@ app.service('authService', function($http, $q, $cookieStore){
 			url: '/api/newUser',
 			data: userObj
 		}).then(function(res){
-			console.log(res.data);
-			$cookieStore.put('user', res.data);
-			return deferred.resolve(res.data);
+			console.log(res.data[0]);
+			$cookieStore.put('currentUser', res.data[0]);
+			return deferred.resolve(res.data[0]);
 		})
 		return deferred.promise;
 	}

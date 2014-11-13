@@ -4,10 +4,8 @@ var BodyParser = require('body-parser');
 var Passport = require('passport');
 var Session = require('express-session');
 var Mongoose = require('mongoose');
-
-
-var Schema = Mongoose.Schema
-
+var Flash = require("connect-flash");
+var Cookie = require("cookie-parser");
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('./Lib/models/userModel');
@@ -19,11 +17,16 @@ var app = Express();
 
 var port = 9999;
 
+// app.set("views", __dirname + "/Public/Login");
+// app.set("view engine", "html");
+// app.engine("html");
 app.use(Express.static(__dirname + '/Public'))
 app.use(BodyParser.json());
 app.use(Session ({ secret: 'wedding secrets'}));
 app.use(Passport.initialize());
 app.use(Passport.session());
+app.use(Flash());
+app.use(Cookie());
 
 
 
@@ -54,43 +57,70 @@ Passport.deserializeUser(function(user, done) {
 
 
 Passport.use(new LocalStrategy(
-
+    // passReqToCallback: true
 	{
 		usernameField: "email",
 		passwordField: "password"
 	},
   function(email, password, done) {
-    console.log('made it here ', email + password)
+    console.log('server.js line 59ish ', email)
     
     User.findOne({email: email}, function (err, user) {
     	if(err) {
-    		return done(err)
+    		return done(new Error("No User Found"))
     	} else {
-            if(user === null){
+            if(!user){
                 console.log("this user don't exist")
-                return done(false) 
+                return done(null, false, {message: "No User Found"}) 
             }
     		user.comparePassword(password, function(err, isMatch){
     			if(err){
     				return done(err)
-    			} else {
+    			} 
     				if(!isMatch){
-    					return done(false)
+                        console.log("password not valid")
+    					return done(null, false, {message: "Incorrect Email or Password"})
     				} else {
+                         console.log("server.js line 80 ", user)
     					return done(null, user);
+
     				}
-    			}
     		})
     	}
     })
 }));
 
+// 
 
 /*Authorization Routes*/
-app.post('/api/login', Passport.authenticate('local'), function(req, res){
-    res.status(200).send()
-});
-app.post('/api/newUser', AuthController.createUser);
+var authenticateUser = function(req, res, next){
+    Passport.authenticate("local", function(err, user, info){
+        console.log("authenticate server.js line 88", user, info)
+        if(!user){
+            return res.status(401).end()
+        } else {
+            req.logIn(user, function(err){
+                user.password = '';
+                return res.status(200).send(user);
+            })
+        }
+    }) (req, res, next);
+}
+
+var requireAuth = function(req, res, next){
+    if(!req.isAuthenticated()){
+        return res.status(401).end();
+    }
+    next();
+}
+app.post('/api/login', authenticateUser);
+
+
+app.get('/setup/:userId', requireAuth, function(req, res){
+    console.log("made it to the get request")
+})
+
+app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
 
     Mongoose.connect(mongoUri);
