@@ -6,7 +6,8 @@ app.controller('setupCtrl', function($scope, $timeout, setupService){
 	$scope.step2 = false;
 
 	$scope.showStep1 = function(){
-		$scope.step1 = true;
+		$timeout(function(){
+			$scope.step1 = true;}, 100);
 	}
 
 	$scope.showStep2 = function(){
@@ -18,6 +19,12 @@ app.controller('setupCtrl', function($scope, $timeout, setupService){
 		$scope.step2 = false;
 		$timeout(function(){
 			$scope.step1 = true;}, 500);
+	}
+
+	$scope.addWedInfo= function(){
+		setupService.addWedInfo($scope.currentUser);
+		console.log($scope.currentUser)
+		$scope.currentUser = '';
 	}
 
 

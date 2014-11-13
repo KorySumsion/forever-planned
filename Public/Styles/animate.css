@@ -68,3 +68,12 @@ body {
 .form-control {
   border-radius: 20px;
 }
+.skip{
+  float: right;
+}
+.skip:hover {
+  cursor: pointer;
+  color: red;
+
+
+}

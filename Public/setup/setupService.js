@@ -9,4 +9,14 @@ app.service('setupService', function($http){
 			return user;
 		})
 	}
+
+	this.addWedInfo = function(userObj){
+		return $http({
+			method: 'PUT',
+			url: '/api/updateUser/' + userObj._id,
+			data: userObj
+		})
+	}
+
+
 })

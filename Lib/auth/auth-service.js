@@ -12,3 +12,8 @@ module.exports.createUser = function(user){
 module.exports.findUserByEmail = function(userEmail){
 	return User.findOneAsync({email: userEmail});
 }
+
+
+module.exports.updateUser = function(userid, userobj){
+	return User.findByIdAndUpdateAsync(userid, userobj);
+}

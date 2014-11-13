@@ -9,7 +9,7 @@ var User = new Schema ({
 	password: {type: String, required: true},
 	bride: {type: String},
 	groom: {type: String},
-	weddingDate: {type: Number},
+	weddingDate: {type: String},
 	ideas: [{type: String}],
 	todo:[{type: String}]
 })

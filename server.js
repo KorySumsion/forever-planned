@@ -34,7 +34,7 @@ app.use(Cookie());
 
 var AuthController = require('./Lib/auth/auth-controller');
 
-
+var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
 
 /* User Model Reference for Passport*/
 
@@ -117,6 +117,7 @@ app.get('/setup/:userId', requireAuth, function(req, res){
 
 app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
+app.put('/api/updateUser/:userId', AuthController.updateUser);
 
     Mongoose.connect(mongoUri);
     var connection = Mongoose.connection;

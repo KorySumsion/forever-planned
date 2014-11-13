@@ -20,9 +20,9 @@
 
 
 
-<button class="btn btn-primary" ng-click="showStep1()">setup</button>
+<!-- <button class="btn btn-primary" ng-click="showStep1()">setup</button> -->
 	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
+		<div class="col-md-6 col-md-offset-3" ng-init="showStep1()">
 			<div class="panel" style="background-color: #5F808D;" ng-show="step1">
 				<div class="panel-heading">
 					<h4 class="panel-title text-center">Please Enter Mrs.Her and Mr.Him</h4>
@@ -30,15 +30,18 @@
 				<div class="panel-body ">
 					<form class="form-inline" role="form">
 						<div class="form-group">
-						  	<input type="text" class="form-control" placeholder="Mrs.Her">				
+						  	<input type="text" class="form-control" placeholder="Mrs.Her" ng-model="currentUser.bride">				
 					    </div>
 					    <div class="form-group ">
-    						<input type="text" class="form-control" placeholder="Mr.Him">
+    						<input type="text" class="form-control" placeholder="Mr.Him" ng-model="currentUser.groom">
  						</div>
  						
  						<div class="goRight" style="float: right; font-size: 62px; margin-top: -37px; cursor: pointer;" ng-click="showStep2()"> >
 						</div>
 					</form>
+					<div class="skip">
+					skip setup
+					</div>
 				</div>
 			</div>
 				
@@ -50,8 +53,8 @@
 					<form class="form-inline" role="form">
 						<div ng-click="goToNames()" style="float: left; font-size: 62px; margin-top: -37px; cursor: pointer;"> <
 						</div>
-                    	<input type='date' class="form-control" style="margin-left: none;">
-                		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -37px; cursor: pointer;"> >
+                    	<input type='date' class="form-control" style="margin-left: none;" ng-model="currentUser.date">
+                		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -37px; cursor: pointer;" ng-click="addWedInfo()"> >
 						</div>
 					</form>
 				</div>

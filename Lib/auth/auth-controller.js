@@ -29,3 +29,21 @@ module.exports.createUser = function(req, res){
 	})
 
 }
+
+
+module.exports.updateUser = function(req, res) {
+	console.log(req.body);
+	var userUpdate = req.body
+	delete userUpdate._id 
+	AuthService.updateUser(req.body._id, userUpdate)
+	.then(function(user){
+		console.log(user);
+		res.status(200).send(user);
+	}).catch(function(err){
+		console.log(err)
+		res.send(err);
+	})	
+}
+
+
+
