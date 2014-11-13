@@ -1,0 +1,51 @@
+<div class="container">
+	<div id="navigation_container">
+	<div class="l-triangle-top"></div>
+	  <div class="l-triangle-bottom"></div>
+		<div class="rectangle">
+
+
+			<ul id="navigation">
+				<li><a class="login-route" ui-sref="Ideas">Idea Board</a></li>
+				<li><p>Forever Planned</p> </li>
+				<li><a class="signup-route" ui-sref="Todo">To Do</a></li>
+			</ul>
+	 	</div>
+	<div class="r-triangle-top"></div>
+	<div class="r-triangle-bottom"></div>
+
+	</div>
+
+	<div class="add-button">
+		<i class="fa fa-plus" ng-click="addBoard()"></i>
+	</div>
+
+	<div class="idea-board" ng-repeat="board in boards">
+	{{board.listItems}}
+		<div class="list-group" ng-model="board">
+			<i class="fa fa-plus" ng-click="showItemInput()" ng-show="addItemButton"></i>
+			
+
+				
+				<input type="text" placeholder="Insert New Title" ng-model="board.title"  /><button ng-click="saveBoard()">Save Board</button>
+
+				
+			
+			
+
+			<br/>
+			
+			<div ng-show="addItemInput">
+			
+				<input type="text" placeholder="New Item" ng-model="newItem" />
+				<button ng-click="addItem()">Add Item</button>
+			</div> 
+
+			<ul ng-repeat="item in listItems">
+			<li> {{item}}</li>
+			</ul>
+		</div>
+
+	</div>
+
+</div>

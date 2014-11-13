@@ -1,5 +1,6 @@
 var Mongoose = require('mongoose'),
 	Schema = Mongoose.Schema,
+	ObjectId = Schema.Types.ObjectId,
 	Bcrypt = require('bcrypt'),
 	SALT_WORK_FACTOR = 10;
 
@@ -9,10 +10,14 @@ var User = new Schema ({
 	password: {type: String, required: true},
 	bride: {type: String},
 	groom: {type: String},
+	ideas: [{type: ObjectId, ref: 'Idea'}],
 	weddingDate: {type: String},
-	ideas: [{type: String}],
-	todo:[{type: String}]
+	brideList: [{type: String}],
+	groomList: [{type: String}],
+	brideComplete: [{type: String}],
+	groomComplete: [{type: String}]
 })
+
 
 User.pre('save', function(next){
 
@@ -40,3 +45,4 @@ User.methods.comparePassword = function(candidatePassword, cb){
 };
 
 module.exports = Mongoose.model("User", User);
+

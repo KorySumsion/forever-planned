@@ -29,12 +29,17 @@ app.use(Flash());
 app.use(Cookie());
 
 
+
+
+
+
 /* Controllers for Routes*/
 
 
 var AuthController = require('./Lib/auth/auth-controller');
 
 var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
+
 
 /* User Model Reference for Passport*/
 
@@ -110,6 +115,7 @@ var requireAuth = function(req, res, next){
 }
 app.post('/api/login', authenticateUser);
 
+//app.get('/api/user/:userid', AuthController.findUserByEmail);
 
 app.get('/setup/:userId', requireAuth, function(req, res){
     console.log("made it to the get request")

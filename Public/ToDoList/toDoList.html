@@ -19,25 +19,70 @@
 
 </div>
 
+{{todos}}
 <div class="container">
 	<div class="row">
-		<div class="col-md-12">
-			<h2>Wedding Plan Assignments</h2>
+		<div class="col-md-12 todos">
+			<h2 class="text-center">Wedding Plan Assignments</h2>
 		</div>
 
-		<div class="col-md-5">
-			Bride's List
-			<!-- maybe just put the todos on separate $scope objects -->
-			<div ng-repeat="todo in bride.todos">
-				{{todo}}
+		<div class="col-md-6 bride-todo">
+			<h4><u>Bride's List</u></h4>
+			
+			<div>
+				<p>Add Task</p>
+				<input class="todo-input" ng-model="brideTask">
+				<button ng-click="addBrideTask()">Add</button>
 			</div>
+
+			<div ng-repeat="todo in todos.brideList">
+				<ul>
+					<input type="checkbox" ng-click="brideCompleted(todo)">
+					{{todo}}
+					
+				</ul>
+
+			</div>
+
+			<h4 class="complete-margin"><u>Completed</u></h4>
+			<div ng-repeat="todo in todos.brideComplete">
+				<ul>	
+					<li>{{todo}}</li>
+				</ul>
+			</div>
+
 		</div>
 
-		<div class="col-md-5">
-			Groom's List
-			<div ng-repeat="todo in groom.todos">
-				{{todo}}
+
+
+
+
+
+		<div class="col-md-6 groom-todo">
+			<h4><u>Groom's List</u></h4>
+			
+			<div>
+				<p>Add Task</p>
+				<input class="todo-input" ng-model="groomTask">
+				<button ng-click="addGroomTask()">Add</button>
 			</div>
+
+			<div ng-repeat="todo in todos.groomList">
+				<ul>
+				
+					<input type="checkbox"ng-click="groomCompleted(todo)">
+					{{todo}}
+					
+				</ul>
+			</div>
+
+			<h4 class="complete-margin"><u>Completed</u></h4>
+			<div ng-repeat="todo in todos.groomComplete">
+				<ul>	
+					<li>{{todo}}</li>
+				</ul>
+			</div>
+
 		</div>
 
 	</div>
