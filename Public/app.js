@@ -41,4 +41,5 @@ app.config(function($stateProvider, $urlRouterProvider){
 		templateUrl: "/ideaBoard/ideaBoard.html",
 		controller: "ideaBoardCtrl"
 	})
+	
 });
