@@ -39,6 +39,9 @@ app.use(Flash());
 var AuthController = require('./Lib/auth/auth-controller');
 
 
+//var WeddingInfoController = require('./lib/wedInfoSetup/wedInfo-controller.js')
+
+
 
 /* User Model Reference for Passport*/
 
