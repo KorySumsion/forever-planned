@@ -110,6 +110,7 @@ var requireAuth = function(req, res, next){
 }
 app.post('/api/login', authenticateUser);
 
+//app.get('/api/user/:userid', AuthController.findUserByEmail);
 
 app.get('/setup/:userId', requireAuth, function(req, res){
     console.log("made it to the get request")

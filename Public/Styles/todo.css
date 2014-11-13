@@ -1,0 +1,35 @@
+.todos {
+	background-color: white;
+	margin-bottom: -1rem;
+	border-top-left-radius: .5rem;
+	border-top-right-radius: .5rem;
+	border-bottom: 5px solid rgb(85, 85, 85);
+}
+
+.bride-todo {
+	background-color: rgb(224, 168, 17);
+	margin-top: 1rem;
+	padding: 2rem 0 2rem 3rem;
+	height: 50rem;
+	overflow: scroll;
+}
+
+.groom-todo {
+	background-color: rgb(95, 128, 141);
+	margin-top: 1rem;
+	padding: 2rem 0 2rem 3rem;
+	height: 50rem;
+	overflow: scroll;
+
+}
+
+.complete-margin {
+	margin-top: 2rem;
+}
+
+.todo-input {
+	padding: .5rem;
+	margin: 1rem;
+	width: 30rem;
+}
+
