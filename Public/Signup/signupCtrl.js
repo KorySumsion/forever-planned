@@ -4,7 +4,6 @@ app.controller('signupCtrl', function($scope, $cookieStore, $location, authServi
 
 
 	$scope.signUp = function(){
-		debugger;
 		if($scope.user.password !== $scope.user.password2){
 			$scope.user.password2 = '';
 			alert('Your passwords do not match');
