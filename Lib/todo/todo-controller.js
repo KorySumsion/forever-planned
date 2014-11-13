@@ -1,9 +1,12 @@
 var ToDoService = require('./todo-service');
 var User = require('../models/userModel');
-var Todo = require('../models/toDoModel');
+
 
 
 //move to server.js the following routes
+
+
+
 //app.delete('/api/todo/:todoid', TodoController.deleteTodo)
 //app.get('/api/todo', TodoController.getTodos)
 //req.body has to have whole to do to edit it
@@ -13,11 +16,14 @@ var Todo = require('../models/toDoModel');
 //have to change user and add the to do . .oh, right add it first
 //to the todos and then return the id to add to the user- but you have to find the 
 //user async as well .. . . we have a user who we can find by email in authservice
-module.exports.postUserToDo = function(req, res){
-	var todo = req.body
-	var userId = req.params.userId
 
-}
+
+//just editing user, so don't need this?
+// module.exports.postUserToDo = function(req, res){
+// 	var todo = req.body
+// 	var userId = req.params.userId
+
+// }
 
 
 module.exports.getTodos = function(req, res){

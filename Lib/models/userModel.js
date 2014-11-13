@@ -10,12 +10,13 @@ var User = new Schema ({
 	password: {type: String, required: true},
 	bride: {type: String},
 	groom: {type: String},
-	weddingDate: {type: Number},
 	ideas: [{type: ObjectId, ref: 'Idea'}],
-	todo:[{type: String}]
-});
-
-
+	weddingDate: {type: String},
+	brideList: [{type: String}],
+	groomList: [{type: String}],
+	brideComplete: [{type: String}],
+	groomComplete: [{type: String}]
+})
 
 
 User.pre('save', function(next){
