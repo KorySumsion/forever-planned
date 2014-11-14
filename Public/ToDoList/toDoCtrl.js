@@ -22,10 +22,12 @@ app.controller('toDoCtrl', function($scope, toDoService){
 	$scope.addBrideTask = function(){
 		if($scope.brideTask.length > 0){
 			$scope.brideList.push($scope.brideTask)
+
 			
 			$scope.currentUser.brideList = $scope.brideList;
 			
 			$scope.brideTask = '';
+
 			toDoService.editTodos($scope.currentUser)
 			.then(function(res){
 				

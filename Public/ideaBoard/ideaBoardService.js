@@ -14,4 +14,15 @@ app.service("ideaBoardService", function($http, $q){
 		})
 		return deferred.promise;
 	}
+
+	this.getUser = function(user){
+		var deferred = $q.defer();
+		$http({
+			method: 'GET',
+			url: '/api/user/' + user._id 
+		}).then(function(res){
+			deferred.resolve(res.data)
+		})
+		return deferred.promise;
+	}
 })
