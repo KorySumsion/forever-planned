@@ -16,7 +16,7 @@ app.service('toDoService', function($http, $q){
 	}
 
 	this.editTodos = function(userObj){
-		console.log(userObj)
+
 		var deferred = $q.defer();
 		$http({
 			method: 'PUT',

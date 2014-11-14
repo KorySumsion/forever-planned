@@ -4,10 +4,11 @@ app.controller('toDoCtrl', function($scope, toDoService){
 	
 
 	
+
 	$scope.getTodos = function(){
 		toDoService.getTodos($scope.currentUser)
 		.then(function(res){
-			console.log(res)
+			
 			$scope.brideList = res.brideList;
 			$scope.groomList = res.groomList;
 			$scope.groomComplete = res.groomComplete
@@ -22,9 +23,15 @@ app.controller('toDoCtrl', function($scope, toDoService){
 		if($scope.brideTask.length > 0){
 			$scope.brideList.push($scope.brideTask)
 
+			
+			$scope.currentUser.brideList = $scope.brideList;
+			
+			$scope.brideTask = '';
+
 			toDoService.editTodos($scope.currentUser)
 			.then(function(res){
-				//$scope.todos = res.todo;
+				
+				$scope.brideList = res.brideList;
 			})
 		}
 	}
@@ -33,9 +40,12 @@ app.controller('toDoCtrl', function($scope, toDoService){
 		if($scope.groomTask.length > 0){
 			$scope.groomList.push($scope.groomTask)
 			
-			toDoService.editTodos()
+			$scope.currentUser.groomList = $scope.groomList;
+
+			$scope.groomTask = '';
+			toDoService.editTodos($scope.currentUser)
 			.then(function(res){
-				//$scope.todos = res.todo;
+				$scope.groomList = res.groomList;
 			})
 		}
 	}
@@ -46,7 +56,16 @@ app.controller('toDoCtrl', function($scope, toDoService){
 		if($scope.brideList.indexOf(todo !== -1)){
 			$scope.brideList.splice($scope.brideList.indexOf(todo),1);
 			$scope.brideComplete.push(todo);
-			//$scope.getTodos();
+			
+			$scope.currentUser.brideList = $scope.brideList
+			$scope.currentUser.brideComplete = $scope.brideComplete
+			
+			toDoService.editTodos($scope.currentUser)
+			.then(function(res){
+				
+				$scope.brideList = res.brideList;
+				$scope.brideComplete = res.brideComplete;
+			})
 		}
 	}
 
@@ -55,7 +74,16 @@ app.controller('toDoCtrl', function($scope, toDoService){
 		if($scope.groomList.indexOf(todo !== -1)){
 			$scope.groomList.splice($scope.groomList.indexOf(todo),1);
 			$scope.groomComplete.push(todo);
-			//$scope.getTodos();
+			
+			$scope.currentUser.groomList = $scope.groomList
+			$scope.currentUser.groomComplete = $scope.groomComplete
+			
+			toDoService.editTodos($scope.currentUser)
+			.then(function(res){
+				
+				$scope.groomList = res.groomList;
+				$scope.groomComplete = res.groomComplete;
+			})
 		}
 	}
 })
