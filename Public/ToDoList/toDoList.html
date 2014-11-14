@@ -1,67 +1,84 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 todos">
-			<h2 class="text-center">Wedding Plan Assignments</h2>
-		</div>
 
-		<div class="col-md-6 bride-todo">
-			<h4><u>Bride's List</u></h4>
-			
-			<div>
-				<p>Add Task</p>
-				<input class="todo-input" ng-model="brideTask">
-				<button class="btn" ng-click="addBrideTask()">Add</button>
-			</div>
 
-			<div ng-repeat="todo in brideList">
-				<ul>
-					<input type="checkbox" ng-click="brideCompleted(todo)">
-					{{todo}}
+<div class="todos">
+	<h2 class="text-center">Wedding Assignments</h2>
+	<!-- change the button colors to match the person -->
+	<button class="btn btn-xs" ng-click="toDoShow('bride')">Bride</button>
+	<button class="btn btn-xs" ng-click="toDoShow('groom')">Groom</button>
+	
+	
+</div>
+
+			<div ng-show="todoosieBride" class="bride-todo">
+
+				<div>	
+						<p>Add Task</p>
+									
+						<input class="todo-input form-control" ng-model="brideTask">
+						<button class="btn" ng-click="addBrideTask()">Add</button>
+
+				</div>
 					
-				</ul>
 
-			</div>
+					<h4><u>Bride's List</u></h4>
+					
+					<div ng-repeat="todo in brideList">
+						<ul>
+							<input type="checkbox" ng-click="brideCompleted(todo)">
+							{{todo}}
+							
+						</ul>
 
-			<h4 class="complete-margin"><u>Completed</u></h4>
-			<div ng-repeat="todo in brideComplete">
-				<ul>	
-					<li>{{todo}}</li>
-				</ul>
-			</div>
+					</div>
 
-		</div>
+					<h4 class="complete-margin"><u>Completed</u></h4>
+					<div ng-repeat="todo in brideComplete">
+						<ul>	
+							<li>{{todo}}</li>
+						</ul>
+					</div>
 
+				</div>
 
+	
 
-
-
-
-		<div class="col-md-6 groom-todo">
-			<h4><u>Groom's List</u></h4>
-			
-			<div>
+	<div ng-show="todoosieGroom" class="groom-todo">
+		<div>
 				<p>Add Task</p>
-				<input class="todo-input" ng-model="groomTask">
+				<input class="todo-input form-control" ng-model="groomTask">
 				<button class="btn" ng-click="addGroomTask()">Add</button>
-			</div>
+		</div>
 
-			<div ng-repeat="todo in groomList">
-				<ul>
+
+		<h4><u>Groom's List</u></h4>
+
+
+		<div ng-repeat="todo in groomList">
+			<ul>
+			
+				<input type="checkbox"ng-click="groomCompleted(todo)">
+				{{todo}}
 				
-					<input type="checkbox"ng-click="groomCompleted(todo)">
-					{{todo}}
-					
-				</ul>
-			</div>
+			</ul>
+		</div>
 
-			<h4 class="complete-margin"><u>Completed</u></h4>
-			<div ng-repeat="todo in groomComplete">
-				<ul>	
-					<li>{{todo}}</li>
-				</ul>
-			</div>
-
+		<h4 class="complete-margin"><u>Completed</u></h4>
+		<div ng-repeat="todo in groomComplete">
+			<ul>	
+				<li>{{todo}}</li>
+			</ul>
 		</div>
 
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,29 +1,34 @@
 <div class="container">
-<div id="navigation_container">
- <div class="l-triangle-top"></div>
-   <div class="l-triangle-bottom"></div>
-	<div class="rectangle">
+	
+	<div id="navigation_container">
+	 <div class="l-triangle-top"></div>
+	   <div class="l-triangle-bottom"></div>
+			<div class="rectangle">
 
 
-	<ul id="navigation">
-		<li><a class="login-route" ui-sref="Ideas">Idea Board</a></li>
-		<li><p>Forever Planned</p> </li>
-		<li><a href='/logout' class="signup-route" ng-click="logout()">LogOut</a></li>
-	</ul>
-	</div>
-	<div class="r-triangle-top"></div>
-    <div class="r-triangle-bottom"></div>
+				<ul id="navigation">
+					<li><a class="login-route" ui-sref="Ideas">Idea Board</a></li>
+					<li><p>Forever Planned</p> </li>
+					<li><a href='/logout' class="signup-route" ng-click="logout()">LogOut</a></li>
+				</ul>
 
-</div>
-	<div class="row">
-		<div class="col-md-4">
-			<div ui-view="ideaBoard"></div>
-		</div>
+			</div>
+		<div class="r-triangle-top"></div>
+	    <div class="r-triangle-bottom"></div>
 
-		<div class="col-md-4">
-			<div ui-view="todo"></div>
-		</div>
 	</div>
 
+		<div class="col-md-12 row wierd-margin-issues home-border">
+			
+			<div class="col-md-8">
+				<div ui-view="ideaBoard"></div>
+			</div>
+
+			<div class="col-md-4 home-border">
+				<div ui-view="todo"></div>
+			</div>
+		
+		</div>
+	
 </div>
 
