@@ -11,11 +11,12 @@ var User = new Schema ({
 	bride: {type: String},
 	groom: {type: String},
 	ideas: [{type: ObjectId, ref: 'Idea'}],
-	weddingDate: {type: String},
+	weddingDate: {type: Date},
 	brideList: [{type: String}],
 	groomList: [{type: String}],
 	brideComplete: [{type: String}],
-	groomComplete: [{type: String}]
+	groomComplete: [{type: String}],
+	budget: {type: Number}
 })
 
 
