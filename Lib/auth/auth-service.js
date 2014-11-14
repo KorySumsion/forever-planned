@@ -26,13 +26,13 @@ module.exports.updateUser = function(userid, obj){
 }
 
 module.exports.getUser = function(userid){
-	console.log("hit service")
-	console.log('userid ', userid)
+	//console.log("hit service")
+	//console.log('userid ', userid)
 	return User.findOne({_id: userid}).populate("ideas").exec(function(err, obj){
 		if(!err){
-			console.log("userservice line 21 obj: ",obj)
+			//console.log("userservice line 21 obj: ",obj)
 		} else {
-			console.log("userService line 23 err: ", err)
+			//console.log("userService line 23 err: ", err)
 		}
 	})
 };

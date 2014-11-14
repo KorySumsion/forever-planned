@@ -1,63 +1,77 @@
 <div class="container">
-	<div id="navigation_container">
-	<div class="l-triangle-top"></div>
-	  <div class="l-triangle-bottom"></div>
-		<div class="rectangle">
-
-
-			<ul id="navigation">
-				<li><a class="login-route" ui-sref="Ideas">Idea Board</a></li>
-				<li><p>Forever Planned</p> </li>
-				<li><a class="signup-route" ui-sref="Todo">To Do</a></li>
-			</ul>
-	 	</div>
-	<div class="r-triangle-top"></div>
-	<div class="r-triangle-bottom"></div>
-
-	</div>
+	
 	<div class="add-button">
-		<i class="fa fa-plus" ng-click="showNewBoard()"></i>
+		<button class="btn" ng-click="showNewBoard()">Add a Board</button>
 	</div>
 
-	<div ng-show="newBoardTitle">
-		<input type="text" placeholder="Insert New Title" ng-model="board.title"  />
-		<button ng-click="addBoard()">Add Board</button>
+	<div class="input-group add-board" ng-show="newBoardTitle">
+		<input class="form-control" type="text" placeholder="Insert New Title" ng-model="board.title"  />
+		<span class="input-group-btn">
+		<button class="btn" ng-click="addBoard()">Add Board</button>
+		</span>
 	</div>
-
+	<div class="row">
+	<div class="col-md-6 offset-5">
 	<div class="idea-board" ng-repeat="board in boards">
-		<div class="list-group" ng-model="board">
-			<h2>{{board.title}}</h2> 
-			<i class="fa fa-plus" ng-click="showItemInput()"></i>
+		<div class="list-group">
+			<li class="list-group-item idea-board-ind">
+				<p class="board-title">{{board.title}}</p>
+				<button class="btn add-button-position" ng-click="addItemInput = !addItemInput">Add Items</button>
+			</li>
 			<div ng-show="addItemInput">
-			
-				<input type="text" placeholder="New Item" ng-model="newItem" />
-				
-				<button ng-click="addItem()">Add Item</button>
+			<form class="input-group">
+				<input class="form-control" type="text" placeholder="New Item" ng-model="board.newItem"/>
+				<span class="input-group-btn">
+				<button class="btn" ng-click="showQty()"><i class="fa fa-plus"></i></button>
+				</span>
+			</form>
 			
 			</div> 
 			
-			<ul ng-repeat="item in listItems">
-			<li> {{item}}</li>
-			</ul>
+			<div ng-show="itemQty">
+			<form class="input-group">
+				<input class="form-control" type="text" placeholder="How Many?" ng-model="board.quantity"/>
+				<span class="input-group-btn">
+				<button class="btn" ng-click="showPrice()"><i class="fa fa-plus"></i></button>
+				</span>
+			</form>
+			
+			</div> 
+
+			<div ng-show="itemPrice">
+			<form class="input-group">
+				<input class="form-control" type="text" placeholder="How Much?" ng-model="board.price"/>
+				<span class="input-group-btn">
+				<button class="btn" ng-click="addToList($index, board)"><i class="fa fa-plus"></i></button>
+				</span>
+			</form>
+			
+			</div> 
+
+			<div ng-repeat="item in board.boardItems track by $index">
+			<p class="list-group-item" ng-model="board.boardItems"> 
+				{{item}}
+			
+		
+			{{board.quantity}}
+			{{board.price}}
+			{{board.total}}
+			<button>Delete</button>
+		
+			</p>
+			</div>
+			<div class="list-group-item idea-board-ind">
+			<button class="btn save-icon" ng-click="saveBoard(board)"><i class="fa fa-floppy-o font-icon-size "></i></button>
+			<button class="btn btn-warning" ng-click="deleteBoard(board)"><i class="fa fa-trash-o font-icon-size"></i></button>
+			</div>
 		</div>
 
 
-
-			
-			
-
-				
-				
-				
-			
-			
-
-			<br/>
-			
-			
-			
+						
+			</div>
+			</div>
 		</div>
 
 	</div>
 
-</div>
+

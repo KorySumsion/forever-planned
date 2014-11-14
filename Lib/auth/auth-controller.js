@@ -31,8 +31,8 @@ module.exports.login = function(req, res){
 
 
 module.exports.getUser = function(req, res){
-	var id = req.params.userid;
-	console.log("AUTH-CONTROLLER ", id)
+	var id = req.params.userId;
+	//console.log("AUTH-CONTROLLER ", id)
 
 		AuthService.getUser(id)
 		.then(function(user){
@@ -46,7 +46,7 @@ module.exports.getUser = function(req, res){
 module.exports.createUser = function(req, res){
 	AuthService.createUser(req.body)
 	.then(function(user){
-		res.status(200).send("working?")
+		res.status(200).send(user)
 	}).catch(function(err){
 		console.log('err adding user ', err)
 	})
