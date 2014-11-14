@@ -11,7 +11,6 @@ Promise.promisifyAll(User.prototype);
 
 
 module.exports.createUser = function(user){
-
 	return new User(user).saveAsync();
 }
 

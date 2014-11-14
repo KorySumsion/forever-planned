@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.controller('toDoCtrl', function($scope, toDoService){
+app.controller('toDoCtrl', function($scope, toDoService, $cookieStore){
 	
 
 	
@@ -86,4 +86,10 @@ app.controller('toDoCtrl', function($scope, toDoService){
 			})
 		}
 	}
+
+	//for testing purposes
+	$scope.logout = function(){
+		$cookieStore.remove('currentUser');
+	}
+
 })

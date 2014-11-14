@@ -24,8 +24,6 @@
 
 
 
-
-<!-- <button class="btn btn-primary" ng-click="showStep1()">setup</button> -->
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3" ng-init="showStep1()">
 			<div class="panel" style="background-color: #5F808D;" ng-show="step1">
@@ -34,14 +32,14 @@
 				</div>
 				<div class="panel-body ">
 					<form class="form-inline" role="form">
-						<div class="form-group">
+						<div class="form-group input-group-lg">
 						  	<input type="text" class="form-control" placeholder="Mrs.Her" ng-model="currentUser.bride">				
 					    </div>
-					    <div class="form-group ">
+					    <div class="form-group input-group-lg">
     						<input type="text" class="form-control" placeholder="Mr.Him" ng-model="currentUser.groom">
  						</div>
  						
- 						<div class="goRight" style="float: right; font-size: 62px; margin-top: -37px; cursor: pointer;" ng-click="showStep2()"> >
+ 						<div class="goRight" style="float: right; font-size: 62px; margin-top: -27px; cursor: pointer;" ng-click="showStep2()"> >
 						</div>
 					</form>
 					<div class="skip">
@@ -55,11 +53,26 @@
 					<h4 class="panel-title text-center">Pick the Magical Date</h4>
 				</div>
 				<div class="panel-body" style="text-align: center;">
-					<form class="form-inline" role="form">
-						<div ng-click="goToNames()" style="float: left; font-size: 62px; margin-top: -37px; cursor: pointer;"> <
+					<form class="form-inline input-group-lg" role="form">
+						<div ng-click="goToNames()" style="float: left; font-size: 62px; margin-top: -27px; cursor: pointer;"> <
 						</div>
                     	<input type='date' class="form-control" style="margin-left: none;" ng-model="currentUser.weddingDate">
-                		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -37px; cursor: pointer;" ng-click="addWedInfo()"> >
+                		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -27px; cursor: pointer;" ng-click="showStep3()"> >
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="panel" style="background-color: #5F808D;" ng-show="step3">
+				<div class="panel-heading">
+					<h4 class="panel-title text-center">$ Budget $</h4>
+				</div>
+				<div class="panel-body" style="text-align: center;">
+					<form class="form-inline input-group-lg" role="form">
+						<div ng-click="goToDate()" style="float: left; font-size: 62px; margin-top: -27px; cursor: pointer;"> <
+						</div>
+                    	<input type='text' class="form-control" style="margin-left: none;" ng-model="currentUser.budget" placeholder="$$$$$">
+                		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -27px; cursor: pointer;" ng-click="addWedInfo()"> >
 						</div>
 					</form>
 				</div>

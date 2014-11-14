@@ -116,6 +116,13 @@ var requireAuth = function(req, res, next){
     }
     next();
 }
+
+app.get('/logout', function(req, res){
+  req.logout();
+  req.session.destroy();
+  res.redirect('/');
+})
+
 app.post('/api/login', authenticateUser);
 
 //app.get('/api/user/:userid', AuthController.findUser);
