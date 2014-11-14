@@ -36,9 +36,13 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 	$scope.addWedInfo= function(){
 		if($scope.currentUser.budget){
 			$scope.currentUser.budget = parseInt($scope.currentUser.budget.replace('$', '').replace(',', ''));
-			setupService.addWedInfo($scope.currentUser);
+			console.log('budget ', $scope.currentUser.budget)
+			setupService.addWedInfo($scope.currentUser)
+			.then(function(res){
+				$location.path('/ideas/' + $scope.currentUser._id);
+			})
 			console.log($scope.currentUser)
-			$location.path('/ideas/' + $scope.currentUser._id);
+			
 		} else {
 			alert("Please enter a budget amount");
 		}
