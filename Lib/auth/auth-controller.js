@@ -23,21 +23,14 @@ module.exports.login = function(req, res){
 }
 
 
-module.exports.findUser = function(req, res){
+module.exports.getUser = function(req, res){
 	console.log('req.body ', req.params.userid)
 	var id = req.params.userid;
 
-	User.findById(id, function(err, user){
-		if(err){
-			console.log(err)
-		} else {
-			console.log('user ', user)
-			res.status(200).send(user);
-		}
-
+	AuthService.getUser(id)
+	.then(function(user){
+		res.status(200).send(user)
 	})
-
-
 }
 
 
@@ -45,7 +38,7 @@ module.exports.findUser = function(req, res){
 module.exports.createUser = function(req, res){
 	AuthService.createUser(req.body)
 	.then(function(user){
-		res.status(200).send(user)
+		res.status(200).send("working?")
 	}).catch(function(err){
 		console.log('err adding user ', err)
 	})

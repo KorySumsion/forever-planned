@@ -131,7 +131,7 @@ app.put('/api/updateUser/:userId', AuthController.updateUser);
 
 app.post('/api/ideaBoard/:userId', ideaBoardCtrl.addBoard);
 
-app.get('/api/user/:userid', AuthController.findUser);
+app.get('/api/user/:userid', AuthController.getUser);
 
 
     Mongoose.connect(mongoUri);

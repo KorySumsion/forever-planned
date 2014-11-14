@@ -15,7 +15,6 @@
 	<div class="r-triangle-bottom"></div>
 
 	</div>
-
 	<div class="add-button">
 		<i class="fa fa-plus" ng-click="showNewBoard()"></i>
 	</div>
@@ -27,7 +26,24 @@
 
 	<div class="idea-board" ng-repeat="board in boards">
 		<div class="list-group" ng-model="board">
-			<i class="fa fa-plus" ng-click="showItemInput()" ng-show="addItemButton"></i>
+			<h2>{{board.title}}</h2> 
+			<i class="fa fa-plus" ng-click="showItemInput()"></i>
+			<div ng-show="addItemInput">
+			
+				<input type="text" placeholder="New Item" ng-model="newItem" />
+				
+				<button ng-click="addItem()">Add Item</button>
+			
+			</div> 
+			
+			<ul ng-repeat="item in listItems">
+			<li> {{item}}</li>
+			</ul>
+		</div>
+
+
+
+			
 			
 
 				
@@ -38,15 +54,8 @@
 
 			<br/>
 			
-			<div ng-show="addItemInput">
 			
-				<input type="text" placeholder="New Item" ng-model="newItem" />
-				<button ng-click="addItem()">Add Item</button>
-			</div> 
-
-			<ul ng-repeat="item in listItems">
-			<li> {{item}}</li>
-			</ul>
+			
 		</div>
 
 	</div>

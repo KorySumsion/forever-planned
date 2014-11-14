@@ -6,13 +6,22 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 	$scope.newBoardTitle = false;
 
 
-	$scope.boards = [];
+	var getUser = function(){
+		ideaBoardService.getUser($scope.currentUser)
+		.then(function(results){
+			$scope.boards = results.ideas.reverse();
+			console.log($scope.boards)
+		})
+	}
+	
+	getUser();
 
 	$scope.addBoard = function(){
 		ideaBoardService.addBoard($scope.board, $scope.currentUser)
 		.then(function(results){
 			$scope.boards = results.ideas.reverse();
-			console.log($scope.boards);
+			console.log($scope.boards)
+
 		})
 	}
 
@@ -28,7 +37,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 	}
 
 	$scope.addItem = function(){
-		debugger;
 
 		$scope.board.listItems.push($scope.newItem);
 		$scope.newItem = '';

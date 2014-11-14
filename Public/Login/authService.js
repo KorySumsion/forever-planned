@@ -10,9 +10,6 @@ app.service('authService', function($http, $q, $cookieStore){
 			data: userObj
 		}).then(function(user){
 			console.log(user)
-			if(user.status !== 200){
-				return deferred.reject(user.data)
-			}
 			$cookieStore.put('currentUser', user.data)
 			return deferred.resolve(user.data);
 		})
