@@ -23,7 +23,8 @@ app.service('authService', function($http, $q, $cookieStore){
 			url: '/api/newUser',
 			data: userObj
 		}).then(function(res){
-			console.log(res.data[0]);
+
+			//console.log(res.data[0]);
 			$cookieStore.put('currentUser', res.data[0]);
 			return deferred.resolve(res.data[0]);
 		})
