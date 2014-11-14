@@ -1,6 +1,6 @@
 var app = angular.module('wedding')
 
-app.service('setupService', function($http){
+app.service('setupService', function($http, $q, $cookieStore){
 	this.getUser = function(userObj){
 		$http({
 			method: "GET",
@@ -11,11 +11,16 @@ app.service('setupService', function($http){
 	}
 
 	this.addWedInfo = function(userObj){
-		return $http({
+		var deferred = $q.defer()
+		$http({
 			method: 'PUT',
 			url: '/api/updateUser/' + userObj._id,
 			data: userObj
+		}).then(function(res){
+			$cookieStore.put("currentUser", res.data)
+			return deferred.resolve(res)
 		})
+		return deferred.promise
 	}
 
 

@@ -36,6 +36,10 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: "/todo/:userId",
 		templateUrl: "/ToDoList/toDoList.html",
 		controller: "toDoCtrl"
+	}).state("Budget", {
+		url: "/budget/:userid",
+		templateUrl: "/Budget/budget.html",
+		controller: "budgetCtrl"
 	}).state("Ideas", {
 		url: "/ideas/:userid",
 		templateUrl: "/ideaBoard/ideaBoard.html",
