@@ -7,6 +7,7 @@ module.exports.addBoard = function(req, res){
 	console.log("ideaBoard-Ctrl req.params", req.params, "req.body", req.body)
 	var userId = req.params.userId
 	ideaBoardService.addBoard(req.body).then(function(board){
+		console.log(board);
 		User.findOne({_id: userId}).populate('ideas').exec(function(err, user){
 			if(err){
 				res.send(err)

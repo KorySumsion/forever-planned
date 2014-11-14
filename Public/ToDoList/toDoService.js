@@ -3,7 +3,7 @@ var app = angular.module('wedding');
 app.service('toDoService', function($http, $q){
 
 	this.getTodos = function(userObj){
-		
+		console.log(userObj)
 		var deferred = $q.defer();
 		$http({
 			method: 'GET',
@@ -16,10 +16,11 @@ app.service('toDoService', function($http, $q){
 	}
 
 	this.editTodos = function(userObj){
+		console.log(userObj)
 		var deferred = $q.defer();
 		$http({
 			method: 'PUT',
-			url: '/api/updateUser' + userObj._id,
+			url: '/api/updateUser/' + userObj._id,
 			data: userObj
 		}).then(function(res){
 			return deferred.resolve(res.data);

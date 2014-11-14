@@ -2,6 +2,13 @@
 
 var AuthService = require('./auth-service');
 var User = require('../models/userModel');
+var Idea = require('../models/idea')
+var Promise = require('bluebird');
+
+Promise.promisifyAll(User);
+Promise.promisifyAll(User.prototype);
+Promise.promisifyAll(Idea);
+Promise.promisifyAll(Idea.prototype);
 
 
 module.exports.login = function(req, res){
@@ -24,14 +31,15 @@ module.exports.login = function(req, res){
 
 
 module.exports.getUser = function(req, res){
-	console.log('req.body ', req.params.userid)
 	var id = req.params.userid;
+	console.log("AUTH-CONTROLLER ", id)
 
-	AuthService.getUser(id)
-	.then(function(user){
-		res.status(200).send(user)
+		AuthService.getUser(id)
+		.then(function(user){
+			res.status(200).send(user)
 	})
-}
+
+};
 
 
 
@@ -61,22 +69,22 @@ module.exports.updateUser = function(req, res) {
 	})	
 }
 
-module.exports.findUser = function(req, res){
-	console.log('req.body ', req.params.userid)
-	var id = req.params.userid;
+// module.exports.findUser = function(req, res){
+// 	console.log('req.body ', req.params.userid)
+// 	var id = req.params.userid;
 
-	User.findById(id, function(err, user){
-		if(err){
-			console.log(err)
-		} else {
-			console.log('user ', user)
-			res.status(200).send(user);
-}
+// 	User.findById(id, function(err, user){
+// 		if(err){
+// 			console.log(err)
+// 		} else {
+// 			console.log('user ', user)
+// 			res.status(200).send(user);
+// }
 
-})
+// })
 
 
-}
+
 
 
 

@@ -22,7 +22,7 @@ app.controller('toDoCtrl', function($scope, toDoService){
 		if($scope.brideTask.length > 0){
 			$scope.brideList.push($scope.brideTask)
 
-			toDoService.editTodos()
+			toDoService.editTodos($scope.currentUser)
 			.then(function(res){
 				//$scope.todos = res.todo;
 			})

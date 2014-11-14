@@ -8,6 +8,7 @@ Promise.promisifyAll(Idea.prototype)
 module.exports.addBoard = function(idea){
 	console.log("ideaBoard-service idea: ", idea)
 	return new Idea(idea).saveAsync().then(function(savedIdea){
+		console.log(savedIdea);
 		return savedIdea;
 	})
 }
