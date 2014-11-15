@@ -3,6 +3,7 @@
 	margin-bottom: -1rem;
 	border-top-left-radius: .5rem;
 	border-top-right-radius: .5rem;
+	border: 1px solid rgb(85, 85, 85);
 	border-bottom: 5px solid rgb(85, 85, 85);
 }
 
@@ -30,6 +31,6 @@
 .todo-input {
 	padding: .5rem;
 	margin: 1rem;
-	width: 30rem;
+	width: 26rem;
 }
 

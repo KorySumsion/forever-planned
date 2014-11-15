@@ -2,8 +2,18 @@ var app = angular.module('wedding');
 
 app.controller('toDoCtrl', function($scope, toDoService, $cookieStore){
 	
-
-	
+$scope.todoosieBride = true;
+$scope.todoosieGroom = false;
+	$scope.toDoShow = function(person){
+		if(person === 'bride'){
+			$scope.todoosieBride = true;
+			$scope.todoosieGroom = false;
+		}
+		if(person === 'groom'){
+			$scope.todoosieBride = false;
+			$scope.todoosieGroom = true;	
+		}
+	}
 
 	$scope.getTodos = function(){
 		toDoService.getTodos($scope.currentUser)
