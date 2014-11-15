@@ -27,7 +27,7 @@ module.exports.saveBoard = function(board, cb){
 module.exports.deleteBoard = function(board, cb){
 		console.log("hit delete board in service", board);
 
-		return Idea.findOneAndRemove({_id: board}, function(err){
+		return Idea.findOneAndRemove({_id: board._id}, function(err){
 			if(!err){
 				cb(null);
 			} else {

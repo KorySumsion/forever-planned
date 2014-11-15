@@ -26,28 +26,35 @@ module.exports.addBoard = function(req, res){
 }	
 
 module.exports.saveBoard = function(req, res){
+	console.log(req.params)
 	var id = req.params.userId;
 	var board = req.body;
 	console.log("ideaBoardCtrl line 31 board ", board);
 	ideaBoardService.saveBoard(board, function(err, updatedBoard){
-		console.log("ideaBoardCtrl line 34 board: ", err)
-		if(err){
-			res.send(err)
-		} else {
-			res.send(updatedBoard)
-		}
+		console.log("ideaBoardCtrl line 34 board: ", err);
+		User.findOneAndUpdate({_id: id}).populate('ideas').exec(function(savedUser, err){
+			if(err){
+				res.send(err)
+			}	else {
+				res.send(savedUser)
+			}
+		})
+		
 	})
 }
 
 module.exports.deleteBoard = function(req, res){
 	console.log("hit delete board in ctrl, ", req);
-	var id = req.params.boardId;
+	var id = req.params.userId;
+	var board = req.body
 	
-	ideaBoardService.deleteBoard(id, function(err){
-		if(!err){
-			res.send("deleted");
-		}else {
-			res.send(err);
-		}
+	ideaBoardService.deleteBoard(board, function(err){
+		User.findOneAndUpdate({_id: id}).populate('ideas').exec(function(savedUser, err){
+			if(err){
+				res.send(err)
+			} else {
+				res.send(savedUser)
+			}
+		})
 	})
 }
