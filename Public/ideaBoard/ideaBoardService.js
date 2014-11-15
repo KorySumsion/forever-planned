@@ -25,4 +25,32 @@ app.service("ideaBoardService", function($http, $q){
 		})
 		return deferred.promise;
 	}
+
+	this.saveBoard = function(board){
+
+		var deferred = $q.defer();
+		$http({
+			method: 'PUT',
+			url: '/api/user/board/' + board._id,
+			data: board
+		}).then(function(res){
+			console.log(res)
+			deferred.resolve(res.data);
+		})
+		return deferred.promise;
+
+	}
+
+	this.deleteBoard = function(board){
+		console.log('idea service front end board: ', board)
+		var deferred = $q.defer();
+		$http({
+			method: 'DELETE',
+			url: '/api/user/board/' + board._id,
+			data: board
+		}).then(function(res){
+			deferred.resolve(res.data)
+		})
+		return deferred.promise;
+	}
 })

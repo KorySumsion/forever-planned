@@ -68,7 +68,7 @@ Passport.use(new LocalStrategy(
   function(email, password, done) {
     console.log('server.js line 59ish ', email)
     
-    User.findOne({email: email}, function (err, user) {
+    User.findOne({email: email}).populate("ideas").exec(function (err, user) {
     	if(err) {
     		return done(new Error("No User Found"))
     	} else {
@@ -138,7 +138,11 @@ app.put('/api/updateUser/:userId', AuthController.updateUser);
 
 app.post('/api/ideaBoard/:userId', ideaBoardCtrl.addBoard);
 
-app.get('/api/user/:userid', AuthController.getUser);
+app.get('/api/user/:userId', AuthController.getUser);
+
+app.put('/api/user/board/:boardId', ideaBoardCtrl.saveBoard);
+
+app.delete('/api/user/board/:boardId', ideaBoardCtrl.deleteBoard);
 
 
     Mongoose.connect(mongoUri);

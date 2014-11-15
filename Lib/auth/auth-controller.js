@@ -31,8 +31,8 @@ module.exports.login = function(req, res){
 
 
 module.exports.getUser = function(req, res){
-	var id = req.params.userid;
-	console.log("AUTH-CONTROLLER ", id)
+	var id = req.params.userId;
+	//console.log("AUTH-CONTROLLER ", id)
 
 		AuthService.getUser(id)
 		.then(function(user){
