@@ -101,3 +101,33 @@
 .sign-route {
 	display: inline-block;
 }
+
+
+.font-icon-size {
+  font-size: 20px;
+}
+
+.add-button-position {
+  float: right;
+  display: inline-block;
+}
+
+.board-title {
+  display: inline-block;
+  color: white;
+  font-size: 25px;
+  font-family: cursive;
+
+}
+
+.idea-board-ind {
+  background-color: #666;
+}
+
+.save-icon {
+  background: #6f8d98;
+}
+
+.add-board {
+  max-width: 453px;
+}
