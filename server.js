@@ -142,7 +142,7 @@ app.get('/api/user/:userId', AuthController.getUser);
 
 app.put('/api/ideaBoard/:userId', ideaBoardCtrl.saveBoard);
 
-app.delete('/api/ideaBoard/:userId', ideaBoardCtrl.deleteBoard);
+app.delete('/api/ideaBoard/:userId/:boardId', ideaBoardCtrl.deleteBoard);
 
 
     Mongoose.connect(mongoUri);

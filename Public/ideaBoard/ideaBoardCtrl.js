@@ -34,7 +34,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 
 
 	$scope.saveBoard = function(board){
-		debugger;
 		console.log(board)
 		ideaBoardService.saveBoard(board, $scope.currentUser)
 		.then(function(results){
@@ -55,7 +54,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 
 	
 	$scope.addToList = function(i, boardItems){
-		debugger;
 		boardItems.total = boardItems.quantity * boardItems.price;
 		$scope.boards[i].boardItems.push(boardItems);
 		boardItems = '';
@@ -65,7 +63,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 	}
 
 	$scope.deleteBoard = function(board){
-		console.log(board)
+		//console.log(board)
 		ideaBoardService.deleteBoard(board, $scope.currentUser)
 		.then(function(results){
 			getUser();

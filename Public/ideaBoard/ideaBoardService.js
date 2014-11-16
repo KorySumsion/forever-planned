@@ -43,12 +43,12 @@ app.service("ideaBoardService", function($http, $q){
 	}
 
 	this.deleteBoard = function(board, user){
-		console.log('idea service front end board: ', board)
+		//console.log('idea service front end board: ', board)
 		var deferred = $q.defer();
 		$http({
 			method: 'DELETE',
-			url: '/api/ideaBoard/' + user._id,
-			data: board
+			url: '/api/ideaBoard/' + user._id + '/' + board._id,
+			data: {user: user, board: board}
 		}).then(function(res){
 			deferred.resolve(res.data)
 		})
