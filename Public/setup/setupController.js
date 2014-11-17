@@ -56,6 +56,10 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 	}
 
 
+
+	$scope.logout = function(){
+		$cookieStore.remove('currentUser');
+	}
 	// var getUser = function(){
 	// 	console.log($scope.currentUser)
 	// 	setupService.getUser($scope.currentUser)

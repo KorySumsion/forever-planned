@@ -7,8 +7,8 @@ app.controller('loginCtrl', function($scope, $cookieStore, $location, authServic
 	$scope.login = function(){
 		
 		authService.loginUser($scope.user).then(function(res){
-			console.log(res);			
-				$location.path('/ideas/' + res._id);
+			//console.log(res);			
+				$location.path('/home/' + res._id);
 		
 		})
 		

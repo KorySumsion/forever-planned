@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.controller('toDoCtrl', function($scope, toDoService, $cookieStore){
+app.controller('toDoCtrl', function($scope, toDoService, $cookieStore, authService){
 	
 $scope.todoosieBride = true;
 $scope.todoosieGroom = false;
@@ -16,7 +16,7 @@ $scope.todoosieGroom = false;
 	}
 
 	$scope.getTodos = function(){
-		toDoService.getTodos($scope.currentUser)
+		authService.getUser($scope.currentUser)
 		.then(function(res){
 			
 			$scope.brideList = res.brideList;
@@ -25,7 +25,7 @@ $scope.todoosieGroom = false;
 			$scope.brideComplete = res.brideComplete
 		})
 	}
-	$scope.getTodos();
+	
 
 
 	//Add a todo

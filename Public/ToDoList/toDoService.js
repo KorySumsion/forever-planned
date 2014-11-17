@@ -3,7 +3,7 @@ var app = angular.module('wedding');
 app.service('toDoService', function($http, $q, $cookieStore){
 
 	this.getTodos = function(userObj){
-		console.log(userObj)
+		//console.log(userObj)
 		var deferred = $q.defer();
 		$http({
 			method: 'GET',

@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.service('authService', function($http, $q, $cookieStore){
+app.service('authService', function($http, $q, $cookieStore, $location){
 	this.loginUser = function(userObj){
 		console.log('service, ', userObj)
 		var deferred = $q.defer();
@@ -31,4 +31,19 @@ app.service('authService', function($http, $q, $cookieStore){
 		return deferred.promise;
 	}
 
+
+	this.getUser = function(user){
+		if(user){
+			var deferred = $q.defer();
+			$http({
+				method: 'GET',
+				url: '/api/user/' + user._id 
+			}).then(function(res){
+				return deferred.resolve(res.data)
+			})
+				return deferred.promise;
+		} else {
+			$location.path('/login')
+		}
+	}
 })

@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
+app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	$scope.addItemButton = false;
 	$scope.addItemInput = false;
 	$scope.newBoardTitle = false;
@@ -9,14 +9,17 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 
 
 	var getUser = function(){
-		ideaBoardService.getUser($scope.currentUser)
+		if($scope.currentUser){
+			ideaBoardService.getUser($scope.currentUser)
 		.then(function(results){
 			$scope.boards = results.ideas.reverse();
 			//console.log($scope.boards)
 		})
+		}
+		
 	}
 	
-	getUser();
+
 
 	$scope.addBoard = function(){
 		//$scope.board.title.toUpperCase();
@@ -70,6 +73,9 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 		})
 	}
 
-	$scope.deleteRow = function()
+	$scope.deleteRow = function(i, item){
+		console.log(item)
+		
+	}
 
 })

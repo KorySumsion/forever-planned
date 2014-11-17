@@ -5,7 +5,7 @@ app.run(function($rootScope, $location, $state, $cookieStore){
 	$rootScope.$on("$stateChangeStart", function(evt, next, current){
 		if($cookieStore.get("currentUser")){
 			$rootScope.currentUser = $cookieStore.get("currentUser")
-			console.log($rootScope.currentUser)
+			//console.log($rootScope.currentUser)
 		} else if(next.templateUrl === "Signup/signup.html"){
 			$location.path("/signup")
 		} else {
@@ -42,7 +42,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	}).state("Ideas", {
 		url: "/ideas/:userid",
 		templateUrl: "/ideaBoard/ideaBoard.html",
-		controller: "ideaBoardCtrl"
+		controller: "ideaBoardCtrl"//TODO get rid of Idea, budget and todo's
 	}).state("home", {
 		url: '/home/:userid',
 		views: {
