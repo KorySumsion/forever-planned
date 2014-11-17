@@ -44,7 +44,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 		templateUrl: "/ideaBoard/ideaBoard.html",
 		controller: "ideaBoardCtrl"
 	}).state("home", {
-		url: '/home',
+		url: '/home/:userid',
 		views: {
 			'': { 
 				templateUrl: 'Banner/home.html',
@@ -58,9 +58,11 @@ app.config(function($stateProvider, $urlRouterProvider){
 			"todo@home" : {
 				templateUrl: "ToDoList/toDoList.html",
 				controller: "toDoCtrl"
-
+			},
+			"budget@home" : {
+				templateUrl: "Budget/budget.html",
+				controller: "budgetCtrl"
 			}
-
 
 
 		}

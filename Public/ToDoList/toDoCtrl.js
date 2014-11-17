@@ -33,7 +33,7 @@ $scope.todoosieGroom = false;
 		if($scope.brideTask.length > 0){
 			$scope.brideList.push($scope.brideTask)
 
-			
+			console.log($scope.currentUser)
 			$scope.currentUser.brideList = $scope.brideList;
 			
 			$scope.brideTask = '';
@@ -60,7 +60,7 @@ $scope.todoosieGroom = false;
 		}
 	}
 
-	//paramete expects bride or groom
+
 	$scope.brideCompleted = function(todo){
 
 		if($scope.brideList.indexOf(todo !== -1)){
@@ -97,9 +97,69 @@ $scope.todoosieGroom = false;
 		}
 	}
 
-	//for testing purposes
-	$scope.logout = function(){
-		$cookieStore.remove('currentUser');
+	$scope.brideReverse = function(todo){
+		$scope.brideComplete.splice($scope.brideComplete.indexOf(todo), 1);
+		$scope.brideList.push(todo);
+
+		$scope.currentUser.brideList = $scope.brideList
+		$scope.currentUser.brideComplete = $scope.brideComplete
+		
+		toDoService.editTodos($scope.currentUser)
+		.then(function(res){
+				
+			$scope.brideList = res.brideList;
+			$scope.brideComplete = res.brideComplete;
+		})
+
 	}
+
+	$scope.groomReverse = function(todo){
+		$scope.groomComplete.splice($scope.groomComplete.indexOf(todo), 1);
+		$scope.groomList.push(todo);
+
+		$scope.currentUser.groomList = $scope.groomList
+		$scope.currentUser.groomComplete = $scope.groomComplete
+		
+		toDoService.editTodos($scope.currentUser)
+		.then(function(res){
+				
+			$scope.groomList = res.groomList;
+			$scope.groomComplete = res.groomComplete;
+		})
+
+	}
+
+	$scope.brideDelete = function(todo){
+		$scope.brideComplete.splice($scope.brideComplete.indexOf(todo), 1);
+		$scope.brideList.splice($scope.brideList.indexOf(todo), 1);
+
+		$scope.currentUser.brideList = $scope.brideList
+		$scope.currentUser.brideComplete = $scope.brideComplete
+		
+		toDoService.editTodos($scope.currentUser)
+		.then(function(res){
+				
+			$scope.brideList = res.brideList;
+			$scope.brideComplete = res.brideComplete;
+		})
+
+	}
+
+	$scope.groomDelete = function(todo){
+		$scope.groomComplete.splice($scope.groomComplete.indexOf(todo), 1);
+		$scope.groomList.splice($scope.groomList.indexOf(todo), 1);
+
+		$scope.currentUser.groomList = $scope.groomList
+		$scope.currentUser.groomComplete = $scope.groomComplete
+		
+		toDoService.editTodos($scope.currentUser)
+		.then(function(res){
+				
+			$scope.groomList = res.groomList;
+			$scope.groomComplete = res.groomComplete;
+		})
+
+	}
+
 
 })

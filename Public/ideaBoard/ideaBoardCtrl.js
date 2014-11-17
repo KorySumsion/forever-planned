@@ -22,7 +22,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 		//$scope.board.title.toUpperCase();
 		
 		$scope.board.title = $scope.board.title.toUpperCase();
-		console.log($scope.board.title);
+		//console.log($scope.board.title);
 		ideaBoardService.addBoard($scope.board, $scope.currentUser)
 		.then(function(results){
 			$scope.boards = results.ideas.reverse();

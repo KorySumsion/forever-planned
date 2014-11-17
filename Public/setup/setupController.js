@@ -6,6 +6,7 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 	$scope.step2 = false;
 	$scope.step3 = false;
 
+
 	$scope.showStep1 = function(){
 		$timeout(function(){
 			$scope.step1 = true;}, 100);
@@ -17,20 +18,26 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 			$scope.step2 = true;}, 500);
 	}
 	$scope.showStep3 = function(){
-		$scope.step2 = false;
+		$scope.oneD = "goRight";
 		$timeout(function(){
-			$scope.step3 = true;}, 500);
+			$scope.step2 = false;
+			$timeout(function(){
+				$scope.step3 = true;}, 500);}, 1);
 	}
 
 	$scope.goToNames = function(){
-		$scope.step2 = false;
+		$scope.oneD = "goLeft";
 		$timeout(function(){
-			$scope.step1 = true;}, 500);
+			$scope.step2 = false;
+			$timeout(function(){
+				$scope.step1 = true;}, 500);}, 1);	
 	}
 	$scope.goToDate = function(){
-		$scope.step3 = false;
+		$scope.stepD = "goLeft";
 		$timeout(function(){
-			$scope.step2 = true;}, 500);
+			$scope.step3 = false;
+			$timeout(function(){
+				$scope.step2 = true;}, 500);}, 1);
 	}
 
 	$scope.addWedInfo= function(){
@@ -39,7 +46,7 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 			console.log('budget ', $scope.currentUser.budget)
 			setupService.addWedInfo($scope.currentUser)
 			.then(function(res){
-				$location.path('/ideas/' + $scope.currentUser._id);
+				$location.path('/home/' + $scope.currentUser._id);
 			})
 			console.log($scope.currentUser)
 			

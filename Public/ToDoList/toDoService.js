@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.service('toDoService', function($http, $q){
+app.service('toDoService', function($http, $q, $cookieStore){
 
 	this.getTodos = function(userObj){
 		console.log(userObj)
@@ -16,13 +16,14 @@ app.service('toDoService', function($http, $q){
 	}
 
 	this.editTodos = function(userObj){
-
+		delete userObj.ideas;
 		var deferred = $q.defer();
 		$http({
 			method: 'PUT',
 			url: '/api/updateUser/' + userObj._id,
 			data: userObj
 		}).then(function(res){
+
 			return deferred.resolve(res.data);
 		})
 		return deferred.promise
