@@ -26,6 +26,7 @@
 						<ul>
 							<input type="checkbox" ng-click="brideCompleted(todo)">
 							{{todo}}
+							<i ng-click="brideDelete(todo)" class="fa fa-minus-square"></i>
 							
 						</ul>
 
@@ -34,7 +35,9 @@
 					<h4 class="complete-margin"><u>Completed</u></h4>
 					<div ng-repeat="todo in brideComplete">
 						<ul>	
-							<li>{{todo}}</li>
+							<input type="checkbox" ng-click="brideReverse(todo)" checked>
+							{{todo}}
+							<i ng-click="brideDelete(todo)" class="fa fa-minus-square"></i>
 						</ul>
 					</div>
 
@@ -58,6 +61,7 @@
 			
 				<input type="checkbox"ng-click="groomCompleted(todo)">
 				{{todo}}
+				<i ng-click="groomDelete(todo)" class="fa fa-minus-square"></i>
 				
 			</ul>
 		</div>
@@ -65,7 +69,9 @@
 		<h4 class="complete-margin"><u>Completed</u></h4>
 		<div ng-repeat="todo in groomComplete">
 			<ul>	
-				<li>{{todo}}</li>
+				<input type="checkbox" ng-click="groomReverse(todo)" checked>
+				{{todo}}
+				<i ng-click="groomDelete(todo)" class="fa fa-minus-square"></i>
 			</ul>
 		</div>
 
