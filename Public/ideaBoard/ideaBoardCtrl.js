@@ -34,13 +34,13 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 
 
 	$scope.saveBoard = function(board){
-		console.log(board)
+		//console.log(board)
 		ideaBoardService.saveBoard(board, $scope.currentUser)
 		.then(function(results){
 			getUser();
 		})
 	};
-
+  
 	$scope.showNewBoard = function(){
 	
 		$scope.newBoardTitle = true;
@@ -69,5 +69,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService){
 			getUser();
 		})
 	}
+
+	$scope.deleteRow = function()
 
 })
