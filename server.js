@@ -140,9 +140,9 @@ app.post('/api/ideaBoard/:userId', ideaBoardCtrl.addBoard);
 
 app.get('/api/user/:userId', AuthController.getUser);
 
-app.put('/api/user/board/:boardId', ideaBoardCtrl.saveBoard);
+app.put('/api/ideaBoard/:userId', ideaBoardCtrl.saveBoard);
 
-app.delete('/api/user/board/:boardId', ideaBoardCtrl.deleteBoard);
+app.delete('/api/ideaBoard/:userId/:boardId', ideaBoardCtrl.deleteBoard);
 
 
     Mongoose.connect(mongoUri);

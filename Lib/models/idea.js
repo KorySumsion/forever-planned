@@ -4,11 +4,13 @@ var Mongoose = require('mongoose'),
 var Idea = new Schema ({
 	// image: {type: String},
 	title: {type: String, required: true},
-	boardItems: [{type: String}],
-	price: {type: Number},
-	quantity: {type: Number},
-	includeBudget: {type: Boolean},
-	total: {type: Number}
+	boardItems: [{
+		name: {type: String},
+		price: {type: Number},
+		quantity: {type: Number},
+		includeBudget: {type: Boolean},
+		total: {type: Number}
+	}]
 })
 
 

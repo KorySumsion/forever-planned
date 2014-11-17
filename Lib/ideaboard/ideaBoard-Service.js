@@ -24,30 +24,26 @@ module.exports.saveBoard = function(board, cb){
 	});
 }
 
-module.exports.deleteBoard = function(board, cb){
-		console.log("hit delete board in service", board);
+module.exports.deleteBoard = function(userId, boardId, cb){
+	return User.findOne({_id: userId}, function(err, userObj){
 
-		return Idea.findOneAndRemove({_id: board}, function(err){
-			if(!err){
-				cb(null);
-			} else {
-				cb(err);
-			}
-		})
-	}
+		if(userObj.ideas.indexOf(boardId) !== -1){
+			userObj.ideas.splice((userObj.ideas.indexOf(boardId)), 1);
+			userObj.save(function(err){
+				err && cb(err, null);
+				Idea.findOne({_id: boardId}, function(err, boardObj){
+					boardObj.remove(function(err){
+						err && cb(err, null);
 
-	// console.log("hit ideaboard service saveBoard", board)
-	// return Idea.findOne({_id: board._id}, function(err, savedBoard){
-	// 	console.log("ideaboard service savedBoard, ", savedBoard)
-	// 	savedBoard = board;
-	// 	Idea(savedBoard).save(function(err){
-	// 		if(err){
-	// 			return cb(err)
-	// 		} else {
-	// 			console.log("ideaboard server line 25 savedBoard: ", savedBoard);
-	// 			return cb(null, savedBoard)
-	// 		}
-	// 	})
-	// })
+						return cb(null, userObj);
+						
+					});
+				});
+					
+			});
+		};
+	});
+}
+
 
 

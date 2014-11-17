@@ -16,23 +16,23 @@
 		<div class="list-group">
 			<li class="list-group-item idea-board-ind">
 				<p class="board-title">{{board.title}}</p>
-				<button class="btn add-button-position" ng-click="addItemInput = !addItemInput">Add Items</button>
+				<button class="btn add-button-position" ng-click="addItemInput = !addItemInput">Add Item</button>
 			</li>
 			<div ng-show="addItemInput">
 			<form class="input-group">
-				<input class="form-control" type="text" placeholder="New Item" ng-model="board.newItem"/>
+				<input class="form-control" type="text" placeholder="New Item" ng-model="boardItems.name"/>
 				<span class="input-group-btn">
-				<button class="btn" ng-click="showQty()"><i class="fa fa-plus"></i></button>
+				<button class="btn" ng-click="itemQty = !itemQty"><i class="fa fa-plus"></i></button>
 				</span>
 			</form>
 			
-			</div> 
+			
 			
 			<div ng-show="itemQty">
 			<form class="input-group">
-				<input class="form-control" type="text" placeholder="How Many?" ng-model="board.quantity"/>
+				<input class="form-control" type="number" placeholder="How Many?" ng-model="boardItems.quantity"/>
 				<span class="input-group-btn">
-				<button class="btn" ng-click="showPrice()"><i class="fa fa-plus"></i></button>
+				<button class="btn" ng-click="itemPrice = !itemPrice"><i class="fa fa-plus"></i></button>
 				</span>
 			</form>
 			
@@ -40,22 +40,23 @@
 
 			<div ng-show="itemPrice">
 			<form class="input-group">
-				<input class="form-control" type="text" placeholder="How Much?" ng-model="board.price"/>
+				<input class="form-control" type="number" placeholder="Indiviual Price" ng-model="boardItems.price"/>
 				<span class="input-group-btn">
-				<button class="btn" ng-click="addToList($index, board)"><i class="fa fa-plus"></i></button>
+				<button class="btn" ng-click="addToList($index, boardItems)"><i class="fa fa-plus"></i></button>
 				</span>
 			</form>
 			
 			</div> 
+			</div> 
 
 			<div ng-repeat="item in board.boardItems track by $index">
 			<p class="list-group-item" ng-model="board.boardItems"> 
-				{{item}}
+				Item: {{item.name}},
 			
 		
-			{{board.quantity}}
-			{{board.price}}
-			{{board.total}}
+			Qty: {{item.quantity}},
+			Individual Price: ${{item.price}},
+			Total: ${{item.total}}
 			<button>Delete</button>
 		
 			</p>

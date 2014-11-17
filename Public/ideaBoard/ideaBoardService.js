@@ -2,6 +2,17 @@ var app = angular.module('wedding');
 
 app.service("ideaBoardService", function($http, $q){
 
+	this.getUser = function(user){
+		var deferred = $q.defer();
+		$http({
+			method: 'GET',
+			url: '/api/user/' + user._id 
+		}).then(function(res){
+			deferred.resolve(res.data)
+		})
+		return deferred.promise;
+	}
+
 	this.addBoard = function(board, user){
 		var deferred = $q.defer();
 		$http ({
@@ -15,39 +26,29 @@ app.service("ideaBoardService", function($http, $q){
 		return deferred.promise;
 	}
 
-	this.getUser = function(user){
-		var deferred = $q.defer();
-		$http({
-			method: 'GET',
-			url: '/api/user/' + user._id 
-		}).then(function(res){
-			deferred.resolve(res.data)
-		})
-		return deferred.promise;
-	}
 
-	this.saveBoard = function(board){
+	this.saveBoard = function(board, user){
 
 		var deferred = $q.defer();
 		$http({
 			method: 'PUT',
-			url: '/api/user/board/' + board._id,
+			url: '/api/ideaBoard/' + user._id,
 			data: board
 		}).then(function(res){
-			console.log(res)
+			//console.log(res)
 			deferred.resolve(res.data);
 		})
 		return deferred.promise;
 
 	}
 
-	this.deleteBoard = function(board){
-		console.log('idea service front end board: ', board)
+	this.deleteBoard = function(board, user){
+		//console.log('idea service front end board: ', board)
 		var deferred = $q.defer();
 		$http({
 			method: 'DELETE',
-			url: '/api/user/board/' + board._id,
-			data: board
+			url: '/api/ideaBoard/' + user._id + '/' + board._id,
+			data: {user: user, board: board}
 		}).then(function(res){
 			deferred.resolve(res.data)
 		})
