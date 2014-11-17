@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.service("ideaBoardService", function($http, $q){
+app.service("ideaBoardService", function($http, $q, $cookieStore){
 
 	this.getUser = function(user){
 		var deferred = $q.defer();
@@ -21,6 +21,8 @@ app.service("ideaBoardService", function($http, $q){
 			data: board
 		}).then(function(res){
 			console.log(res.data)
+			//$cookieStore.put("currentUser", res.data)
+
 			deferred.resolve(res.data)
 		})
 		return deferred.promise;

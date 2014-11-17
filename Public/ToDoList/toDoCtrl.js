@@ -33,7 +33,7 @@ $scope.todoosieGroom = false;
 		if($scope.brideTask.length > 0){
 			$scope.brideList.push($scope.brideTask)
 
-			
+			console.log($scope.currentUser)
 			$scope.currentUser.brideList = $scope.brideList;
 			
 			$scope.brideTask = '';
