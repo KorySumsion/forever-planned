@@ -5,11 +5,24 @@
 }
 
 /* when showing the thing */
-.ng-hide-add      { 
+
+.goLeft.ng-hide-add     { 
+  -webkit-animation:0.5s lightOut ease; 
+  animation:0.5s lightOut ease; 
+}
+.goRight.ng-hide-add     { 
   -webkit-animation:0.5s lightSpeedOut ease; 
   animation:0.5s lightSpeedOut ease; 
 }
+.step3.ng-hide-add     { 
+  -webkit-animation:0.5s lightSpeedOut ease; 
+  animation:0.5s lightSpeedOut ease; 
+}
+.animate-if {
+  -webkit-animation:0.5s lightOut ease; 
+  animation:0.5s lightOut ease; 
 
+}
 /* ANIMATIONS (FROM ANIMATE.CSS) */
 
 /* light speed out */
@@ -32,6 +45,18 @@
   100% {
     -webkit-transform: translate3d(100%, -100%, 0) skewX(30deg);
     transform: translate3d(100%, -100%, 0) skewX(30deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes lightOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, -100%, 0) skewX(30deg);
+    transform: translate3d(-100%, -100%, 0) skewX(30deg);
     opacity: 0;
   }
 }
