@@ -90,20 +90,27 @@ $scope.todoosieGroom = false;
 	}
 
 	$scope.groomReverse = function(todo){
-		$scope.groomComplete.splice($scope.groomComplete.indexOf(todo), 1);
-		$scope.groomList.push(todo);
+		if($scope.groomComplete.indexOf(todo !== -1)){
+			$scope.groomComplete.splice($scope.groomComplete.indexOf(todo), 1);
+			$scope.groomList.push(todo);
 
-		$scope.currentUser.groomList = $scope.groomList
-		$scope.currentUser.groomComplete = $scope.groomComplete
-		
-		toDoService.editTodos($scope.currentUser)
+			$scope.currentUser.groomList = $scope.groomList
+			$scope.currentUser.groomComplete = $scope.groomComplete
+			
+			toDoService.editTodos($scope.currentUser)
+		}
 
 
 	}
 
 	$scope.brideDelete = function(todo){
-		$scope.brideComplete.splice($scope.brideComplete.indexOf(todo), 1);
-		$scope.brideList.splice($scope.brideList.indexOf(todo), 1);
+		if($scope.brideComplete.indexOf(todo)!== -1){
+			$scope.brideComplete.splice($scope.brideComplete.indexOf(todo), 1);
+		}
+		
+		if($scope.brideList.indexOf(todo)!== -1){
+			$scope.brideList.splice($scope.brideList.indexOf(todo), 1);
+		}
 
 		$scope.currentUser.brideList = $scope.brideList
 		$scope.currentUser.brideComplete = $scope.brideComplete
@@ -114,8 +121,15 @@ $scope.todoosieGroom = false;
 	}
 
 	$scope.groomDelete = function(todo){
-		$scope.groomComplete.splice($scope.groomComplete.indexOf(todo), 1);
-		$scope.groomList.splice($scope.groomList.indexOf(todo), 1);
+		if($scope.groomComplete.indexOf(todo) !== -1){
+			$scope.groomComplete.splice($scope.groomComplete.indexOf(todo), 1);
+		}
+
+		if($scope.groomList.indexOf(todo) !== -1){
+			$scope.groomList.splice($scope.groomList.indexOf(todo), 1);		
+		}
+
+		
 
 		$scope.currentUser.groomList = $scope.groomList
 		$scope.currentUser.groomComplete = $scope.groomComplete

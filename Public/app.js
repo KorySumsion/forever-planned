@@ -5,6 +5,7 @@ var app = angular.module("wedding", ['ui.router', 'ngCookies', 'ngAnimate']);
 
 app.config(function($stateProvider, $urlRouterProvider){
 	$urlRouterProvider.otherwise("/login");
+
 	
 	$stateProvider
 	.state("Login", {
@@ -71,7 +72,12 @@ app.config(function($httpProvider){
 	$httpProvider.interceptors.push(function($q, $location){
 		return {
 			"responseError": function(rejection){
-				if(rejection.status === 401){
+				if($location.$$path === '/login' && rejection.status === 401){
+					
+					alert("Check your email and password.")
+				} 
+				else if(rejection.status === 401){
+
 					$location.path("/")
 				}
 				return $q.reject(rejection)
