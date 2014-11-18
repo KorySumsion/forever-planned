@@ -1,23 +1,6 @@
 
 var app = angular.module("wedding", ['ui.router', 'ngCookies', 'ngAnimate']);
 
-// app.run(function($rootScope, $state, $cookieStore){
-// 	$rootScope.$on("$stateChangeStart", function(evt, toState){
-// 		if($cookieStore.get("currentUser")){
-// 			$rootScope.currentUser = $cookieStore.get("currentUser")
-// 			//console.log($rootScope.currentUser)
-
-// 		} 
-// 		// else if(next.templateUrl === "Signup/signup.html"){
-// 		// 	$location.path("/signup")
-// 		// } 
-// 		else {
-// 			evt.preventDefault();
-// 			$state.transitionTo("Login", {notify: false})
-// 		}
-// 	})
-// })
-
 
 
 app.config(function($stateProvider, $urlRouterProvider){
