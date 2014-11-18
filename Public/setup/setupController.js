@@ -1,7 +1,7 @@
 var app = angular.module('wedding');
 
 
-app.controller('setupCtrl', function($scope, $timeout, setupService, $location, authService){
+app.controller('setupCtrl', function($scope, $timeout, setupService, $state, authService){
 	$scope.step1 = false;
 	$scope.step2 = false;
 	$scope.step3 = false;
@@ -47,9 +47,10 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location, 
 			console.log('budget ', $scope.currentUser.budget)
 			setupService.addWedInfo($scope.currentUser)
 			.then(function(res){
-				$location.path('/home/' + $scope.currentUser._id);
+				
+				$state.go('auth.home', {userid: res.data._id})
 			})
-			console.log($scope.currentUser)
+			
 			
 		} else {
 			alert("Please enter a budget amount");

@@ -39,6 +39,7 @@ User.pre('save', function(next){
 });
 
 User.methods.comparePassword = function(candidatePassword, cb){
+	
 	Bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
 		if (err) return cb(err);
 		cb(null, isMatch)

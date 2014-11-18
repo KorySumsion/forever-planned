@@ -1,5 +1,5 @@
 var app = angular.module('wedding');
-app.controller('signupCtrl', function($scope, $cookieStore, $location, authService){
+app.controller('signupCtrl', function($scope, $cookieStore, $state, authService){
 	$scope.user = {}
 
 
@@ -14,9 +14,21 @@ app.controller('signupCtrl', function($scope, $cookieStore, $location, authServi
 		authService.signupUser($scope.user)
 		
 		.then(function(user){
-			$state.go('auth.Setup', {userid: user._id})
+			console.log('user in controller ', user)
+			console.log("pw ", $scope.user.password)
+			var userObj = {
+				email: user.email,
+				password: $scope.user.password
+			}
+			authService.loginUser(userObj).
+			then(function(res){
+				$scope.user = '';
+				$state.go('auth.Setup', {userid: user._id})
+			})
+
+			
 
 		})
-		$scope.user = '';
+		
 	}
 })
