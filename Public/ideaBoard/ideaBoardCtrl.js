@@ -53,14 +53,14 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	}
 
 	
-	$scope.addToList = function(i, boardItems){
+	$scope.addToList = function(i, boardItems, board){
 		boardItems.total = boardItems.quantity * boardItems.price;
 		$scope.boards[i].boardItems.push(boardItems);
-		boardItems.price= ''; 
-		boardItems.quantity = '';
-		boardItems.name = '';
-		//$scope.addItemInput = false; DOESN'T WORK
-		//itemPrice = false; DOESN'T WORK!
+		
+			boardItems.price= ''; 
+			boardItems.quantity = '';
+			boardItems.name = '';
+		
 
 
 	}
