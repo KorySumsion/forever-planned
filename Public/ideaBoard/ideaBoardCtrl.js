@@ -54,6 +54,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 
 	
 	$scope.addToList = function(i, boardItems){
+		//$scope.saveBoard(boardItems);
 		boardItems.total = boardItems.quantity * boardItems.price;
 		$scope.boards[i].boardItems.push(boardItems);
 		boardItems.price= ''; 

@@ -19,8 +19,7 @@ app.service('authService', function($http, $q, $cookieStore, $location){
 		}).then(function(user){
 			//console.log(user)
 			setUser(user.data)
-			//$cookieStore.put('currentUser', user.data)
-			return deferred.resolve(user.data);
+			return deferred.resolve(user.data);	
 		})
 		return deferred.promise;
 	}
