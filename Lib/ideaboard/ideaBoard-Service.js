@@ -27,6 +27,7 @@ module.exports.saveBoard = function(board, cb){
 }
 
 module.exports.deleteBoard = function(userId, boardId, cb){
+	//console.log("hit deleteBoard in mongoose server")
 	return User.findOne({_id: userId}, function(err, userObj){
 
 		if(userObj.ideas.indexOf(boardId) !== -1){

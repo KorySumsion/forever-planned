@@ -102,7 +102,6 @@ var authenticateUser = function(req, res, next){
             return res.status(401).end()
         } else {
             req.logIn(user, function(err){
-                //user.password = '';
                 return res.status(200).send(user);
             })
         }
