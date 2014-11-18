@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.controller('budgetCtrl', function($scope){
+app.controller('budgetCtrl', function($scope, authService){
 
 	$scope.budget = "$" + $scope.currentUser.budget;
 	var budgetInfo = [];
@@ -17,6 +17,7 @@ app.controller('budgetCtrl', function($scope){
 				}
 			}
 		}
+		//authService.setUser($scope.currentUser)
 		return budgetInfo
 		}
 	updateBudget();
@@ -30,6 +31,7 @@ app.controller('budgetCtrl', function($scope){
 			pending = pending + budgetInfo[i].total
 		};
 		$scope.estimatedBudget = pending;
+		//authService.setUser($scope.currentUser)
 	}
 	pendingTotal();
 

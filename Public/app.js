@@ -44,8 +44,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: '/home/:userid',
 		views: {
 			'': { 
-				templateUrl: 'Banner/home.html',
-				controller: "bannerCtrl"
+				templateUrl: 'Home/home.html',
+				controller: "homeCtrl"
 			},
 
 			"ideaBoard@auth.home" : {

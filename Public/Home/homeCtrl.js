@@ -1,6 +1,8 @@
 var app = angular.module('wedding');
 
-app.controller('bannerCtrl', function($scope, $cookieStore, $window, $state, $location){
+app.controller('homeCtrl', function($scope, $cookieStore, $window, $state, $location){
+	
+	
 	$scope.logout = function(){
 		$cookieStore.remove('currentUser');
 	}
