@@ -52,14 +52,21 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 
 	}
 
+	$scope.clearBoard = function(boardItems){
+		boardItems.p= ''; 
+		boardItems.q = '';
+		boardItems.n = '';
+	}
 	
-	$scope.addToList = function(i, boardItems){
+	$scope.addToList = function(i, boardItems, cb){
 		//$scope.saveBoard(boardItems);
+		boardItems.price = boardItems.p;
+		boardItems.quantity = boardItems.q;
+		boardItems.name = boardItems.n;
 		boardItems.total = boardItems.quantity * boardItems.price;
 		$scope.boards[i].boardItems.push(boardItems);
-		boardItems.price= ''; 
-		boardItems.quantity = '';
-		boardItems.name = '';
+		cb(boardItems);
+
 		//$scope.addItemInput = false; DOESN'T WORK
 		//itemPrice = false; DOESN'T WORK!
 
@@ -76,6 +83,16 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		board.boardItems.splice(i, 1);
 		ideaBoardService.saveBoard(board, $scope.currentUser);
 		
+	}
+
+	$scope.editRow = function(i, board){
+		$scope.addItemInput = true;
+		$scope.itemQty = true;
+		$scope.itemPrice = true;
+		$scope.item = board.boardItems[i]
+		console.log(board)
+		console.log(i)
+		//$scope.item[i].boardItems.n = board.boardItems[i].name;
 	}
 
 })
