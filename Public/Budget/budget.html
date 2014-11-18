@@ -10,7 +10,7 @@
 						</div>
 						<div class="panel-body">
 							<ul class="list-group">
-								  <a class="list-group-item"  ng-repeat="pendingItem in pendingItems"> {{pendingItem.name}}  ${{pendingItem.total}} <i class="fa fa-level-down fa-2x" ng-click="purchased()" style="float: right;"></i></a>
+								  <a class="list-group-item"  ng-repeat="pendingItem in pendingItems" ng-model="item"> {{pendingItem.name}}  ${{pendingItem.total}} <i class="fa fa-level-down fa-2x" ng-click="purchased(pendingItem)" style="float: right;"></i></a>
 							</ul>
 						</div>
 					</div>
