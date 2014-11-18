@@ -1,4 +1,4 @@
-<div class="container">
+<div class="custom-home-container">
 	
 	<div id="navigation_container">
 	 <div class="l-triangle-top"></div>
@@ -17,19 +17,24 @@
 	    <div class="r-triangle-bottom"></div>
 
 	</div>
+	<div class="invisible"></div>
 
-		<div class="col-md-12 row wierd-margin-issues home-border">
-			
-			<div class="col-md-8">
-				<div ui-view="ideaBoard"></div>
-			</div>
 
-			<div class="col-md-4 home-border">
-				<div ui-view="todo"></div>
-				<div ui-view="budget"></div>
-			</div>
+	<div class="col-md-12 row home-border weird-margin-issues">
 		
+		<div class="col-md-8">
+			<div ui-view="ideaBoard"></div>
 		</div>
+
+		<div class="col-md-4 ">
+			
+				<div class="inner-views col-xs-10 col-sm-5 col-md-12" ui-view="todo"></div>
+				<div class="inner-views invisible-two col-sm-2 col-md-1"></div>
+				<div class="inner-views col-xs-10 col-sm-5 col-md-12" ui-view="budget"></div>
+			
+		</div>
+	
+	</div>
 	
 </div>
 

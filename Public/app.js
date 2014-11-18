@@ -3,9 +3,13 @@ var app = angular.module("wedding", ['ui.router', 'ngCookies', 'ngAnimate']);
 
 app.run(function($rootScope, $location, $state, $cookieStore){
 	$rootScope.$on("$stateChangeStart", function(evt, next, current){
+
 		if($cookieStore.get("currentUser")){
 			$rootScope.currentUser = $cookieStore.get("currentUser")
+
+			
 			console.log($rootScope.currentUser)
+			
 		} else if(next.templateUrl === "Signup/signup.html"){
 			$location.path("/signup")
 		} else {
