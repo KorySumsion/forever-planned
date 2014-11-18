@@ -58,6 +58,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		boardItems.n = '';
 	}
 	
+
 	$scope.addToList = function(i, boardItems, cb){
 		//$scope.saveBoard(boardItems);
 		boardItems.price = boardItems.p;
@@ -69,6 +70,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 
 		//$scope.addItemInput = false; DOESN'T WORK
 		//itemPrice = false; DOESN'T WORK!
+
 
 
 	}

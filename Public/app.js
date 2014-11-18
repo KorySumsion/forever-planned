@@ -19,7 +19,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 	.state("auth", {
 		abstract: true,
 		template: '<ui-view>',
-		// controller: 'authCtrl',
+		controller: 'authCtrl',
 		resolve: {
 			user: function(authService){
 				return authService.getUser();
