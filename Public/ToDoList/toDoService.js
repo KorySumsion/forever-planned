@@ -1,19 +1,7 @@
 var app = angular.module('wedding');
 
-app.service('toDoService', function($http, $q, $cookieStore){
+app.service('toDoService', function($http, $q, authService){
 
-	this.getTodos = function(userObj){
-		console.log(userObj)
-		var deferred = $q.defer();
-		$http({
-			method: 'GET',
-			url: '/api/user/' + userObj._id,
-		}).then(function(res){
-			return deferred.resolve(res.data);
-		})
-		
-		return deferred.promise
-	}
 
 	this.editTodos = function(userObj){
 		delete userObj.ideas;
@@ -24,7 +12,7 @@ app.service('toDoService', function($http, $q, $cookieStore){
 			url: '/api/updateUser/' + userObj._id,
 			data: userObj
 		}).then(function(res){
-
+			authService.setUser(res.data)
 			return deferred.resolve(res.data);
 		})
 		return deferred.promise

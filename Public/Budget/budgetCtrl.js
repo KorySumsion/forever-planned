@@ -21,6 +21,7 @@ app.controller('budgetCtrl', function($scope){
 		}
 	updateBudget();
 
+
 	$scope.budgetItems = budgetInfo;
 
 	var pendingTotal = function(){

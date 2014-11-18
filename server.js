@@ -133,16 +133,16 @@ app.get('/setup/:userId', requireAuth, function(req, res){
 
 app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
-app.put('/api/updateUser/:userId', AuthController.updateUser);
+app.put('/api/updateUser/:userId', requireAuth, AuthController.updateUser);
 
 
-app.post('/api/ideaBoard/:userId', ideaBoardCtrl.addBoard);
+app.post('/api/ideaBoard/:userId', requireAuth, ideaBoardCtrl.addBoard);
 
-app.get('/api/user/:userId', AuthController.getUser);
+app.get('/api/user/:userId', requireAuth, AuthController.getUser);
 
-app.put('/api/ideaBoard/:userId', ideaBoardCtrl.saveBoard);
+app.put('/api/ideaBoard/:userId', requireAuth, ideaBoardCtrl.saveBoard);
 
-app.delete('/api/ideaBoard/:userId/:boardId', ideaBoardCtrl.deleteBoard);
+app.delete('/api/ideaBoard/:userId/:boardId', requireAuth, ideaBoardCtrl.deleteBoard);
 
 
     Mongoose.connect(mongoUri);

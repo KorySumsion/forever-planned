@@ -40,7 +40,7 @@
 
 			<div ng-show="itemPrice">
 			<form class="input-group">
-				<input class="form-control" type="number" placeholder="Indiviual Price" ng-model="boardItems.price"/>
+				<input class="form-control" type="number" placeholder="Indiviual Price" ng-model="boardItems.price" novalidate/>
 				<span class="input-group-btn">
 				<button class="btn" ng-click="addToList($index, boardItems)"><i class="fa fa-plus"></i></button>
 				</span>
@@ -57,7 +57,7 @@
 			Qty: {{item.quantity}},
 			Individual Price: ${{item.price}},
 			Total: ${{item.total}}
-			<button>Delete</button>
+			<button class="btn" ng-click="deleteRow($index, item)" >Delete</button>
 		
 			</p>
 			</div>

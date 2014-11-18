@@ -11,11 +11,10 @@ app.controller('signupCtrl', function($scope, $cookieStore, $location, authServi
 			return //we don't want it to go to the service
 		}
 		delete $scope.user.password2;
-		console.log($scope.user);
 		authService.signupUser($scope.user)
 		
 		.then(function(user){
-			$location.path('/setup/' + user._id)
+			$state.go('auth.Setup', {userid: user._id})
 
 		})
 		$scope.user = '';

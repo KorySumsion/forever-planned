@@ -1,23 +1,6 @@
 
 var app = angular.module("wedding", ['ui.router', 'ngCookies', 'ngAnimate']);
 
-app.run(function($rootScope, $location, $state, $cookieStore){
-	$rootScope.$on("$stateChangeStart", function(evt, next, current){
-
-		if($cookieStore.get("currentUser")){
-			$rootScope.currentUser = $cookieStore.get("currentUser")
-
-			
-			console.log($rootScope.currentUser)
-			
-		} else if(next.templateUrl === "Signup/signup.html"){
-			$location.path("/signup")
-		} else {
-			$location.path("/login")
-		}
-	})
-})
-
 
 
 app.config(function($stateProvider, $urlRouterProvider){
@@ -32,7 +15,17 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: "/signup",
 		templateUrl: "/Signup/signup.html",
 		controller: "signupCtrl"
-	}).state("Setup", {
+	})
+	.state("auth", {
+		abstract: true,
+		template: '<ui-view>',
+		controller: 'authCtrl',
+		resolve: {
+			user: function(authService){
+				return authService.getUser();
+			} 
+		}
+	}).state("auth.Setup", {
 		url:"/setup/:userId",
 		templateUrl: "/setup/setup.html",
 		controller: "setupCtrl"
@@ -46,8 +39,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 	}).state("Ideas", {
 		url: "/ideas/:userid",
 		templateUrl: "/ideaBoard/ideaBoard.html",
-		controller: "ideaBoardCtrl"
-	}).state("home", {
+		controller: "ideaBoardCtrl"//TODO get rid of Idea, budget and todo's
+	}).state("auth.home", {
 		url: '/home/:userid',
 		views: {
 			'': { 
@@ -55,15 +48,15 @@ app.config(function($stateProvider, $urlRouterProvider){
 				controller: "bannerCtrl"
 			},
 
-			"ideaBoard@home" : {
+			"ideaBoard@auth.home" : {
 				templateUrl: "ideaBoard/ideaBoard.html",
 				controller: "ideaBoardCtrl"
 			},
-			"todo@home" : {
+			"todo@auth.home" : {
 				templateUrl: "ToDoList/toDoList.html",
 				controller: "toDoCtrl"
 			},
-			"budget@home" : {
+			"budget@auth.home" : {
 				templateUrl: "Budget/budget.html",
 				controller: "budgetCtrl"
 			}
