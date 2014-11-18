@@ -6,9 +6,10 @@ app.controller('homeCtrl', function($scope, $cookieStore, $window, $state, $loca
 	$scope.logout = function(){
 		$cookieStore.remove('currentUser');
 	}
-
-	if($state.params.userid !== $scope.currentUser._id){
-		$location.path('/login')
+	if(!$scope.currentUser){
+		$location.path('/login');
+	} else if ($state.params.userid !== $scope.currentUser._id){
+		$location.path('/login');
 	}
 	
 })

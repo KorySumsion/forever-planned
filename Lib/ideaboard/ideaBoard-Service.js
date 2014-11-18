@@ -14,8 +14,10 @@ module.exports.addBoard = function(idea){
 }
 
 module.exports.saveBoard = function(board, cb){
-
-	return Idea.findOneAndUpdate({_id: board._id}, board, function(savedBoard, err){
+	boardid = board._id;
+	delete board._id;
+	return Idea.findByIdAndUpdate(boardid, board, function(err, savedBoard){
+		console.log('savedBoard in ideaBoard-service ', savedBoard)
 		if(!err){
 			cb(null, savedBoard)
 		} else {
