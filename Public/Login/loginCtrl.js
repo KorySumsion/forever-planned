@@ -1,18 +1,16 @@
 var app = angular.module('wedding');
 
 
-app.controller('loginCtrl', function($scope, $cookieStore, $location, authService){
+app.controller('loginCtrl', function($scope, $cookieStore, $state, authService){
 //alert("login")
 	//console.log($scope.user)
 	$scope.login = function(){
 		
-		authService.loginUser($scope.user).then(function(res){
-			//console.log(res);			
-				$location.path('/home/' + res._id);
+		authService.loginUser($scope.user).then(function(res){		
+				$state.go('auth.home', {userid: res._id});
 		
 		})
 		
 	}
 })
-
 

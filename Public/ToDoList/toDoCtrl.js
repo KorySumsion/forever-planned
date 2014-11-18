@@ -15,17 +15,13 @@ $scope.todoosieGroom = false;
 		}
 	}
 
-	$scope.getTodos = function(){
-		authService.getUser($scope.currentUser)
-		.then(function(res){
+
 			
-			$scope.brideList = res.brideList;
-			$scope.groomList = res.groomList;
-			$scope.groomComplete = res.groomComplete
-			$scope.brideComplete = res.brideComplete
-		})
-	}
-	
+	$scope.brideList = $scope.currentUser.brideList;
+	$scope.groomList = $scope.currentUser.groomList;
+	$scope.groomComplete = $scope.currentUser.groomComplete
+	$scope.brideComplete = $scope.currentUser.brideComplete
+
 
 
 	//Add a todo
@@ -38,25 +34,18 @@ $scope.todoosieGroom = false;
 			
 			$scope.brideTask = '';
 
-			toDoService.editTodos($scope.currentUser)
-			.then(function(res){
-				
-				$scope.brideList = res.brideList;
-			})
+			toDoService.editTodos($scope.currentUser);
 		}
 	}
 
 	$scope.addGroomTask = function(){
 		if($scope.groomTask.length > 0){
-			$scope.groomList.push($scope.groomTask)
+			$scope.groomList.push($scope.groomTask);
 			
 			$scope.currentUser.groomList = $scope.groomList;
 
 			$scope.groomTask = '';
-			toDoService.editTodos($scope.currentUser)
-			.then(function(res){
-				$scope.groomList = res.groomList;
-			})
+			toDoService.editTodos($scope.currentUser);
 		}
 	}
 
@@ -71,11 +60,6 @@ $scope.todoosieGroom = false;
 			$scope.currentUser.brideComplete = $scope.brideComplete
 			
 			toDoService.editTodos($scope.currentUser)
-			.then(function(res){
-				
-				$scope.brideList = res.brideList;
-				$scope.brideComplete = res.brideComplete;
-			})
 		}
 	}
 
@@ -89,11 +73,7 @@ $scope.todoosieGroom = false;
 			$scope.currentUser.groomComplete = $scope.groomComplete
 			
 			toDoService.editTodos($scope.currentUser)
-			.then(function(res){
-				
-				$scope.groomList = res.groomList;
-				$scope.groomComplete = res.groomComplete;
-			})
+
 		}
 	}
 
@@ -105,11 +85,7 @@ $scope.todoosieGroom = false;
 		$scope.currentUser.brideComplete = $scope.brideComplete
 		
 		toDoService.editTodos($scope.currentUser)
-		.then(function(res){
-				
-			$scope.brideList = res.brideList;
-			$scope.brideComplete = res.brideComplete;
-		})
+
 
 	}
 
@@ -121,11 +97,7 @@ $scope.todoosieGroom = false;
 		$scope.currentUser.groomComplete = $scope.groomComplete
 		
 		toDoService.editTodos($scope.currentUser)
-		.then(function(res){
-				
-			$scope.groomList = res.groomList;
-			$scope.groomComplete = res.groomComplete;
-		})
+
 
 	}
 
@@ -137,11 +109,7 @@ $scope.todoosieGroom = false;
 		$scope.currentUser.brideComplete = $scope.brideComplete
 		
 		toDoService.editTodos($scope.currentUser)
-		.then(function(res){
-				
-			$scope.brideList = res.brideList;
-			$scope.brideComplete = res.brideComplete;
-		})
+
 
 	}
 
@@ -153,11 +121,7 @@ $scope.todoosieGroom = false;
 		$scope.currentUser.groomComplete = $scope.groomComplete
 		
 		toDoService.editTodos($scope.currentUser)
-		.then(function(res){
-				
-			$scope.groomList = res.groomList;
-			$scope.groomComplete = res.groomComplete;
-		})
+
 
 	}
 

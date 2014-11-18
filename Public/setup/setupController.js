@@ -1,11 +1,12 @@
 var app = angular.module('wedding');
 
 
-app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
+app.controller('setupCtrl', function($scope, $timeout, setupService, $location, authService){
 	$scope.step1 = false;
 	$scope.step2 = false;
 	$scope.step3 = false;
 
+	console.log($scope.currentUser);
 
 	$scope.showStep1 = function(){
 		$timeout(function(){

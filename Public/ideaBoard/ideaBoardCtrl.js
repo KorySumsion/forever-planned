@@ -6,7 +6,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	$scope.newBoardTitle = false;
 	$scope.itemQty = false;
 	$scope.itemPrice = false;
-
+	$scope.boards = $scope.currentUser.ideas;
 
 	var getUser = function(){
 		if($scope.currentUser){
@@ -37,10 +37,13 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 
 
 	$scope.saveBoard = function(board){
-		//console.log(board)
+		console.log(board)
 		ideaBoardService.saveBoard(board, $scope.currentUser)
 		.then(function(results){
-			getUser();
+			//console.log(results);
+			authService.setUser(results)
+			
+			
 		})
 	};
   
@@ -59,8 +62,11 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	$scope.addToList = function(i, boardItems){
 		boardItems.total = boardItems.quantity * boardItems.price;
 		$scope.boards[i].boardItems.push(boardItems);
-		boardItems = '';
-		$scope.addItemInput = !$scope.addItemInput;
+		boardItems.price= ''; 
+		boardItems.quantity = '';
+		boardItems.name = '';
+		//$scope.addItemInput = false; DOESN'T WORK
+		//itemPrice = false; DOESN'T WORK!
 
 
 	}
@@ -69,7 +75,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		//console.log(board)
 		ideaBoardService.deleteBoard(board, $scope.currentUser)
 		.then(function(results){
-			getUser();
+			authService.setUser(results);
 		})
 	}
 
