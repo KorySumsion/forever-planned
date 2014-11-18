@@ -1,5 +1,5 @@
 var app = angular.module('wedding');
-app.controller('signupCtrl', function($scope, $cookieStore, $location, authService){
+app.controller('signupCtrl', function($scope, $cookieStore, $state, authService){
 	$scope.user = {}
 
 

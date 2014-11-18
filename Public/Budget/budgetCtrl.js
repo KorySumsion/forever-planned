@@ -4,6 +4,8 @@ app.controller('budgetCtrl', function($scope, authService){
 
 	$scope.budget = "$" + $scope.currentUser.budget;
 	var budgetInfo = [];
+	var budgetPending = [];
+	var budgetPurchased = [];
 	var updateBudget = function(){
 		if($scope.currentUser.ideas){
 			var items = $scope.currentUser.ideas;
@@ -18,21 +20,49 @@ app.controller('budgetCtrl', function($scope, authService){
 			}
 		}
 		//authService.setUser($scope.currentUser)
-		return budgetInfo
+		var seperate = function(){
+			for (var z = 0; z < budgetInfo.length; z++) {
+				if (budgetInfo[z].includeBudget){
+					if(budgetInfo[z].purchased){
+						budgetPurchased.push(budgetInfo[z]);
+					} else {
+						budgetPending.push(budgetInfo[z]);
+					}
+				}
+			}
+
 		}
+	}
 	updateBudget();
 
 
-	$scope.budgetItems = budgetInfo;
+	$scope.pendingItems = budgetPending;
+	$scope.purchasedItems = budgetPurchased;
 
 	var pendingTotal = function(){
 		var pending = 0;
-		for (var i = 0; i < budgetInfo.length; i++) {
-			pending = pending + budgetInfo[i].total
+		for (var i = 0; i < budgetPending.length; i++) {
+			pending = pending + budgetPending[i].total
 		};
 		$scope.estimatedBudget = pending;
 		//authService.setUser($scope.currentUser)
 	}
 	pendingTotal();
+
+	$scope.purchased = function(){
+		if ($scope.pendingItem.total) {
+			$scope.pendingItem.purchased = true;
+			//authService.setUser($scope.currentUser);
+		};
+	}
+
+	var purchasedTotal = function(){
+		var purchased = 0;
+		for (var i = 0; i < budgetPurchased.length; i++) {
+		    purchased = purchased + budgetPurchased[i].total;
+		};
+		$scope.finalTotal = purchased;
+	}
+	purchasedTotal();
 
 })
