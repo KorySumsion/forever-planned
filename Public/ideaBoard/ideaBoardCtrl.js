@@ -39,12 +39,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	$scope.saveBoard = function(board){
 		console.log(board)
 		ideaBoardService.saveBoard(board, $scope.currentUser)
-		.then(function(results){
-			//console.log(results);
-			authService.setUser(results)
-			
-			
-		})
 	};
   
 	$scope.showNewBoard = function(){
@@ -74,13 +68,12 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	$scope.deleteBoard = function(board){
 		//console.log(board)
 		ideaBoardService.deleteBoard(board, $scope.currentUser)
-		.then(function(results){
-			authService.setUser(results);
-		})
 	}
 
-	$scope.deleteRow = function(i, item){
-		console.log(item)
+	$scope.deleteRow = function(i, board){
+		console.log(i, board)
+		board.boardItems.splice(i, 1);
+		ideaBoardService.saveBoard(board, $scope.currentUser);
 		
 	}
 
