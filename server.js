@@ -66,7 +66,6 @@ Passport.use(new LocalStrategy(
 		passwordField: "password"
 	},
   function(email, password, done) {
-    console.log('server.js line 59ish ', email)
     
     User.findOne({email: email}).populate("ideas").exec(function (err, user) {
     	if(err) {
@@ -98,7 +97,7 @@ Passport.use(new LocalStrategy(
 /*Authorization Routes*/
 var authenticateUser = function(req, res, next){
     Passport.authenticate("local", function(err, user, info){
-        console.log("authenticate server.js line 88", user, info)
+        //console.log("authenticate server.js line 88", user, info)
         if(!user){
             return res.status(401).end()
         } else {
