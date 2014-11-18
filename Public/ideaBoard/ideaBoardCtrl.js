@@ -7,8 +7,11 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	$scope.itemQty = false;
 	$scope.itemPrice = false;
 	$scope.editRow = false;
+	$scope.saveButton = true;
+	$scope.saved = false;
 	$scope.boards = $scope.currentUser.ideas;
-	console.log($scope.currentUser)
+
+	//console.log($scope.currentUser)
 	var getUser = function(){
 		if($scope.currentUser){
 			ideaBoardService.getUser($scope.currentUser)
@@ -20,9 +23,9 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		
 	}
 	
-	$scope.showEditRow = function(i){
-		$scope.editRow[i] = true;
-	}
+	// $scope.showEditRow = function(i){
+	// 	$scope.editRow[i] = true;
+	// }
 
 	$scope.addBoard = function(){
 		//$scope.board.title.toUpperCase();
@@ -41,25 +44,29 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 
 	$scope.saveBoard = function(board){
 		console.log(board)
-		ideaBoardService.saveBoard(board, $scope.currentUser);
+		ideaBoardService.saveBoard(board, $scope.currentUser).then(function(){
+			$scope.saveButton = false;
+			$scope.saved = true;
+		});
 		$scope.editRow = false;
 	};
   
 	$scope.showNewBoard = function(){
-	
 		$scope.newBoardTitle = true;
 
 	}
 
-	$scope.showItemInput = function(){
-		$scope.addItemInput = !$scope.addItemInput;
+	// $scope.showItemInput = function(){
+	// 	$scope.addItemInput = !$scope.addItemInput;
 
-	}
+	// }
 
 	$scope.clearBoard = function(boardItems){
 		boardItems.p= ''; 
 		boardItems.q = '';
 		boardItems.n = '';
+		$scope.saveButton = true;
+		$scope.saved = false;
 	}
 	
 
@@ -73,6 +80,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 			boardItems.total = 0;
 		}
 		$scope.boards[i].boardItems.push(boardItems);
+
 		cb(boardItems);
 
 		//$scope.addItemInput = false; DOESN'T WORK
@@ -83,7 +91,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	}
 
 	$scope.deleteBoard = function(board){
-		//console.log(board)
+		console.log(board)
 		ideaBoardService.deleteBoard(board, $scope.currentUser)
 	}
 
@@ -91,12 +99,15 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		console.log(i, board)
 		board.boardItems.splice(i, 1);
 		ideaBoardService.saveBoard(board, $scope.currentUser);
+		$scope.saveButton = true;
+		$scope.saved = false;
 		
 	}
 
-	$scope.addToBudget = function(i, boardItem){
-		boardItem.includeBudget = true;
-		console.log($scope.currentUser.ideas)
+	$scope.addToBudget = function(boardItem){
+		console.log(boardItem.includeBudget)
+		$scope.saveButton = true;
+		$scope.saved = false;
 	}
 
 

@@ -7,6 +7,7 @@ app.controller('authCtrl', function($scope, $state, authService, user){
 		$scope.currentUser = user;
 		$scope.$watch(authService.setUser(user), function(){
 		$scope.currentUser = authService.getUser();
+		console.log($scope.currentUser);
 	})
 	}
 
