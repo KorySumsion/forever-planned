@@ -14,7 +14,7 @@ app.controller('budgetCtrl', function($scope, authService){
 					var ideas = items[i].boardItems;
 					for (var x = 0; x < ideas.length; x++) {
 						budgetInfo.push(ideas[x]);
-						console.log(ideas[x].name + ideas[x].total);
+						console.log(ideas[x].name + ideas[x].total + ideas[x].includeBudget);
 					}
 				}
 			}
