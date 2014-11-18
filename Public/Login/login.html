@@ -1,4 +1,4 @@
-<div class="container" style="background-color: #ccc">
+<div class="container-fluid" style="background-color: #ccc">
 	<div id="navigation_container">
 	 	<div class="l-triangle-top"></div>
 	   	<div class="l-triangle-bottom"></div>
@@ -13,24 +13,32 @@
 	    <div class="r-triangle-bottom"></div>
 	</div>
 </div>
-<div class="container" style="background-color: #ccc">
+<div class="container-fluid" style="background-color: #ccc">
 	<div class="col-md-4 col-md-offset-4">
 		<div class="panel">
 			<div class="panel-heading">
-				<h3 class="panel-title">Sign In</h3>
+				<div class="panel-title"><h1>Sign In</h1></div>
+				<div style="font-family: cursive; text-align: center; color: #e0a811"><h1>Forever Planned</h1></div>
 			</div>
 			<div class="panel-body" style="text-align: center;">
 				<div class="login-form">
 				  	<form role="form">
+				  		<div class="col-md-10 col-md-offset-1">
 				  		<div class="form-group">
 							<input type="text" class="form-control" ng-model="user.email"  placeholder="email">
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control" ng-model="user.password"  placeholder="password">
 						</div>
-						<button type="submit" class="btn btn-default" ng-click="login()">Log In</button>
+						</div>
+						<div class="col-md-6 col-md-offset-3" style="text-align: center">
+						<button type="submit" class="btn btn-default btn-block" style="background-color: #ea4677; color: #fff" ng-click="login()">Sign In</button>
+						</div>
+						
 				  	</form>
 				</div>	
+			</div>
+			<div class="panel-footer" style="background-color: #fff; border-top: none; text-align: center;">Don't have an account? <a class="signup-route" ui-sref="Signup" style="color: #709704">Sign Up for Forever Planned</a>
 			</div>
 		</div>
 	</div>
