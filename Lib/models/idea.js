@@ -8,7 +8,8 @@ var Idea = new Schema ({
 		name: {type: String},
 		price: {type: Number},
 		quantity: {type: Number},
-		includeBudget: {type: Boolean},
+		includeBudget: {type: Boolean, default: false},
+		purchased: {type: Boolean, default: false},
 		total: {type: Number}
 	}]
 })

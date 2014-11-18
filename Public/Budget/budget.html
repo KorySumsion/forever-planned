@@ -6,14 +6,11 @@
 				</div>
 				<div class="panel-body" style="background-color: #5f808d">
 					<div class="panel panel-default">
-						<div class="panel-heading">Pending Purchases <p style="float: right">Estimated Budget: $350</p>
+						<div class="panel-heading">Pending <p style="float: right">Estimated Budget: ${{estimatedBudget}}</p>
 						</div>
 						<div class="panel-body">
 							<ul class="list-group">
-								  <a class="list-group-item">Dress $ 200<i class="fa fa-level-down fa-2x" style="float: right;"></i></a>
-								  <a class="list-group-item">Flowers $50<i class="fa fa-money fa-2x" style="float: right;"></i></a>
-								  <a class="list-group-item">Food $200</a>
-								  <a class="list-group-item">Venue $200</a>
+								  <a class="list-group-item"  ng-repeat="budgetItem in budgetItems"> {{budgetItem.name}}  ${{budgetItem.total}} <i class="fa fa-level-down fa-2x" style="float: right;"></i></a>
 							</ul>
 						</div>
 					</div>
@@ -22,7 +19,7 @@
 						</div>
 						<div class="panel-body">
 							<ul class="list-group">
-								  <a class="list-group-item">Manicure $ 20</a>
+								  <a class="list-group-item">Manicure $20</a>
 								  <a class="list-group-item">Pedicure $50</a>
 								  <a class="list-group-item">Makeup $20</a>
 								  <a class="list-group-item">Hair Extensions $10</a>
