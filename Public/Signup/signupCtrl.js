@@ -1,5 +1,5 @@
 var app = angular.module('wedding');
-app.controller('signupCtrl', function($scope, $cookieStore, $location, authService){
+app.controller('signupCtrl', function($scope, $cookieStore, $state, authService){
 	$scope.user = {}
 
 
@@ -11,13 +11,24 @@ app.controller('signupCtrl', function($scope, $cookieStore, $location, authServi
 			return //we don't want it to go to the service
 		}
 		delete $scope.user.password2;
-		console.log($scope.user);
 		authService.signupUser($scope.user)
 		
 		.then(function(user){
-			$location.path('/setup/' + user._id)
+			console.log('user in controller ', user)
+			console.log("pw ", $scope.user.password)
+			var userObj = {
+				email: user.email,
+				password: $scope.user.password
+			}
+			authService.loginUser(userObj).
+			then(function(res){
+				$scope.user = '';
+				$state.go('auth.Setup', {userid: user._id})
+			})
+
+			
 
 		})
-		$scope.user = '';
+		
 	}
 })

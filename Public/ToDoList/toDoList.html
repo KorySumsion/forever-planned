@@ -20,9 +20,9 @@
 				</div>
 					
 
-					<h4><u>Bride's List</u></h4>
+					<h4><u>{{currentUser.bride}}'s List</u></h4>
 					
-					<div ng-repeat="todo in brideList">
+					<div ng-repeat="todo in brideList track by $index">
 						<ul>
 							<input type="checkbox" ng-click="brideCompleted(todo)">
 							{{todo}}
@@ -33,7 +33,7 @@
 					</div>
 
 					<h4 class="complete-margin"><u>Completed</u></h4>
-					<div ng-repeat="todo in brideComplete">
+					<div ng-repeat="todo in brideComplete track by $index">
 						<ul>	
 							<input type="checkbox" ng-click="brideReverse(todo)" checked>
 							{{todo}}
@@ -53,10 +53,10 @@
 		</div>
 
 
-		<h4><u>Groom's List</u></h4>
+		<h4><u>{{currentUser.groom}}'s List</u></h4>
 
 
-		<div ng-repeat="todo in groomList">
+		<div ng-repeat="todo in groomList track by $index">
 			<ul>
 			
 				<input type="checkbox"ng-click="groomCompleted(todo)">
@@ -67,7 +67,7 @@
 		</div>
 
 		<h4 class="complete-margin"><u>Completed</u></h4>
-		<div ng-repeat="todo in groomComplete">
+		<div ng-repeat="todo in groomComplete track by $index">
 			<ul>	
 				<input type="checkbox" ng-click="groomReverse(todo)" checked>
 				{{todo}}

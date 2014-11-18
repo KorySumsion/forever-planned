@@ -66,7 +66,6 @@ Passport.use(new LocalStrategy(
 		passwordField: "password"
 	},
   function(email, password, done) {
-    console.log('server.js line 59ish ', email)
     
     User.findOne({email: email}).populate("ideas").exec(function (err, user) {
     	if(err) {
@@ -98,12 +97,12 @@ Passport.use(new LocalStrategy(
 /*Authorization Routes*/
 var authenticateUser = function(req, res, next){
     Passport.authenticate("local", function(err, user, info){
-        console.log("authenticate server.js line 88", user, info)
+        //console.log("authenticate server.js line 88", user, info)
         if(!user){
             return res.status(401).end()
         } else {
             req.logIn(user, function(err){
-                user.password = '';
+                //user.password = '';
                 return res.status(200).send(user);
             })
         }
@@ -111,15 +110,20 @@ var authenticateUser = function(req, res, next){
 }
 
 var requireAuth = function(req, res, next){
+    
     if(!req.isAuthenticated()){
-        return res.status(401).end();
+
+        return res.status(401).send();
+
+    } else {
+       next(); 
     }
-    next();
+    
 }
 
 app.get('/logout', function(req, res){
   req.logout();
-  req.session.destroy();
+  //req.session.destroy();
   res.redirect('/');
 })
 
@@ -133,16 +137,16 @@ app.get('/setup/:userId', requireAuth, function(req, res){
 
 app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
-app.put('/api/updateUser/:userId', AuthController.updateUser);
+app.put('/api/updateUser/:userId', requireAuth, AuthController.updateUser);
 
 
-app.post('/api/ideaBoard/:userId', ideaBoardCtrl.addBoard);
+app.post('/api/ideaBoard/:userId', requireAuth, ideaBoardCtrl.addBoard);
 
-app.get('/api/user/:userId', AuthController.getUser);
+app.get('/api/user/:userId', requireAuth, AuthController.getUser);
 
-app.put('/api/ideaBoard/:userId', ideaBoardCtrl.saveBoard);
+app.put('/api/ideaBoard/:userId', requireAuth, ideaBoardCtrl.saveBoard);
 
-app.delete('/api/ideaBoard/:userId/:boardId', ideaBoardCtrl.deleteBoard);
+app.delete('/api/ideaBoard/:userId/:boardId', requireAuth, ideaBoardCtrl.deleteBoard);
 
 
     Mongoose.connect(mongoUri);

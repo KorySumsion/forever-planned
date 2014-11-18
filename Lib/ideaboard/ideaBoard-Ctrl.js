@@ -31,10 +31,11 @@ module.exports.saveBoard = function(req, res){
 	var board = req.body;
 	console.log("ideaBoardCtrl line 31 board ", board);
 	ideaBoardService.saveBoard(board, function(err, updatedBoard){
-		//console.log("ideaBoardCtrl line 34 board: ", err);
-		User.findOneAndUpdate({_id: id}).populate('ideas').exec(function(savedUser, err){
+		console.log("ideaBoardCtrl line 34 board: ", updatedBoard);
+		console.log('ideaboard err ', err)
+		User.findById(id).populate('ideas').exec(function(err, savedUser){
 			if(err){
-				res.send(err)
+				console.log(err)
 			}	else {
 				res.send(savedUser)
 			}

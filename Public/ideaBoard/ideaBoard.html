@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container cork-background">
 
 	<div class="add-button">
 		<button class="btn" ng-click="showNewBoard()">Add a Board</button>
@@ -20,7 +20,7 @@
 			</li>
 			<div ng-show="addItemInput">
 			<form class="input-group">
-				<input class="form-control" type="text" placeholder="New Item" ng-model="boardItems.name"/>
+				<input class="form-control" type="text" placeholder="New Item" ng-model="boardItems.n"/>
 				<span class="input-group-btn">
 				<button class="btn" ng-click="itemQty = !itemQty"><i class="fa fa-plus"></i></button>
 				</span>
@@ -30,7 +30,7 @@
 			
 			<div ng-show="itemQty">
 			<form class="input-group">
-				<input class="form-control" type="number" placeholder="How Many?" ng-model="boardItems.quantity"/>
+				<input class="form-control" type="number" placeholder="How Many?" ng-model="boardItems.q"/>
 				<span class="input-group-btn">
 				<button class="btn" ng-click="itemPrice = !itemPrice"><i class="fa fa-plus"></i></button>
 				</span>
@@ -40,9 +40,11 @@
 
 			<div ng-show="itemPrice">
 			<form class="input-group">
-				<input class="form-control" type="number" placeholder="Indiviual Price" ng-model="boardItems.price"/>
+				<input class="form-control" type="number" placeholder="Indiviual Price" ng-model="boardItems.p" novalidate/>
 				<span class="input-group-btn">
-				<button class="btn" ng-click="addToList($index, boardItems)"><i class="fa fa-plus"></i></button>
+
+				<button class="btn" ng-click="addToList($index, boardItems, clearBoard)"><i class="fa fa-plus"></i></button>
+
 				</span>
 			</form>
 			
@@ -51,15 +53,29 @@
 
 			<div ng-repeat="item in board.boardItems track by $index">
 			<p class="list-group-item" ng-model="board.boardItems"> 
-				Item: {{item.name}},
 			
-		
+			Item: {{item.name}},
 			Qty: {{item.quantity}},
 			Individual Price: ${{item.price}},
-			Total: ${{item.total}}
-			<button class="btn">Delete</button>
+
+			
+
+			Total: ${{item.total = item.price * item.quantity}}
+			Add To Budget: <input type='checkbox' ng-model='item.includeBudget' ng-click='addToBudget($index, item)'/>
+			<button class="btn" ng-click="deleteRow($index, board)" >Delete</button>
+			<button class='btn' ng-click='editRow = !editRow'>Edit</button>
+			
+
 		
 			</p>
+			<p ng-show="editRow" class='nav nav-pills'>
+			<input type='text'  ng-model='item.name' placeholder='Edit Name' />
+			<input type='number'  ng-model='item.quantity' placeholder='Edit Quantity' />
+			<input type='number'  ng-model='item.price' placeholder='Edit Price' />
+			<button class='btn btn-group-sm'  ng-click="editRow = !editRow">Done</button>
+			</p>
+			
+
 			</div>
 			<div class="list-group-item idea-board-ind">
 			<button class="btn save-icon" ng-click="saveBoard(board)"><i class="fa fa-floppy-o font-icon-size "></i></button>

@@ -1,10 +1,12 @@
 var app = angular.module('wedding');
 
 
-app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
+app.controller('setupCtrl', function($scope, $timeout, setupService, $state, authService){
 	$scope.step1 = false;
 	$scope.step2 = false;
 	$scope.step3 = false;
+
+	console.log($scope.currentUser);
 
 	$scope.showStep1 = function(){
 		$timeout(function(){
@@ -17,20 +19,26 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 			$scope.step2 = true;}, 500);
 	}
 	$scope.showStep3 = function(){
-		$scope.step2 = false;
+		$scope.oneD = "goRight";
 		$timeout(function(){
-			$scope.step3 = true;}, 500);
+			$scope.step2 = false;
+			$timeout(function(){
+				$scope.step3 = true;}, 500);}, 1);
 	}
 
 	$scope.goToNames = function(){
-		$scope.step2 = false;
+		$scope.oneD = "goLeft";
 		$timeout(function(){
-			$scope.step1 = true;}, 500);
+			$scope.step2 = false;
+			$timeout(function(){
+				$scope.step1 = true;}, 500);}, 1);	
 	}
 	$scope.goToDate = function(){
-		$scope.step3 = false;
+		$scope.stepD = "goLeft";
 		$timeout(function(){
-			$scope.step2 = true;}, 500);
+			$scope.step3 = false;
+			$timeout(function(){
+				$scope.step2 = true;}, 500);}, 1);
 	}
 
 	$scope.addWedInfo= function(){
@@ -39,9 +47,10 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 			console.log('budget ', $scope.currentUser.budget)
 			setupService.addWedInfo($scope.currentUser)
 			.then(function(res){
-				$location.path('/ideas/' + $scope.currentUser._id);
+				
+				$state.go('auth.home', {userid: res.data._id})
 			})
-			console.log($scope.currentUser)
+			
 			
 		} else {
 			alert("Please enter a budget amount");
@@ -49,6 +58,10 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $location){
 	}
 
 
+
+	$scope.logout = function(){
+		$cookieStore.remove('currentUser');
+	}
 	// var getUser = function(){
 	// 	console.log($scope.currentUser)
 	// 	setupService.getUser($scope.currentUser)
