@@ -10,14 +10,18 @@
 }
 
 .weird-margin-issues {
-	margin-top: 0rem;
+	margin-top: -10rem;
 }
 
-.weird-margin-issues-two {
-	margin-top: 5rem;
-}
 
 .home-border {
 	border: 2px solid rgb(224, 168, 17);
 }
 
+.invisible{
+	height:10rem;
+}
+
+.invisible-two {
+	height: 3rem;
+}

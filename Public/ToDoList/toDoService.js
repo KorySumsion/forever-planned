@@ -17,6 +17,7 @@ app.service('toDoService', function($http, $q, $cookieStore){
 
 	this.editTodos = function(userObj){
 		delete userObj.ideas;
+		delete userObj.password;
 		var deferred = $q.defer();
 		$http({
 			method: 'PUT',
