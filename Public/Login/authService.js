@@ -3,6 +3,7 @@ var app = angular.module('wedding');
 app.service('authService', function($http, $q, $cookieStore, $location){
 	
 	var setUser = function(user){
+		console.log('here ', user)
 		$cookieStore.put('currentUser', user);
 	}
 
@@ -11,6 +12,7 @@ app.service('authService', function($http, $q, $cookieStore, $location){
 	};
 
 	this.loginUser = function(userObj){
+		console.log("came here on login?")
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',

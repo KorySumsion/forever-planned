@@ -37,7 +37,6 @@ app.service("ideaBoardService", function($http, $q, authService){
 			data: board
 		}).then(function(res){
 			authService.setUser(res.data);
-			console.log(res.data)
 			deferred.resolve(res.data);
 		})
 		return deferred.promise;
@@ -55,6 +54,7 @@ app.service("ideaBoardService", function($http, $q, authService){
 			authService.setUser(res.data);
 			authService.getUser();
 			console.log(res.data)
+
 			deferred.resolve(res.data)
 		})
 		return deferred.promise;

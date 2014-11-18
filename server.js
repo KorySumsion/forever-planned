@@ -109,15 +109,20 @@ var authenticateUser = function(req, res, next){
 }
 
 var requireAuth = function(req, res, next){
+    
     if(!req.isAuthenticated()){
-        return res.status(401).redirect('/logout');
+
+        return res.status(401).send();
+
+    } else {
+       next(); 
     }
-    next();
+    
 }
 
 app.get('/logout', function(req, res){
   req.logout();
-  req.session.destroy();
+  //req.session.destroy();
   res.redirect('/');
 })
 
