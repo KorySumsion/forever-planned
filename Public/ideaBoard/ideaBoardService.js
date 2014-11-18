@@ -36,7 +36,7 @@ app.service("ideaBoardService", function($http, $q, authService){
 			url: '/api/ideaBoard/' + user._id,
 			data: board
 		}).then(function(res){
-			authService.setUser();
+			authService.setUser(res.data);
 			deferred.resolve(res.data);
 		})
 		return deferred.promise;
@@ -51,7 +51,7 @@ app.service("ideaBoardService", function($http, $q, authService){
 			url: '/api/ideaBoard/' + user._id + '/' + board._id,
 			data: {user: user, board: board}
 		}).then(function(res){
-			authService.setUser();
+			authService.setUser(res.data);
 			deferred.resolve(res.data)
 		})
 		return deferred.promise;
