@@ -1,6 +1,6 @@
 var app = angular.module('wedding');
 
-app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
+app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, $rootScope, $state){
 	$scope.addItemButton = false;
 	$scope.addItemInput = false;
 	$scope.newBoardTitle = false;
@@ -20,7 +20,9 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 			ideaBoardService.getUser($scope.currentUser)
 		.then(function(results){
 			$scope.boards = results.ideas.reverse();
-			//console.log($scope.boards)
+			//$scope.currentUser = results
+			console.log('here all the time')
+			$state.reload()
 		})
 		}
 		
@@ -34,7 +36,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		ideaBoardService.addBoard($scope.board, $scope.currentUser)
 		.then(function(results){
 			$scope.boards = results.ideas.reverse();
-			console.log($scope.boards)
+			//console.log($scope.boards)
 			$scope.board.title = '';
 			$scope.newBoardTitle = false;
 		})
@@ -42,16 +44,15 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 
 
 	$scope.saveBoard = function(board, i){
-		console.log(board)
-		ideaBoardService.saveBoard(board, $scope.currentUser).then(function(){
-			
+		//console.log(board)
+		ideaBoardService.saveBoard(board, $scope.currentUser)
+		.then(function(){
 			$scope.activeSave = i;
 			$scope.activeSaveButton = false;
-			//$scope.saveButton = false;
-			// $scope.activeItem = i;
-
+			$state.reload();
 		});
 		$scope.editRow = false;
+		
 
 	};
   
@@ -102,6 +103,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		$scope.boards[i].boardItems.push(boardItems);
 		
 		cb(boardItems);
+		//getUser();
 	}
 
 	$scope.deleteBoard = function(board){
@@ -117,14 +119,16 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 		ideaBoardService.saveBoard(board, $scope.currentUser);
 		$scope.saveButton = true;
 		$scope.saved = false;
+		//getUser();
 		
 	}
 
-	$scope.addToBudget = function(boardItem){
-		console.log(boardItem.includeBudget)
-		$scope.saveButton = true;
-		$scope.saved = false;
-	}
+	// $scope.addToBudget = function(boardItem){
+	// 	console.log(boardItem.includeBudget)
+	// 	$scope.saveButton = true;
+	// 	$scope.saved = false;
+	// 	//getUser();
+	// }
 
 
 
