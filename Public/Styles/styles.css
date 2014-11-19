@@ -1,4 +1,7 @@
-
+button {
+  background-color: #EA4677;
+  color: white;
+}
 #navigation {
 	background-color: #8C8C8C
 }
@@ -125,7 +128,7 @@
 }
 
 .idea-board-ind {
-  background-color: #666;
+  background-color: #C0C0C0;
 }
 
 .save-icon {
