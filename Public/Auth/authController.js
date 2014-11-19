@@ -1,16 +1,16 @@
 var app = angular.module('wedding');
 
-app.controller('authCtrl', function($scope, $state, authService, user){
+app.controller('authCtrl', function($scope, $state, authService, user, $rootScope){
 
 	
 	
 	if(!user){
 		$state.go('Login');
 	} else {
-		$scope.currentUser = user;
+		$rootScope.currentUser = user;
 		$scope.$watch(authService.setUser(user), function(){
 
-			$scope.currentUser = authService.getUser();
+			$rootScope.currentUser = authService.getUser();
 			console.log($scope.currentUser);
 
 			
