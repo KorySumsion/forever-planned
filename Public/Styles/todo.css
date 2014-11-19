@@ -7,6 +7,10 @@
 	border-bottom: 5px solid rgb(85, 85, 85);
 }
 
+.todos button {
+	background-color: #C0C0C0;
+	color: black;
+}
 .bride-todo {
 	background-color: #F2C13F;
 	margin-top: 1rem;
@@ -32,5 +36,10 @@
 	padding: .5rem;
 	margin: 1rem;
 	width: 26rem;
+}
+
+.gray-button {
+	background-color: #C0C0C0;
+	color: black;
 }
 
