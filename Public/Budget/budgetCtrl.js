@@ -1,6 +1,12 @@
 var app = angular.module('wedding');
 
-app.controller('budgetCtrl', function($scope, authService){
+app.controller('budgetCtrl', function($scope, authService, $rootScope){
+
+	$rootScope.$watch($rootScope.currentUser, function(){
+
+	
+		console.log('here!!!!!!');		
+	})
 
 	$scope.budget = "$" + $scope.currentUser.budget;
 	var budgetInfo = [];
@@ -14,7 +20,7 @@ app.controller('budgetCtrl', function($scope, authService){
 					var ideas = items[i].boardItems;
 					for (var x = 0; x < ideas.length; x++) {
 						budgetInfo.push(ideas[x]);
-						console.log(ideas[x].name + ideas[x].total + ideas[x].includeBudget);
+						//console.log(ideas[x].name + ideas[x].total + ideas[x].includeBudget);
 						if (tbu && ideas[x].name === tbu.name) {
 							//ideas[x].purchased = true;
 							$scope.currentUser.ideas[i].boardItems[x].purchased = true;
@@ -40,7 +46,7 @@ app.controller('budgetCtrl', function($scope, authService){
 		}
 	}	
 	seperate();
-	console.log(budgetPending);
+	//console.log(budgetPending);
 
 
 	$scope.pendingItems = budgetPending;
@@ -56,7 +62,7 @@ app.controller('budgetCtrl', function($scope, authService){
 	}
 	pendingTotal();
 
-	console.log($scope.currentUser);
+	//console.log($scope.currentUser);
 
 	$scope.purchased = function(item){
 		for (var i = 0; i < budgetPending.length; i++) {
