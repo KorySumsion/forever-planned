@@ -3,9 +3,9 @@
 	margin-right: -2rem;
 	margin-left: 1rem;	
 }
-.custom-home-container{
+body {
 	background-image: url(http://1.bp.blogspot.com/-zQzTjKEmEDo/UD5xYi5PgCI/AAAAAAAAHSU/Lu15yYieWzA/s640/natalie-barrett-texas-wedding-079-1.jpeg);
-	background-size: auto 350px;
+	background-size: cover;
 
 }
 
@@ -21,13 +21,15 @@
 
 .weird-margin-issues {
 	margin-top: -10rem;
-	background-color: rgba(0,0,0, 0.8);
+	background-color: rgba(0,0,0,0.7);
 }
 
 
-.home-border {
-	border: 2px solid #8C8C8C;
-}
+/*.home-border {
+	
+	border: 2px solid rgb(224, 168, 17);
+}*/
+
 
 .invisible{
 	height:10rem;
