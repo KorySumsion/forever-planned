@@ -56,13 +56,6 @@
 
 			<div ng-repeat="item in board.boardItems track by $index">
 			<p class="list-group-item" ng-model="board.boardItems"> 
-			
-			Item: {{item.name}},
-			Qty: {{item.quantity}},
-			Individual Price: ${{item.price}},
-
-			Total: ${{item.total = item.price * item.quantity || 0}}
-			Add To Budget: <input type='checkbox' ng-model='item.includeBudget' ng-change='saveBoard(board)'/>
 
 
 			<b>Item: <span style="color: #aa3939">{{item.name}}</span></b>

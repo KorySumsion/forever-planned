@@ -11,11 +11,11 @@
 }
 
 #navigation li p{
-        text-shadow: 0 2px 1px rgba(0,0,0,0.5);
+        text-shadow: 0 2px 1px rgba(0,0,0,0.7);
         display: block;
         text-decoration: none;
         color: #f0f0f0;
-        font-size: 2.5em;
+        font-size: 2.8em;
         margin: -.25em 2em;
         text-align: center;
         font-family: cursive;
@@ -35,7 +35,7 @@
 }
 
 .rectangle {
-   background-color: #8C8C8C;
+   background-color: rgba(0,0,0,0.7);
    height: 62px;
    position: relative;
    -moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
@@ -48,7 +48,7 @@
 }
 
 .l-triangle-top {
-   border-color: #8C8C8C transparent transparent;
+   border-color: rgba(0,0,0,0.7) transparent transparent;
    border-style:solid;
    border-width:50px;
    height:0px;
@@ -60,7 +60,7 @@
 }
  
 .l-triangle-bottom {
-   border-color: transparent transparent #8C8C8C;
+   border-color: transparent transparent rgba(0,0,0,0.7);  /*#8C8C8C*/
    border-style:solid;
    border-width:50px;
    height:0px;
@@ -72,7 +72,7 @@
 }
 
 .r-triangle-top {
-   border-color: #8C8C8Ctransparent transparent;
+   border-color: rgba(0,0,0,0.7) transparent transparent;
    border-style:solid;
    border-width:50px;
    height:0px;
@@ -80,19 +80,22 @@
    position: relative;
    float: right;
    right: -45px;
-   top: -107px;
+   top: -103px;
 }
  
 .r-triangle-bottom {
-   border-color: transparent transparent #8C8C8C;
+   border-color: transparent transparent rgba(0,0,0,0.7);
    border-style:solid;
    border-width:50px;
    height:0px;
    width:0px;
    position: relative;
    float: right;
-   top: -149px;
+   top: -143px;
    right: -145px;
+}
+.login-background {
+  background-color: rgba(0,0,0,0.8);
 }
 
 .login-route {
