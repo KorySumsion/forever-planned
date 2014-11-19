@@ -3,7 +3,7 @@ var app = angular.module('wedding');
 app.service('authService', function($http, $q, $cookieStore, $location){
 	
 	var setUser = function(user){
-		console.log('here ', user)
+		
 		$cookieStore.put('currentUser', user);
 	}
 
