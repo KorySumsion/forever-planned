@@ -1,16 +1,21 @@
+<<<<<<< HEAD
+
+/*#navigation {
+=======
 button {
   background-color: #EA4677;
   color: white;
 }
 #navigation {
+>>>>>>> 03d8ab6364b57d1c004c4c27db3b300e71968b56
 	background-color: #8C8C8C
 }
-
+*/
 #navigation li {
 	list-style: none;
 	display: block;
-	float: left;
-	margin: 1em;
+	/*float: left;*/
+	/*margin: 1em;*/
 }
 
 #navigation li p{
@@ -34,7 +39,8 @@ button {
 
 #navigation_container {
    margin: 0 auto;
-   width: 960px;
+   max-width: 960px;
+   min-width: 400px;
 }
 
 .rectangle {
@@ -105,8 +111,9 @@ button {
 	margin-top: -60px;
 	display: inline-block;
 }
-.sign-route {
-	display: inline-block;
+.nav-routes {
+	float: right;
+  margin: -20px 60px;
 }
 
 .idea-board-title {
