@@ -16,7 +16,7 @@
         text-decoration: none;
         color: #f0f0f0;
         font-size: 2.8em;
-        margin: -.25em 2em;
+        margin: -.25em 3.3em;
         text-align: center;
         font-family: cursive;
 }
@@ -106,6 +106,11 @@
 	display: inline-block;
 }
 
+.idea-board-title {
+  margin-left: 20rem;
+  font-family: cursive;
+  color: #e0a811;
+}
 
 .font-icon-size {
   font-size: 20px;

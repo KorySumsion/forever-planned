@@ -15,14 +15,18 @@
 	/*min-width: 38rem;*/
 }
 
+.todo-bottom-margin {
+	margin-bottom: 10rem;
+}
+
 .weird-margin-issues {
 	margin-top: -10rem;
-	background-color: white;
+	background-color: rgba(0,0,0, 0.8);
 }
 
 
 .home-border {
-	border: 2px solid rgb(224, 168, 17);
+	border: 2px solid #8C8C8C;
 }
 
 .invisible{
