@@ -15,6 +15,10 @@ body {
 	/*min-width: 38rem;*/
 }
 
+.todo-bottom-margin {
+	margin-bottom: 10rem;
+}
+
 .weird-margin-issues {
 	margin-top: -10rem;
 	background-color: rgba(0,0,0,0.7);
@@ -25,6 +29,7 @@ body {
 	
 	border: 2px solid rgb(224, 168, 17);
 }*/
+
 
 .invisible{
 	height:10rem;
