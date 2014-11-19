@@ -1,8 +1,11 @@
 <div class="container cork-background">
 
+
 	<div class="add-button">
 		<button class="btn" ng-click="showNewBoard()">Add a Board</button>
 	</div>
+
+
 
 	<div class="input-group add-board" ng-show="newBoardTitle">
 		<input class="form-control" type="text" placeholder="Insert New Title" ng-model="board.title"  />
@@ -16,9 +19,9 @@
 		<div class="list-group">
 			<li class="list-group-item idea-board-ind">
 				<p class="board-title">{{board.title}}</p>
-				<button class="btn add-button-position" ng-click="addItemInput = !addItemInput">Add Item</button>
+				<button class="btn add-button-position" ng-click="showItemInput($index)">Add Item</button>
 			</li>
-			<div ng-show="addItemInput">
+			<div ng-show="addItemInput($index)">
 			<form class="input-group">
 				<input class="form-control" type="text" placeholder="New Item" ng-model="boardItems.n"/>
 				<span class="input-group-btn">
@@ -60,6 +63,14 @@
 
 			Total: ${{item.total = item.price * item.quantity || 0}}
 			Add To Budget: <input type='checkbox' ng-model='item.includeBudget' ng-change='saveBoard(board)'/>
+
+
+			<b>Item: <span style="color: #aa3939">{{item.name}}</span></b>
+			&nbsp;	<b>Qty: <span style='color: #aa3939'>{{item.quantity}}</span></b>
+			&nbsp; <b>Individual Price: <span style='color: #aa3939'> ${{item.price}}</span></b>
+			&nbsp; <b>Total: <span style='color: #aa3939'>${{item.total = item.price * item.quantity || 0}}</span></b>
+			&nbsp; <b> Add To Budget:</b> <input type='checkbox' ng-model='item.includeBudget' ng-change='saveBoard(board)'/>
+
 			<br />
 
 			<button class="btn" ng-click="deleteRow($index, board)" >Delete</button>
@@ -68,7 +79,7 @@
 
 		
 			</p>
-			<p ng-show="editRow" class='nav nav-pills'>
+			<p ng-show="editRow">
 			<input type='text'  ng-model='item.name' placeholder='Edit Name' />
 			<input type='number'  ng-model='item.quantity' placeholder='Edit Quantity' />
 			<input type='number'  ng-model='item.price' placeholder='Edit Price' />
@@ -78,8 +89,8 @@
 
 			</div>
 			<div class="list-group-item idea-board-ind">
-			<button class="btn save-icon" ng-click="saveBoard(board)" ng-show="saveButton"><i class="fa fa-floppy-o font-icon-size "></i></button>
-			<p style='color: white' ng-show='saved'>SAVED!</p>
+			<span style='color: white' ng-show='saved($index)'>SAVED!</span>
+			<button class="btn save-icon" ng-click="saveBoard(board, $index)" ng-show="saveButton($index)"><i class="fa fa-floppy-o font-icon-size "></i></button>
 			<button class="btn btn-warning" ng-click="deleteBoard(board)"><i class="fa fa-trash-o font-icon-size"></i></button>
 			</div>
 		</div>

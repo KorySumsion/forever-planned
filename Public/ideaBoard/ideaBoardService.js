@@ -2,16 +2,16 @@ var app = angular.module('wedding');
 
 app.service("ideaBoardService", function($http, $q, authService){
 
-	// this.getUser = function(user){
-	// 	var deferred = $q.defer();
-	// 	$http({
-	// 		method: 'GET',
-	// 		url: '/api/user/' + user._id 
-	// 	}).then(function(res){
-	// 		deferred.resolve(res.data)
-	// 	})
-	// 	return deferred.promise;
-	// }
+	this.getUser = function(user){
+		var deferred = $q.defer();
+		$http({
+			method: 'GET',
+			url: '/api/user/' + user._id 
+		}).then(function(res){
+			deferred.resolve(res.data)
+		})
+		return deferred.promise;
+	}
 
 	this.addBoard = function(board, user){
 		var deferred = $q.defer();
