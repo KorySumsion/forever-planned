@@ -74,7 +74,7 @@ app.config(function($httpProvider){
 			"responseError": function(rejection){
 				if($location.$$path === '/login' && rejection.status === 401){
 					
-					alert("Check your email and password.")
+					swal("Error", "Check your email and password.")
 				} 
 				else if(rejection.status === 401){
 

@@ -11,7 +11,7 @@
 	background-color: rgb(224, 168, 17);
 	margin-top: 1rem;
 	padding: 2rem 0 2rem 3rem;
-	height: 50rem;
+	min-height: 25rem;
 	overflow: scroll;
 }
 
@@ -19,7 +19,7 @@
 	background-color: rgb(95, 128, 141);
 	margin-top: 1rem;
 	padding: 2rem 0 2rem 3rem;
-	height: 50rem;
+	min-height: 25rem;
 	overflow: scroll;
 
 }

@@ -117,16 +117,14 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		ideaBoardService.saveBoard(board, $scope.currentUser);
 		$scope.saveButton = true;
 		$scope.saved = false;
-		//getUser();
-		
 	}
 
-	// $scope.addToBudget = function(boardItem){
-	// 	console.log(boardItem.includeBudget)
-	// 	$scope.saveButton = true;
-	// 	$scope.saved = false;
-	// 	//getUser();
-	// }
+	$scope.addToBudget = function(boardItem){
+		console.log(boardItem.includeBudget)
+		$scope.saveButton = true;
+		$scope.saved = false;
+		//getUser();
+	}
 
 
 

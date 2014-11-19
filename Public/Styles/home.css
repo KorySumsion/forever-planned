@@ -1,16 +1,23 @@
 .custom-home-container {
 	padding: 3rem;
 	margin-right: -2rem;
-	margin-left: 1rem;
+	margin-left: 1rem;	
+}
+.custom-home-container{
+	background-image: url(http://1.bp.blogspot.com/-zQzTjKEmEDo/UD5xYi5PgCI/AAAAAAAAHSU/Lu15yYieWzA/s640/natalie-barrett-texas-wedding-079-1.jpeg);
+	background-size: auto 350px;
+
 }
 
 .inner-views {
 	margin: 0rem -2.1rem 0rem 1.2rem;
 	padding: 0rem;
+	/*min-width: 38rem;*/
 }
 
 .weird-margin-issues {
 	margin-top: -10rem;
+	background-color: white;
 }
 
 
@@ -24,4 +31,7 @@
 
 .invisible-two {
 	height: 3rem;
+}
+.idea-board {
+	
 }
