@@ -93,7 +93,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService){
 	$scope.deleteBoard = function(board){
 		console.log(board)
 		ideaBoardService.deleteBoard(board, $scope.currentUser)
-		
 	}
 
 	$scope.deleteRow = function(i, board){
