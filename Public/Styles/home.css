@@ -10,7 +10,7 @@ body {
 }
 
 .inner-views {
-	margin: 0rem -2.1rem 0rem 1.2rem;
+	margin: 0rem -2.1rem -2rem 1.2rem;
 	padding: 0rem;
 	/*min-width: 38rem;*/
 }
@@ -30,6 +30,9 @@ body {
 	border: 2px solid rgb(224, 168, 17);
 }*/
 
+.wedding-date-panel {
+	background-color: rgba(0,0,0,0);
+}
 
 .invisible{
 	height:10rem;
