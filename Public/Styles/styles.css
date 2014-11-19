@@ -1,13 +1,13 @@
 
-#navigation {
+/*#navigation {
 	background-color: #8C8C8C
 }
-
+*/
 #navigation li {
 	list-style: none;
 	display: block;
-	float: left;
-	margin: 1em;
+	/*float: left;*/
+	/*margin: 1em;*/
 }
 
 #navigation li p{
@@ -31,7 +31,8 @@
 
 #navigation_container {
    margin: 0 auto;
-   width: 960px;
+   max-width: 960px;
+   min-width: 400px;
 }
 
 .rectangle {
@@ -102,8 +103,9 @@
 	margin-top: -60px;
 	display: inline-block;
 }
-.sign-route {
-	display: inline-block;
+.nav-routes {
+	float: right;
+  margin: -20px 60px;
 }
 
 
