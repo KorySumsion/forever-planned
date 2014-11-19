@@ -59,7 +59,7 @@ app.config(function($stateProvider, $urlRouterProvider){
 			},
 			"budget@auth.home" : {
 				templateUrl: "Budget/budget.html",
-				controller: "budgetCtrl"
+				controller: "ideaBoardCtrl"
 			}
 
 

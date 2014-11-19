@@ -22,7 +22,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			$scope.boards = results.ideas.reverse();
 			//$scope.currentUser = results
 			console.log('here all the time')
-			$state.reload()
+			//$state.reload()
 		})
 		}
 		
@@ -49,7 +49,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		.then(function(){
 			$scope.activeSave = i;
 			$scope.activeSaveButton = false;
-			$state.reload();
+			//getUser();
 		});
 		$scope.editRow = false;
 		
@@ -79,13 +79,11 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		return $scope.activeSaveButton === i;
 	}
 
-	$scope.clearBoard = function(boardItems){
+	$scope.clearBoard = function(boardItems, cb, i, board){
 		boardItems.p= ''; 
 		boardItems.q = '';
 		boardItems.n = '';
-		//$scope.activeSaveButton = i;
-		//$scope.activeSave = i;
-		//$scope.addItemInput = i;
+		cb(board, i)
 	}
 	
 
@@ -96,14 +94,14 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		boardItems.price = boardItems.p;
 		boardItems.quantity = boardItems.q;
 		boardItems.name = boardItems.n;
+		boardItems.includeBudget = false;
 		boardItems.total = boardItems.quantity * boardItems.price;
 		if(!boardItems.total){
 			boardItems.total = 0;
 		}
 		$scope.boards[i].boardItems.push(boardItems);
 		
-		cb(boardItems);
-		//getUser();
+		cb(boardItems, $scope.saveBoard, i, $scope.boards[i]);
 	}
 
 	$scope.deleteBoard = function(board){
