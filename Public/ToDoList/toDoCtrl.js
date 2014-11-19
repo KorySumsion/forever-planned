@@ -26,7 +26,8 @@ $scope.todoosieGroom = false;
 
 	//Add a todo
 	$scope.addBrideTask = function(){
-		if($scope.brideTask.length > 0){
+			
+		if($scope.brideTask.length > 0 && $scope.brideTask !== "You already have this task!" && $scope.brideList.indexOf($scope.brideTask) === -1 && $scope.brideComplete.indexOf($scope.brideTask) === -1){
 			$scope.brideList.push($scope.brideTask)
 
 			console.log($scope.currentUser)
@@ -35,17 +36,21 @@ $scope.todoosieGroom = false;
 			$scope.brideTask = '';
 
 			toDoService.editTodos($scope.currentUser);
+		} else if ($scope.brideTask.length) {
+			$scope.brideTask = "You already have this task!"
 		}
 	}
 
 	$scope.addGroomTask = function(){
-		if($scope.groomTask.length > 0){
+		if($scope.groomTask.length > 0 && $scope.groomTask !== "You already have this task!" && $scope.groomList.indexOf($scope.groomTask) === -1 && $scope.groomComplete.indexOf($scope.groomTask) === -1){
 			$scope.groomList.push($scope.groomTask);
 			
 			$scope.currentUser.groomList = $scope.groomList;
 
 			$scope.groomTask = '';
 			toDoService.editTodos($scope.currentUser);
+		} else if ($scope.groomTask.length){
+			$scope.groomTask = "You already have this task!"
 		}
 	}
 

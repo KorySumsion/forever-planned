@@ -7,6 +7,7 @@
 .inner-views {
 	margin: 0rem -2.1rem 0rem 1.2rem;
 	padding: 0rem;
+	/*min-width: 38rem;*/
 }
 
 .weird-margin-issues {
