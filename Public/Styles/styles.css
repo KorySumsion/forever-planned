@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 
+/*#navigation {
+=======
+button {
+  background-color: #EA4677;
+  color: white;
+}
 #navigation {
+>>>>>>> 03d8ab6364b57d1c004c4c27db3b300e71968b56
 	background-color: #8C8C8C
 }
-
+*/
 #navigation li {
 	list-style: none;
 	display: block;
-	float: left;
-	margin: 1em;
+	/*float: left;*/
+	/*margin: 1em;*/
 }
 
 #navigation li p{
@@ -16,7 +24,7 @@
         text-decoration: none;
         color: #f0f0f0;
         font-size: 2.8em;
-        margin: -.25em 2em;
+        margin: -.25em 3.3em;
         text-align: center;
         font-family: cursive;
 }
@@ -31,7 +39,8 @@
 
 #navigation_container {
    margin: 0 auto;
-   width: 960px;
+   max-width: 960px;
+   min-width: 400px;
 }
 
 .rectangle {
@@ -102,10 +111,16 @@
 	margin-top: -60px;
 	display: inline-block;
 }
-.sign-route {
-	display: inline-block;
+.nav-routes {
+	float: right;
+  margin: -20px 60px;
 }
 
+.idea-board-title {
+  margin-left: 20rem;
+  font-family: cursive;
+  color: #e0a811;
+}
 
 .font-icon-size {
   font-size: 20px;
@@ -118,14 +133,14 @@
 
 .board-title {
   display: inline-block;
-  color: white;
+  color: black;
   font-size: 25px;
   font-family: cursive;
 
 }
 
 .idea-board-ind {
-  background-color: #666;
+  background-color: #C0C0C0;
 }
 
 .save-icon {

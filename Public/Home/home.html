@@ -7,7 +7,7 @@
 
 
 				<ul id="navigation">
-					<li><a class="login-route" ui-sref="Ideas">Idea Board</a></li>
+					
 					<li><p>Forever Planned</p> </li>
 					<li><a href='/logout' class="signup-route" ng-click="logout()">LogOut</a></li>
 				</ul>
@@ -18,7 +18,7 @@
 
 	
 
-	<div class="col-md-4 col-md-offset-4" style="margin-top: -55px; margin-bottom: 70px;">
+	<!-- <div class="col-md-4 col-md-offset-4" style="margin-top: -55px; margin-bottom: 70px;">
 		<div class="panel">
 			<div class="panel-heading" style="padding: 5px 15px 0px 15px; border-bottom: none;">
 				<div style="font-family: cursive; text-align: center; color: #e0a811"><h3>That Magical Day:</h3></div>
@@ -27,7 +27,7 @@
 					<span id="countdown"></span>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 </div>
 
@@ -42,9 +42,22 @@
 
 		<div class="col-md-4 ">
 
+	
+				<div class="inner-views" style="margin-bottom: -10px;">
+					<div class="panel wedding-date-panel">
+						<div style="padding: 5px 15px 0px 15px;">
+							<div style="font-family: cursive; text-align: center; color: #e0a811"><h3>That Magical Day:</h3></div>
+						</div>
+						<div style="text-align: center; padding: 0px 15px 15px 15px; color: white; height: 34px">
+								<span id="countdown"></span>
+						</div>
+					</div>
+				</div>
+
+
 				<div class="inner-views col-xs-10 col-sm-5 col-md-12" ui-view="budget"></div>
 				<div class="inner-views invisible-two col-sm-2 col-md-1"></div>
-				<div class="inner-views col-xs-10 col-sm-5 col-md-12" ui-view="todo"></div>
+				<div class="inner-views todo-bottom-margin col-xs-10 col-sm-5 col-md-12" ui-view="todo"></div>
 				
 			
 		</div>

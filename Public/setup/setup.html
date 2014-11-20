@@ -3,67 +3,80 @@
 <head><link rel="stylesheet" type="text/css" href="Styles/animate.css"></head>
 
 
-<div class="container-fluid setup-font">
+<div class="container setup-font">
 
-<div id="navigation_container">
- <div class="l-triangle-top"></div>
-   <div class="l-triangle-bottom"></div>
-	<div class="rectangle">
-
-
-	<ul id="navigation">
-		<li>Welcome!</li>
-		<li><p>Forever Planned</p> </li>
-		<li><a href='/logout' class="signup-route" ng-click="logout()">LogOut</a></li>
-	</ul>
+	<div id="navigation_container">
+	 <div class="l-triangle-top"></div>
+	   <div class="l-triangle-bottom"></div>
+		<div class="rectangle">
+		<ul id="navigation">
+			<li><p>Forever Planned</p> </li>
+			<li><a href='/logout' class="nav-routes" ng-click="logout()">LogOut</a></li>
+		</ul>
+		</div>
+		<div class="r-triangle-top"></div>
+	    <div class="r-triangle-bottom"></div>
 	</div>
-	<div class="r-triangle-top"></div>
-    <div class="r-triangle-bottom"></div>
 
-</div>
-
-
-
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3" ng-init="showStep1()">
+	<div class="row clearfix">
+		<div class="col-md-6 col-sm-10 col-md-offset-3 col-sm-offset-1" ng-init="showStep1()">
 			<div class="panel goRight" style="background-color: #5F808D;" ng-show="step1">
+
 				<div class="panel-heading">
 					<h4 class="panel-title text-center">Please Enter Mrs.Her and Mr.Him</h4>
 				</div>
-				<div class="panel-body ">
-					<form class="form-inline" role="form">
-						<div class="form-group input-group-lg">
-						  	<input type="text" class="form-control" placeholder="Mrs.Her" ng-model="currentUser.bride">				
-					    </div>
-					    <div class="form-group input-group-lg">
-    						<input type="text" class="form-control" placeholder="Mr.Him" ng-model="currentUser.groom">
- 						</div>
- 						
- 						<div class="goRight" style="float: right; font-size: 62px; margin-top: -27px; cursor: pointer;" ng-click="showStep2()"> >
-						</div>
-					</form>
-					<div class="skip">
-					skip setup
-					</div>
-				</div>
-			</div>
 				
+				<div class="panel-body">
+					<form class="form" role="form">
+						<div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1">
+							<div class="form-group input-group-lg">
+							  	<input type="text" class="form-control" placeholder="Mrs.Her" ng-model="currentUser.bride">	
+						    </div>
+						</div>
+						<div class="col-md-5 col-sm-5">
+						    <div class="form-group input-group-lg">
+	    						<input type="text" class="form-control" placeholder="Mr.Him" ng-model="currentUser.groom">
+	 						</div>
+	 						<div class="skip">
+								skip setup
+							</div>
+	 					</div>
+	 					<div class="col-md-1 col-sm-1">	
+	 						<div class="goRight" style="float: right; font-size: 62px; cursor: pointer; margin-top: -27px;" ng-click="showStep2()"> >
+							</div>
+						</div>
+					</form>					
+				</div>
+
+			</div>
+		</div>
+
+		<div class="col-md-6 col-md-offset-3">			
 			<div class="panel {{oneD}}" style="background-color: #5F808D;" ng-show="step2">
+
 				<div class="panel-heading">
 					<h4 class="panel-title text-center">Pick the Magical Date</h4>
 				</div>
-				<div class="panel-body" style="text-align: center;">
-					<form class="form-inline input-group-lg" role="form">
+
+				<div class="panel-body">	
+					<div class="col-md-1">
 						<div ng-click="goToNames()" style="float: left; font-size: 62px; margin-top: -27px; cursor: pointer;"> <
 						</div>
-                    	<input type='date' class="form-control" style="margin-left: none;" ng-model="currentUser.weddingDate">
+					</div>
+					<div class="col-md-6 col-md-offset-2">
+						<form class="form input-group-lg" role="form">
+	                    	<input type='date' class=" form-control" style="margin-left: none;" ng-model="currentUser.weddingDate">
+	                    </form>
+                    </div>
+                    <div class="col-md-1 col-md-offset-2">
                 		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -27px; cursor: pointer;" ng-click="showStep3()"> >
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
+		</div>
 
-
+		<div class="col-md-6 col-md-offset-3">			
 			<div class="panel {{stepD}}" style="background-color: #5F808D;" ng-show="step3">
 				<div class="panel-heading">
 					<h4 class="panel-title text-center">$ Budget $</h4>

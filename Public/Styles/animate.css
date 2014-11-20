@@ -62,13 +62,13 @@
 }
 
 body {
-  background: #ccc;
+  background: url(http://cache.elizabethannedesigns.com/blog/wp-content/uploads/2013/08/Mr.-and-Mrs.-Chair-Signs-600x400.jpg) fixed center center;
+  min-height: 100%;
+  height: auto;
+  width: 100%;
+  background-size: cover;
 }
-.form-inline
-.form-group
-{
-  margin-left: 30px;
-}
+
 
 .setup-font {
   font-family: cursive;
@@ -95,12 +95,24 @@ body {
 }
 .skip{
   float: right;
-  margin-top: 10px;
+  margin-top: -7px;
 }
 .skip:hover {
   cursor: pointer;
   color: red;
 }
-.panel-body {
+/*.panel-body {
 padding: 6px 15px 15px 15px;
+}*/
+.min-panel-width {
+  min-width: 500px;
+}
+.min-form-width {
+  
+  min-width: 440px;
+}
+.my-formal {
+  display: inline-block;
+  max-width: 500px;
+  min-width: 130px;
 }

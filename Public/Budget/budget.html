@@ -4,7 +4,7 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Your Budget: ${{currentUser.budget}}
 				</div>
-				<div class="panel-body" style="background-color: #5f808d">
+				<div class="panel-body" style="background-color: #fff">
 					<div class="panel panel-default">
 						<div class="panel-heading">Pending <p style="float: right">Estimated Budget: ${{currentUser.budget - currentUser.estimatedBudget}}</p>
 						</div>
@@ -20,8 +20,9 @@
 						</div>
 					</div>
 					<div class="panel panel-default">
+
 						<div class="panel-heading">Purchased<i class="fa fa-money fa-2x"></i> <p style="float: right">Current Budget: ${{currentUser.budget - currentUser.purchasedBudget}}</p>
-						</div>
+
 						<div class="panel-body">
 							<ul class="list-group">
 								  <a class="list-group-item" ng-repeat="item in board.boardItems | filter: {purchased: true}"> {{purchasedItem.name}} {{purchasedItem.total}} </a>

@@ -5,16 +5,16 @@
 		   	<div class="l-triangle-bottom"></div>
 			<div class="rectangle">
 				<ul id="navigation">
-					<li><a class="login-route" ui-sref="Login">Login </a></li>
-					<li><p>Forever Planned</p> </li>
-					<li><a class="signup-route" ui-sref="Signup">Signup</a></li>
+					
+					<li><p>Forever Planned</p></li>
+					
 				</ul>
 			</div>
 			<div class="r-triangle-top"></div>
 		    <div class="r-triangle-bottom"></div>
 		</div>
 	</div>
-	<div class="container-fluid">
+	<div class="container-fluid" ng-show="showLogin">
 	<!--  style="background-image: url(http://cache.elizabethannedesigns.com/blog/wp-content/uploads/2013/08/Mr.-and-Mrs.-Chair-Signs-600x400.jpg)"> -->
 		<div class="col-md-4 col-md-offset-4">
 			<div class="panel login-background">
@@ -40,9 +40,49 @@
 					  	</form>
 					</div>	
 				</div>
-				<div class="panel-footer" style="background-color: #fff; border-top: none; text-align: center;">Don't have an account? <a class="signup-route" ui-sref="Signup" style="color: #709704">Sign Up for Forever Planned</a>
+				<div class="panel-footer" style="background-color: #fff; border-top: none; text-align: center;">Don't have an account? <a class="signup-route" ng-click="displaySignup()" style="color: #709704">Sign Up for Forever Planned</a>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<div ng-controller="signupCtrl" ng-show="showSignup" class="container-fluid">
+	<div class="col-md-4  col-md-offset-4 row panel login-background">
+		<div class="panel-heading">
+			<div class="panel-title" style="color:#fff"><h3> Welcome to ForeverPlanned</h3></div>
+		</div>
+		<div class="panel-body login-form" style="color:#fff">
+			<form name="signupForm" novalidate>
+
+			  	<div class="form-group">
+			    	<label>Name</label>
+			    	<input type="text" ng-model="user.name" class="form-control" placeholder="Your Name" requireds>
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label>Email</label>
+			    	<input type="email" ng-model="user.email" class="form-control" placeholder="Enter Email" required>
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label>Password</label>
+			    	<input type="password" ng-model="user.password" class="form-control" placeholder="Enter Password" required>
+			  	</div>
+
+			  	<div class="form-group">
+			    	<label>Password Confirm</label>
+			    	<input type="password" ng-model="user.password2" class="form-control" placeholder="Enter Password Again" required>
+			  	</div>
+
+			  	<button class="btn btn-default btn-block" style="opacity:1; background-color: #ea4677; color: #fff" ng-click="signUp()" ng-disabled="signupForm.$invalid">Sign Up</button>
+
+			</form>
+
+		</div>
+			<div class="panel-footer" style="background-color: #fff; border-top: none; text-align: center;">Have an account? <a class="signup-route" ng-click="displayLogin()" style="color: #709704">Login</a>
+			</div>
+	</div>
+
+
+</div>
 </div>	
