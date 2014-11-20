@@ -1,16 +1,15 @@
-<<<<<<< HEAD
 
-/*#navigation {
-=======
+
+
 button {
   background-color: #EA4677;
   color: white;
 }
 #navigation {
->>>>>>> 03d8ab6364b57d1c004c4c27db3b300e71968b56
-	background-color: #8C8C8C
+
+	/*background-color: #8C8C8C*/
 }
-*/
+
 #navigation li {
 	list-style: none;
 	display: block;
