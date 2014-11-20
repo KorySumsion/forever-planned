@@ -41,6 +41,10 @@ body {
 .invisible-two {
 	height: 3rem;
 }
-.idea-board {
-	
+
+.signout {
+	float: right;
+	color: white;
+	margin-right: 10rem;
+	margin-top: 10rem;
 }
