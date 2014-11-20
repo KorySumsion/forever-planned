@@ -2,7 +2,8 @@ body {
 	min-height: 100%;
 	height: auto;
 	width: 100%;
-	background: url(http://cache.elizabethannedesigns.com/blog/wp-content/uploads/2013/08/Mr.-and-Mrs.-Chair-Signs-600x400.jpg) fixed center center;
+	/*background: url(http://cache.elizabethannedesigns.com/blog/wp-content/uploads/2013/08/Mr.-and-Mrs.-Chair-Signs-600x400.jpg) fixed center center;*/
+	background-image: url(http://1.bp.blogspot.com/-zQzTjKEmEDo/UD5xYi5PgCI/AAAAAAAAHSU/Lu15yYieWzA/s640/natalie-barrett-texas-wedding-079-1.jpeg);
 	background-size: cover;
 }
 
