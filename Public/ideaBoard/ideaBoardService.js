@@ -69,6 +69,7 @@ app.service("ideaBoardService", function($http, $q, authService){
 			url: '/api/updateUser/' + user._id,
 			data: user
 		}).then(function(res){
+			console.log(res.data);
 			authService.setUser(res.data)
 			deferred.resolve(res.data)
 		})

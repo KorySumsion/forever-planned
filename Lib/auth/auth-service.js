@@ -3,10 +3,12 @@ var Promise = require('bluebird');
 
 
 var User = require('../models/userModel');
+var Idea = require('../models/idea')
 
 Promise.promisifyAll(User);
 Promise.promisifyAll(User.prototype);
-
+Promise.promisifyAll(Idea);
+Promise.promisifyAll(Idea.prototype);
 
 
 
@@ -19,9 +21,16 @@ module.exports.findUserByEmail = function(userEmail){
 }
 
 
-module.exports.updateUser = function(userid, obj){
-	//console.log('user id ', userid + ' and ' , obj);
-	return User.findByIdAndUpdateAsync(userid, obj);
+module.exports.updateUser = function(userid, obj, cb){
+	console.log('auth-service line 23user id ', userid + ' and ' , obj);
+	return User.findByIdAndUpdate(userid, obj, function(err, savedUser){
+		console.log("auth-service line 27 savedUser: ", savedUser)
+		if(err){
+			cb(err)
+		}else {
+			cb(null, savedUser);
+		}
+	});
 }
 
 module.exports.getUser = function(userid){

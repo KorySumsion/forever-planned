@@ -1,6 +1,7 @@
 var app = angular.module('wedding');
 
 app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, $rootScope, $state){
+
 	$scope.addItemButton = false;
 	$scope.addItemInput = false;
 	$scope.newBoardTitle = false;
@@ -13,7 +14,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	$scope.activeItem;
 	$scope.activeSave;	
 	$scope.activeSaveButton;
-console.log($scope.currentUser);
+//console.log($scope.currentUser);
 
 
 	var getUser = function(){
@@ -44,40 +45,49 @@ console.log($scope.currentUser);
 	}
 
 
-	$scope.saveBoard = function(board, i){
+	$scope.saveBoard = function(board, i, boardIndex){
 		ideaBoardService.saveBoard(board, $scope.currentUser)
 		.then(function(user){
 			$scope.activeSave = i;
 			$scope.activeSaveButton = false;
-			
-
+			$scope.currentUser = user;
+			saveBoardBudget(user, board, i, boardIndex)
 		});
 		$scope.editRow = false;
+
 		
 
 	};
   
-	$scope.saveBoardBudget = function(board, i, boardIndex){
-		$scope.saveBoard(board, i)
-
+	var saveBoardBudget = function(user, board, i, boardIndex){
+		console.log("user:", user, "board", board, "i", i, "boardIndex:", boardIndex)
 		if(board.boardItems[i].includeBudget){
-			$scope.currentUser.estimatedBudget +=  board.boardItems[i].total
+			user.estimatedBudget +=  board.boardItems[i].total
 			//console.log($scope.currentUser);
 		} else {
-			$scope.currentUser.estimatedBudget -=  board.boardItems[i].total
+			user.estimatedBudget -=  board.boardItems[i].total
 			//console.log($scope.currentUser);
 		}
-
-		ideaBoardService.updateBudget($scope.currentUser).then(function(){
-			getUser();
-		})
+		if(board.boardItems[i].purchased){
+			user.purchasedBudget += board.boardItems[i].total
+		} else {
+			user.purchasedBudget -= board.boardItems[i].total
+		}
+		ideaBoardService.updateBudget(user)
+			 	.then(function(newUser){
+					$scope.currentUser = newUser
+					getUser();
+				})
+		
 	}
 
-	$scope.purchased = function(item){
-		console.log(item);
-		item.purchased = true;
-		$scope.currentUser.purchasedBudget += item.total;
-		ideaBoardService.updateBudget($scope.currentUser);
+
+
+	$scope.purchased = function(bIndex, iIndex, board){
+		console.log(bIndex, iIndex, board);
+		//item.purchased = true;
+		//$scope.currentUser.purchasedBudget += item.total;
+		//ideaBoardService.updateBudget($scope.currentUser);
 	}
 
 	$scope.unPurchase = function(item){

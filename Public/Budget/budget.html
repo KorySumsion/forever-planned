@@ -11,9 +11,9 @@
 						<div class="panel-body">
 							<ul class="list-group">
 				
-								<div ng-repeat="board in boards">
-								  <li class="list-group-item"  ng-repeat="item in board.boardItems | filter: {includeBudget: true, purchased: false}" ng-model="item"> {{item.name}}  ${{item.total}} 
-								<i class="fa fa-level-down fa-2x" ng-click="purchased(item)" style="float: right;"></i></li>
+								<div ng-repeat="(boardIndex, board) in boards">
+								  <li class="list-group-item"  ng-repeat="(itemIndex, item) in board.boardItems | filter: {includeBudget: true, purchased: false}" ng-model="item"> {{item.name}}  ${{item.total}} 
+								<i type='checkbox' class="fa fa-level-down fa-2x" ng-click="purchased(boardIndex, itemIndex, board)" style="float: right;"></i></li>
 							</div>
 							
 							</ul>

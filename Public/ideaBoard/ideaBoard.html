@@ -61,7 +61,7 @@
 			&nbsp;	<b>Qty: <span style='color: #aa3939'>{{item.quantity}}</span></b>
 			&nbsp; <b>Individual Price: <span style='color: #aa3939'> ${{item.price}}</span></b>
 			&nbsp; <b>Total: <span style='color: #aa3939'>${{item.total = item.price * item.quantity || 0}}</span></b>
-			&nbsp; <b> Add To Budget:</b> <input type='checkbox' ng-model='item.includeBudget' ng-click='saveBoardBudget(board, itemIndex, boardIndex)'/>
+			&nbsp; <b> Add To Budget:</b> <input type='checkbox' ng-model='item.includeBudget' ng-click='saveBoard(board, itemIndex, boardIndex)'/>
 
 			<br />
 
