@@ -44,6 +44,7 @@ module.exports.getUser = function(req, res){
 
 
 module.exports.createUser = function(req, res){
+
 	AuthService.createUser(req.body)
 	.then(function(user){
 		res.status(200).send(user)
@@ -58,7 +59,7 @@ module.exports.updateUser = function(req, res) {
 	var id = req.body._id;
 	delete req.body._id 
 	var userUpdate = req.body
-	console.log(userUpdate);
+	console.log("auth-controller line 62", userUpdate);
 	AuthService.updateUser(id, userUpdate)
 	.then(function(user){
 		//console.log(user);
@@ -68,6 +69,8 @@ module.exports.updateUser = function(req, res) {
 		res.send(err);
 	})	
 }
+
+
 
 // module.exports.findUser = function(req, res){
 // 	console.log('req.body ', req.params.userid)

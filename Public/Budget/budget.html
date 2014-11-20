@@ -2,28 +2,29 @@
 <div class="container-fluid">
 	<div class="row">
 			<div class="panel panel-default">
-				<div class="panel-heading">Your Budget: {{budget}}
+				<div class="panel-heading">Your Budget: ${{currentUser.budget}}
 				</div>
 				<div class="panel-body" style="background-color: #5f808d">
 					<div class="panel panel-default">
-						<div class="panel-heading">Pending <p style="float: right">Estimated Budget: ${{estimatedBudget}}</p>
+						<div class="panel-heading">Pending <p style="float: right">Estimated Budget: ${{currentUser.budget - currentUser.estimatedBudget}}</p>
 						</div>
 						<div class="panel-body">
 							<ul class="list-group">
 				
 								<div ng-repeat="board in boards">
-								  <li class="list-group-item"  ng-repeat="item in board.boardItems | filter: {includeBudget: true}" ng-model="item"> {{item.name}}  ${{item.total}} <i class="fa fa-level-down fa-2x" ng-click="purchased(pendingItem)" style="float: right;"></i></li>
+								  <li class="list-group-item"  ng-repeat="item in board.boardItems | filter: {includeBudget: true, purchased: false}" ng-model="item"> {{item.name}}  ${{item.total}} 
+								<i class="fa fa-level-down fa-2x" ng-click="purchased(item)" style="float: right;"></i></li>
 							</div>
 							
 							</ul>
 						</div>
 					</div>
 					<div class="panel panel-default">
-						<div class="panel-heading">Purchased<i class="fa fa-money fa-2x"></i> <p style="float: right">Current Budget: ${{finalTotal}}</p>
+						<div class="panel-heading">Purchased<i class="fa fa-money fa-2x"></i> <p style="float: right">Current Budget: ${{currentUser.budget - currentUser.purchasedBudget}}</p>
 						</div>
 						<div class="panel-body">
 							<ul class="list-group">
-								  <a class="list-group-item" ng-repeat="purchasedItem in purchasedItems"> {{purchasedItem.name}} {{purchasedItem.total}} </a>
+								  <a class="list-group-item" ng-repeat="item in board.boardItems | filter: {purchased: true}"> {{purchasedItem.name}} {{purchasedItem.total}} </a>
 							</ul>
 						</div>
 					</div>

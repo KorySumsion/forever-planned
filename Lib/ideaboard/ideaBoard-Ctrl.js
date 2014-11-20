@@ -29,15 +29,22 @@ module.exports.saveBoard = function(req, res){
 	//console.log(req.params)
 	var id = req.params.userId;
 	var board = req.body;
-	console.log("ideaBoardCtrl line 31 board ", board);
+	//console.log("ideaBoardCtrl line 31 board ", board);
 	ideaBoardService.saveBoard(board, function(err, updatedBoard){
-		console.log("ideaBoardCtrl line 34 board: ", updatedBoard);
-		console.log('ideaboard err ', err)
+		//console.log("ideaBoardCtrl line 34 board: ", updatedBoard);
+		//console.log('ideaboard err ', err)
 		User.findById(id).populate('ideas').exec(function(err, savedUser){
 			if(err){
 				console.log(err)
 			}	else {
-				res.send(savedUser)
+				savedUser.save(function(err){
+					if(err){
+						res.send(err)
+					}else {
+						res.send(savedUser)
+					}
+				})
+				
 			}
 		})
 		
@@ -57,3 +64,4 @@ module.exports.deleteBoard = function(req, res){
 		}
 	})
 }
+

@@ -13,6 +13,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	$scope.activeItem;
 	$scope.activeSave;	
 	$scope.activeSaveButton;
+console.log($scope.currentUser);
 
 
 	var getUser = function(){
@@ -20,8 +21,8 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			ideaBoardService.getUser($scope.currentUser)
 		.then(function(results){
 			$scope.boards = results.ideas.reverse();
-			//$scope.currentUser = results
-			console.log('here all the time')
+			$scope.currentUser = results
+			console.log($scope.currentUser)
 			//$state.reload()
 		})
 		}
@@ -44,18 +45,47 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 
 
 	$scope.saveBoard = function(board, i){
-		//console.log(board)
 		ideaBoardService.saveBoard(board, $scope.currentUser)
-		.then(function(){
+		.then(function(user){
 			$scope.activeSave = i;
 			$scope.activeSaveButton = false;
-			//getUser();
+			
+
 		});
 		$scope.editRow = false;
 		
 
 	};
   
+	$scope.saveBoardBudget = function(board, i, boardIndex){
+		$scope.saveBoard(board, i)
+
+		if(board.boardItems[i].includeBudget){
+			$scope.currentUser.estimatedBudget +=  board.boardItems[i].total
+			//console.log($scope.currentUser);
+		} else {
+			$scope.currentUser.estimatedBudget -=  board.boardItems[i].total
+			//console.log($scope.currentUser);
+		}
+
+		ideaBoardService.updateBudget($scope.currentUser).then(function(){
+			getUser();
+		})
+	}
+
+	$scope.purchased = function(item){
+		console.log(item);
+		item.purchased = true;
+		$scope.currentUser.purchasedBudget += item.total;
+		ideaBoardService.updateBudget($scope.currentUser);
+	}
+
+	$scope.unPurchase = function(item){
+		item.purchased = false;
+		$scope.currentUser.purchasedBudget -= item.total;
+		ideaBoardService.updateBudget($scope.currentUser);
+	}
+
 	$scope.showNewBoard = function(){
 		$scope.newBoardTitle = true;
 
@@ -94,7 +124,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		boardItems.price = boardItems.p;
 		boardItems.quantity = boardItems.q;
 		boardItems.name = boardItems.n;
-		boardItems.includeBudget = false;
 		boardItems.total = boardItems.quantity * boardItems.price;
 		if(!boardItems.total){
 			boardItems.total = 0;
@@ -119,13 +148,8 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		$scope.saved = false;
 	}
 
-	$scope.addToBudget = function(boardItem){
-		console.log(boardItem.includeBudget)
-		$scope.saveButton = true;
-		$scope.saved = false;
-		//getUser();
+	$scope.addToEstBudget = function(total){
+		$scope.estimatedBudget = $scope.budget -= total;
 	}
-
-
 
 })
