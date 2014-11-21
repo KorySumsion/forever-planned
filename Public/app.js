@@ -38,18 +38,18 @@ app.config(function($stateProvider, $urlRouterProvider){
 				controller: "homeCtrl"
 			},
 
-			"ideaBoard@auth.home" : {
-				templateUrl: "ideaBoard/ideaBoard.html",
-				controller: "ideaBoardCtrl"
-			},
-			"todo@auth.home" : {
-				templateUrl: "ToDoList/toDoList.html",
-				controller: "toDoCtrl"
-			},
-			"budget@auth.home" : {
-				templateUrl: "Budget/budget.html",
-				controller: "budgetCtrl"
-			}
+			// "ideaBoard@auth.home" : {
+			// 	templateUrl: "ideaBoard/ideaBoard.html",
+			// 	controller: "ideaBoardCtrl"
+			// },
+			// "todo@auth.home" : {
+			// 	templateUrl: "ToDoList/toDoList.html",
+			// 	controller: "toDoCtrl"
+			// },
+			// "budget@auth.home" : {
+			// 	templateUrl: "Budget/budget.html",
+			// 	controller: "ideaBoardCtrl"
+			// }
 
 
 		}

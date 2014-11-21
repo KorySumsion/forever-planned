@@ -16,7 +16,9 @@ var User = new Schema ({
 	groomList: [{type: String}],
 	brideComplete: [{type: String}],
 	groomComplete: [{type: String}],
-	budget: {type: Number}
+	budget: {type: Number},
+	estimatedBudget: {type: Number, default: 0}, 
+	purchasedBudget: {type: Number, default: 0}
 })
 
 

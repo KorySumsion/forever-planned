@@ -83,7 +83,7 @@ Passport.use(new LocalStrategy(
                         console.log("password not valid")
     					return done(null, false, {message: "Incorrect Email or Password"})
     				} else {
-                         console.log("server.js line 80 ", user)
+                         //console.log("server.js line 80 ", user)
     					return done(null, user);
 
     				}
@@ -138,12 +138,13 @@ app.post('/api/newUser', AuthController.createUser, authenticateUser);
 
 app.put('/api/updateUser/:userId', requireAuth, AuthController.updateUser);
 
-
 app.post('/api/ideaBoard/:userId', requireAuth, ideaBoardCtrl.addBoard);
 
 app.get('/api/user/:userId', requireAuth, AuthController.getUser);
 
 app.put('/api/ideaBoard/:userId', requireAuth, ideaBoardCtrl.saveBoard);
+
+//app.put('/api/user/budget/:userId', requireAuth, AuthController.updateBudget);
 
 app.delete('/api/ideaBoard/:userId/:boardId', requireAuth, ideaBoardCtrl.deleteBoard);
 

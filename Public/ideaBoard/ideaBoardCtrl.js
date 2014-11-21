@@ -1,6 +1,7 @@
 var app = angular.module('wedding');
 
 app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, $rootScope, $state){
+
 	$scope.addItemButton = false;
 	$scope.addItemInput = false;
 	$scope.newBoardTitle = false;
@@ -13,6 +14,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	$scope.activeItem;
 	$scope.activeSave;	
 	$scope.activeSaveButton;
+//console.log($scope.currentUser);
 
 
 	var getUser = function(){
@@ -20,9 +22,9 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			ideaBoardService.getUser($scope.currentUser)
 		.then(function(results){
 			$scope.boards = results.ideas.reverse();
-			//$scope.currentUser = results
-			console.log('here all the time')
-			$state.reload()
+			$scope.currentUser = results
+			console.log($scope.currentUser)
+			//$state.reload()
 		})
 		}
 		
@@ -43,19 +45,57 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	}
 
 
-	$scope.saveBoard = function(board, i){
-		//console.log(board)
+	$scope.saveBoard = function(board, i, boardIndex){
 		ideaBoardService.saveBoard(board, $scope.currentUser)
-		.then(function(){
+		.then(function(user){
 			$scope.activeSave = i;
 			$scope.activeSaveButton = false;
-			$state.reload();
+			$scope.currentUser = user;
+			saveBoardBudget(user, board, i, boardIndex)
 		});
 		$scope.editRow = false;
+
 		
 
 	};
   
+	var saveBoardBudget = function(user, board, i, boardIndex){
+		console.log("user:", user, "board", board, "i", i, "boardIndex:", boardIndex)
+		if(board.boardItems[i].includeBudget){
+			user.estimatedBudget +=  board.boardItems[i].total
+			//console.log($scope.currentUser);
+		} else {
+			user.estimatedBudget -=  board.boardItems[i].total
+			//console.log($scope.currentUser);
+		}
+		if(board.boardItems[i].purchased){
+			user.purchasedBudget += board.boardItems[i].total
+		} else {
+			user.purchasedBudget -= board.boardItems[i].total
+		}
+		ideaBoardService.updateBudget(user)
+			 	.then(function(newUser){
+					$scope.currentUser = newUser
+					getUser();
+				})
+		
+	}
+
+
+
+	$scope.purchased = function(bIndex, iIndex, board){
+		console.log(bIndex, iIndex, board);
+		//item.purchased = true;
+		//$scope.currentUser.purchasedBudget += item.total;
+		//ideaBoardService.updateBudget($scope.currentUser);
+	}
+
+	$scope.unPurchase = function(item){
+		item.purchased = false;
+		$scope.currentUser.purchasedBudget -= item.total;
+		ideaBoardService.updateBudget($scope.currentUser);
+	}
+
 	$scope.showNewBoard = function(){
 		$scope.newBoardTitle = true;
 
@@ -79,13 +119,11 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		return $scope.activeSaveButton === i;
 	}
 
-	$scope.clearBoard = function(boardItems){
+	$scope.clearBoard = function(boardItems, cb, i, board){
 		boardItems.p= ''; 
 		boardItems.q = '';
 		boardItems.n = '';
-		//$scope.activeSaveButton = i;
-		//$scope.activeSave = i;
-		//$scope.addItemInput = i;
+		cb(board, i)
 	}
 	
 
@@ -102,8 +140,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		}
 		$scope.boards[i].boardItems.push(boardItems);
 		
-		cb(boardItems);
-		//getUser();
+		cb(boardItems, $scope.saveBoard, i, $scope.boards[i]);
 	}
 
 	$scope.deleteBoard = function(board){
@@ -119,17 +156,10 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		ideaBoardService.saveBoard(board, $scope.currentUser);
 		$scope.saveButton = true;
 		$scope.saved = false;
-		//getUser();
-		
 	}
 
-	// $scope.addToBudget = function(boardItem){
-	// 	console.log(boardItem.includeBudget)
-	// 	$scope.saveButton = true;
-	// 	$scope.saved = false;
-	// 	//getUser();
-	// }
-
-
+	$scope.addToEstBudget = function(total){
+		$scope.estimatedBudget = $scope.budget -= total;
+	}
 
 })
