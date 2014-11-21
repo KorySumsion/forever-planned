@@ -30,17 +30,6 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url:"/setup/:userId",
 		templateUrl: "/setup/setup.html",
 		controller: "setupCtrl"
-	}).state("groomTodo", {
-		templateUrl: "/ToDoList/groomToDo.html",
-		controller: "toDoCtrl"
-	}).state("Budget", {
-		url: "/budget/:userid",
-		templateUrl: "/Budget/budget.html",
-		controller: "budgetCtrl"
-	}).state("Ideas", {
-		url: "/ideas/:userid",
-		templateUrl: "/ideaBoard/ideaBoard.html",
-		controller: "ideaBoardCtrl"//TODO get rid of Idea, budget and todo's
 	}).state("auth.home", {
 		url: '/home/:userid',
 		views: {
@@ -49,18 +38,18 @@ app.config(function($stateProvider, $urlRouterProvider){
 				controller: "homeCtrl"
 			},
 
-			"ideaBoard@auth.home" : {
-				templateUrl: "ideaBoard/ideaBoard.html",
-				controller: "ideaBoardCtrl"
-			},
-			"todo@auth.home" : {
-				templateUrl: "ToDoList/toDoList.html",
-				controller: "toDoCtrl"
-			},
-			"budget@auth.home" : {
-				templateUrl: "Budget/budget.html",
-				controller: "budgetCtrl"
-			}
+			// "ideaBoard@auth.home" : {
+			// 	templateUrl: "ideaBoard/ideaBoard.html",
+			// 	controller: "ideaBoardCtrl"
+			// },
+			// "todo@auth.home" : {
+			// 	templateUrl: "ToDoList/toDoList.html",
+			// 	controller: "toDoCtrl"
+			// },
+			// "budget@auth.home" : {
+			// 	templateUrl: "Budget/budget.html",
+			// 	controller: "ideaBoardCtrl"
+			// }
 
 
 		}

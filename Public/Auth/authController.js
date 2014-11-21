@@ -11,7 +11,7 @@ app.controller('authCtrl', function($scope, $state, authService, user, $rootScop
 		$scope.$watch(authService.setUser(user), function(){
 
 			$rootScope.currentUser = authService.getUser();
-			console.log($scope.currentUser);
+			//console.log($scope.currentUser);
 
 			
 		})

@@ -12,7 +12,7 @@ app.service('authService', function($http, $q, $cookieStore, $location){
 	};
 
 	this.loginUser = function(userObj){
-		console.log("came here on login?")
+		//console.log("came here on login?")
 		var deferred = $q.defer();
 		$http({
 			method: 'POST',

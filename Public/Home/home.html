@@ -21,13 +21,15 @@
 	<div class="invisible"></div>
 
 
-	<div class="col-md-12 row home-border weird-margin-issues">
+	<div class="col-md-12 row home-border weird-margin-issues" ng-controller="ideaBoardCtrl">
 		
 		<div class="col-md-8">
-			<div ui-view="ideaBoard"></div>
+			<!-- <div ui-view="ideaBoard"></div> -->
+			<div ng-include="'ideaBoard/ideaBoard.html'"></div>
 		</div>
 
 		<div class="col-md-4 ">
+
 	
 				<div class="inner-views" style="margin-bottom: -10px;">
 					<div class="panel wedding-date-panel">
@@ -40,9 +42,12 @@
 					</div>
 				</div>
 
-				<div class="inner-views col-xs-10 col-sm-5 col-md-12" ui-view="budget"></div>
+
+				<!-- <div class="inner-views col-xs-10 col-sm-5 col-md-12" ui-view="budget"></div> -->
+				<div class="inner-views col-xs-10 col-sm-5 col-md-12" ng-include="'Budget/budget.html'"></div>
 				<div class="inner-views invisible-two col-sm-2 col-md-1"></div>
-				<div class="inner-views todo-bottom-margin col-xs-10 col-sm-5 col-md-12" ui-view="todo"></div>
+<!-- 				<div class="inner-views todo-bottom-margin col-xs-10 col-sm-5 col-md-12" ui-view="todo"></div> -->
+				<div class="inner-views todo-bottom-margin col-xs-10 col-sm-5 col-md-12" ng-include="'ToDoList/toDoList.html'" ng-controller="toDoCtrl"></div>
 				
 			
 		</div>

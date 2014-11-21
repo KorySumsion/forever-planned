@@ -52,11 +52,33 @@ app.service("ideaBoardService", function($http, $q, authService){
 			data: {user: user, board: board}
 		}).then(function(res){
 			authService.setUser(res.data);
-			authService.getUser();
+			//authService.getUser();
 			console.log(res.data)
 
 			deferred.resolve(res.data)
 		})
 		return deferred.promise;
+
 	}
+
+	this.updateBudget = function(user){
+		console.log(user);
+		var deferred = $q.defer();
+		$http({
+			method: 'PUT',
+			url: '/api/updateUser/' + user._id,
+			data: user
+		}).then(function(res){
+			console.log(res.data);
+			authService.setUser(res.data)
+			deferred.resolve(res.data)
+		})
+		return deferred.promise;
+	}
+
+
+
+
+
+
 })
