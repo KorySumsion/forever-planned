@@ -6,94 +6,143 @@
 	</div>
 
 	<div class="input-group add-board" ng-show="newBoardTitle">
-		<input class="form-control" type="text" placeholder="Insert New Title" ng-model="board.title"  />
+		<input ng-model="hello" class="form-control" type="text" placeholder="Insert New Title"/>
 		<span class="input-group-btn">
-		<button class="btn" ng-click="addBoard()">Add Board</button>
+			<button class="btn" ng-click="addBoard()">Add Board</button>
 		</span>
+
 	</div>
 	<div class="row">
 	<div class="col-md-6 offset-5">
-	<div class="idea-board" ng-repeat="(boardIndex, board) in boards">
+
+	<div class="idea-board" ng-repeat="(boardIndex, board) in boards track by $index">
+		
 		<div class="list-group">
 			<li class="list-group-item idea-board-ind">
 				<p class="board-title">{{board.title}}</p>
-				
+				<!-- {{board}} {{boards}} -->
 				<button class="btn add-button-position" ng-click="showItemInput($index)">Add Item</button>
 			</li>
+		
 			<div ng-show="addItemInput($index)">
-			<form class="input-group">
-				<input class="form-control" type="text" placeholder="New Item" ng-model="boardItems.n"/>
-				<span class="input-group-btn">
-				<button class="btn" ng-click="itemQty = !itemQty"><i class="fa fa-plus"></i></button>
-				</span>
-			</form>
-			
+				<form class="input-group">
+					<input class="form-control" type="text" placeholder="New Item" ng-model="name"/>
+					<span class="input-group-btn">
+					<button class="btn" ng-click="itemQty = !itemQty"><i class="fa fa-plus"></i></button>
+					</span>
+				</form>
+			</div>
+
 			
 			
 			<div ng-show="itemQty">
-			<form class="input-group">
-				<input class="form-control" type="number" placeholder="How Many?" ng-model="boardItems.q"/>
-				<span class="input-group-btn">
-				<button class="btn" ng-click="itemPrice = !itemPrice"><i class="fa fa-plus"></i></button>
-				</span>
-			</form>
+				<form class="input-group">
+					<input class="form-control" type="number" placeholder="How Many?" ng-model="quantity"/>
+					<span class="input-group-btn">
+					<button class="btn" ng-click="itemPrice = !itemPrice"><i class="fa fa-plus"></i></button>
+					</span>
+				</form>
 			
 			</div> 
 
 			<div ng-show="itemPrice">
-			<form class="input-group">
-				<input class="form-control" type="number" placeholder="Indiviual Price" ng-model="boardItems.p" novalidate/>
-				<span class="input-group-btn">
+				<form class="input-group">
+					<input class="form-control" type="number" placeholder="Individual Price" ng-model="price" novalidate/>
+					<span class="input-group-btn">
 
-				<button class="btn" ng-click="addToList($index, boardItems, clearBoard)"><i class="fa fa-plus"></i></button>
+					<button class="btn" ng-click="addToList($index, board, clearBoard, name, price, quantity)"><i class="fa fa-plus"></i></button>
 
-				</span>
-			</form>
+					</span>
+				</form>
 			
-			</div> 
-			</div> 
-
-			<div ng-repeat="(itemIndex, item) in board.boardItems track by $index">
-			<p class="list-group-item" ng-model="board.boardItems"> 
-
-
-			<b>Item: <span style="color: #aa3939">{{item.name}}</span></b>
-			&nbsp;	<b>Qty: <span style='color: #aa3939'>{{item.quantity}}</span></b>
-			&nbsp; <b>Individual Price: <span style='color: #aa3939'> ${{item.price}}</span></b>
-			&nbsp; <b>Total: <span style='color: #aa3939'>${{item.total = item.price * item.quantity || 0}}</span></b>
-			&nbsp; <b> Add To Budget:</b> <input type='checkbox' ng-model='item.includeBudget' ng-click='saveBoard(board, itemIndex, boardIndex)'/>
-
-			<br />
-
-			<button class="btn" ng-click="deleteRow($index, board)" >Delete</button>
-			<button class='btn' ng-click='editRow = !editRow'>Edit</button>
-			
-
-		
-			</p>
-			<p ng-show="editRow">
-			<input type='text'  ng-model='item.name' placeholder='Edit Name' />
-			<input type='number'  ng-model='item.quantity' placeholder='Edit Quantity' />
-			<input type='number'  ng-model='item.price' placeholder='Edit Price' />
-			<button class='btn btn-group-sm'  ng-click="editRow = !editRow">Done</button>
-			</p>
-			
-
 			</div>
+
+
+
+
+		</div>
+			
+			<div class="list-group-items" ng-repeat="item in board.boardItems">
+				
+
+				<p class="list-group-item" ng-model="board.boardItems"> 
+					
+					<b>Item: <span style="color: #aa3939">{{item.name}}</span></b>
+					&nbsp;	<b>Qty: <span style='color: #aa3939'>{{item.quantity}}</span></b>
+					&nbsp; <b>Individual Price: <span style='color: #aa3939'> ${{item.price}}</span></b>
+					&nbsp; <b>Total: <span style='color: #aa3939'>${{item.total = item.price * item.quantity || 0}}</span></b>
+					&nbsp; <b> Add To Budget:</b> <input type='checkbox' ng-model='item.includeBudget' ng-click='saveBoardBudget(board, item)'/>
+
+					<br />
+
+					<button class="btn" ng-click="deleteRow($index, item, board)" >Delete</button>
+					<button class='btn' ng-click='editRow = !editRow'>Edit</button>
+					
+					<p ng-show="editRow">
+					<input type='text'  ng-model='editName' placeholder='Edit Name' />
+					<input type='number'  ng-model='editQuantity' placeholder='Edit Quantity' />
+					<input type='number'  ng-model='editPrice' placeholder='Edit Price' />
+					<button class='btn btn-group-sm'  ng-click="saveEditedItem(board, item, editName, editQuantity, editPrice)">Done</button>
+				</p>
+				
+				</p>
+			</div>
+	
+			
 			<div class="list-group-item idea-board-ind">
-			<span style='color: white' ng-show='saved($index)'>SAVED!</span>
+				<span style='color: white' ng-show='saved($index)'>SAVED!</span>
 
-			<button class="btn save-icon" ng-click="saveBoard(board, itemIndex, boardIndex)" ng-show="saveButton($index)"><i class="fa fa-floppy-o font-icon-size "></i></button>
-			<button class="btn btn-warning" ng-click="deleteBoard(board)"><i class="fa fa-trash-o font-icon-size"></i></button>
+				<button class="btn save-icon" ng-click="saveBoard(board, itemIndex, boardIndex)" ng-show="saveButton($index)"><i class="fa fa-floppy-o font-icon-size "></i></button>
+				<button class="btn btn-warning" ng-click="deleteBoard(board)"><i class="fa fa-trash-o font-icon-size"></i></button>
 			</div>
-		</div>
+			
 
-
-						
-			</div>
-			</div>
-		</div>
 
 	</div>
 
+
+						
+	</div>
+</div>
+		
+
+
+<div class="container-fluid budget-div">
+	<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">Your Budget: ${{currentUser.budget}}
+				</div>
+				<div class="panel-body" style="background-color: #fff">
+					<div class="panel panel-default">
+						<div class="panel-heading">Pending <p style="float: right">Estimated Spending: ${{currentUser.estimatedBudget}}</p>
+						</div>
+						<div class="panel-body">
+							<ul class="list-group">
+				
+								<div ng-repeat="(boardIndex, board) in boards">
+								  <li class="list-group-item"  ng-repeat="(itemIndex, item) in board.boardItems | filter: {includeBudget: true, purchased: false}" ng-model="item"> {{item.name}}  ${{item.total}} 
+								<i type='checkbox' class="fa fa-level-down fa-2x" ng-click="purchased(item, boardIndex, itemIndex, board)" style="float: right;"></i></li>
+							</div>
+							
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+
+						<div class="panel-heading">Purchased <p style="float: right">Leftover Budget: ${{currentUser.budget + currentUser.purchasedBudget}}</p>
+
+						<div class="panel-body">
+							<ul class="list-group">
+								<div ng-repeat= "(boardIndex, board) in boards">
+								  <li class="list-group-item" ng-repeat="item in board.boardItems | filter: {purchased: true}"> {{item.name}} ${{item.total}} 
+								  	<i type='checkbox' class="fa fa-trash" ng-click="unPurchase(item, board)" style="float: right;"></i></li>
+
+								</div>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
 

@@ -76,7 +76,17 @@ app.service("ideaBoardService", function($http, $q, authService){
 		return deferred.promise;
 	}
 
-
+	// this.updateItem = function(item){
+	// 	var deferred = $q.defer();
+	// 	$http({
+	// 		method: 'PUT',
+	// 		url: ,
+	// 		data: item
+	// 	}).then(function(res){
+	// 		return deferred.resolve(res.data)
+	// 	})
+	// 	return deferred.promise;
+	//}
 
 
 

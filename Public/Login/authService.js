@@ -50,7 +50,18 @@ app.service('authService', function($http, $q, $cookieStore, $location){
 		}
 	};
 
-	
+	this.updateUser = function(user){
+		var deferred = $q.defer();
+		$http({
+			method: 'PUT',
+			url: '/api/updateUser/' + user._id,
+			data: user
+		}).then(function(res){
+
+			return deferred.resolve(res.data);
+		})
+		return deferred.promise;
+	}
 
 	// this.getUser = function(user){
 	// 	if(user){
