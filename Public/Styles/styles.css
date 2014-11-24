@@ -1,4 +1,9 @@
 
+@media only screen and (min-device-width : 320px) and (max-device-width : 767px) {
+  .budget-div {
+    margin-left:0rem;  
+  }
+}
 
 button {
   background-color: #EA4677;
@@ -118,6 +123,12 @@ button {
   color: #e0a811;
 }
 
+.budget-title {
+  margin-bottom: 5rem;
+  font-family: cursive;
+  color: #e0a811;
+}
+
 .font-icon-size {
   font-size: 20px;
 }
@@ -147,14 +158,12 @@ button {
   max-width: 453px;
 }
 
-.cork-background {
- /* background-size: contain;
-  background-image: url("http://localhost:9999/ideaBoard/cork.jpg");*/
-}
 
 
 .budget-div {
-  width: 60rem;
+  width: 54rem;
+  margin-left: -10rem;
+
 }
 
 
