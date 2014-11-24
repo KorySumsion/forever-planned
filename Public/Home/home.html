@@ -21,16 +21,10 @@
 	<div class="invisible"></div>
 
 
-	<div class="col-md-12 row home-border weird-margin-issues">
-		
-		<div class="col-md-8">
-			<div ui-view="ideaBoard"></div>
-			
-		</div>
+	<div class="col-md-12 home-border weird-margin-issues">
 
-		<div class="col-md-4 ">
+		<div class="col-md-offset-4 col-md-4">
 
-	
 				<div class="inner-views" style="margin-bottom: -10px;">
 					<div class="panel wedding-date-panel">
 						<div style="padding: 5px 15px 0px 15px;">
@@ -40,14 +34,16 @@
 								<span id="countdown"></span>
 						</div>
 					</div>
-				</div>
+				</div>				
+		</div>
+		
+		<div class="col-md-12">
+			<div ui-view="ideaBoard"></div>
+		</div>
 
+		<div class="inner-views todo-bottom-margin">
 
-				
-				<div class="inner-views todo-bottom-margin col-xs-10 col-sm-5 col-md-12" ui-view="todo"></div>
-				
-				
-			
+			<div class="col-md-offset-8 col-md-4" ui-view="todo"></div>
 		</div>
 	
 	</div>
