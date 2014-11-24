@@ -1,4 +1,17 @@
 
+
+button {
+  background-color: #EA4677;
+  color: white;
+}
+#navigation {
+
+
+	background-color: #8C8C8C
+
+}
+
+
 #navigation li {
 	list-style: none;
 	display: block;
@@ -143,3 +156,10 @@
  /* background-size: contain;
   background-image: url("http://localhost:9999/ideaBoard/cork.jpg");*/
 }
+
+
+.budget-div {
+  width: 60rem;
+}
+
+

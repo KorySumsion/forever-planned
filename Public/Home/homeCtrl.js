@@ -13,7 +13,7 @@ app.controller('homeCtrl', function($scope, $cookieStore, $window, $state, $loca
 	}
 
 		var theDate = new Date($scope.currentUser.weddingDate).getTime();
-		console.log(theDate);
+		//console.log(theDate);
 		var days, hours, minutes, seconds;
 		var countdown = document.getElementById("countdown");
 

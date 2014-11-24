@@ -8,7 +8,7 @@ Promise.promisifyAll(Idea.prototype)
 module.exports.addBoard = function(idea){
 	console.log("ideaBoard-service idea: ", idea)
 	return new Idea(idea).saveAsync().then(function(savedIdea){
-		console.log(savedIdea);
+		//console.log(savedIdea);
 		return savedIdea;
 	})
 }
@@ -17,7 +17,7 @@ module.exports.saveBoard = function(board, cb){
 	boardid = board._id;
 	delete board._id;
 	return Idea.findByIdAndUpdate(boardid, board, function(err, savedBoard){
-		console.log('savedBoard in ideaBoard-service ', savedBoard)
+		//console.log('savedBoard in ideaBoard-service ', savedBoard)
 		if(!err){
 			cb(null, savedBoard)
 		} else {
