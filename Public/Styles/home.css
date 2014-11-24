@@ -6,7 +6,6 @@
 body {
 	background-image: url(http://1.bp.blogspot.com/-zQzTjKEmEDo/UD5xYi5PgCI/AAAAAAAAHSU/Lu15yYieWzA/s640/natalie-barrett-texas-wedding-079-1.jpeg);
 	background-size: cover;
-	overflow-x: none;
 
 }
 
@@ -27,10 +26,6 @@ body {
 }
 
 
-/*.home-border {
-	
-	border: 2px solid rgb(224, 168, 17);
-}*/
 
 .wedding-date-panel {
 	background-color: rgba(0,0,0,0);

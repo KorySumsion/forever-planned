@@ -13,9 +13,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	$scope.activeSaveButton;
 	$scope.activeQty;
 	$scope.activePrice;
-	// $scope.quantity;
-	// $scope.price;
-	// $scope.name;
+
 
 	$scope.newBoard = {};
 
@@ -25,12 +23,12 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		if($scope.currentUser){
 			ideaBoardService.getUser($scope.currentUser)
 		.then(function(results){
-			//console.log('results ', results)
+			
 			$scope.boards = results.ideas.reverse();
 			
 			$scope.items = results.ideas
 			$scope.currentUser = results
-			//console.log($scope.currentUser)
+			
 		})
 		}
 		
@@ -38,10 +36,9 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	getUser();
 	
 	$scope.addBoard = function(){
-		//$scope.board.title.toUpperCase();
-		//console.log($scope.hello)
+		
 		$scope.newBoard.title = $scope.hello.toUpperCase();
-		//console.log($scope.board.title);
+		
 		ideaBoardService.addBoard($scope.newBoard, $scope.currentUser)
 		.then(function(results){
 			console.log("the Results ", results)
@@ -94,17 +91,12 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			})
 		});
 	};
-	
-	// $scope.clearBoard = function(){
-	// 	$scope.price = ''; 
-	// 	$scope.quantity[1] = '';
-	// 	$scope.name[1] = '';
-	// }
 
 
-  /*WORKING RIGHT HERE ON EDITSSSS!!!! Our button issue might be event bubbling issue on the DOM*/
+
+  
 	$scope.saveBoardBudget = function(board, item){
-		console.log("board", board, "item", item)
+		//console.log("board", board, "item", item)
 
 
 		if(item.includeBudget === true){
@@ -122,25 +114,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 
 
 		}
-
-		//console.log($scope.currentUser)
-		// if(board.boardItems[i].includeBudget){
-		// 	user.estimatedBudget +=  board.boardItems[i].total
-		// 	//console.log($scope.currentUser);
-		// } else {
-		// 	user.estimatedBudget -=  board.boardItems[i].total
-		// 	//console.log($scope.currentUser);
-		// }
-		// if(board.boardItems[i].purchased){
-		// 	user.purchasedBudget += board.boardItems[i].total
-		// } else {
-		// 	user.purchasedBudget -= board.boardItems[i].total
-		// }
-		// ideaBoardService.updateBudget(user)
-		// 	 	.then(function(newUser){
-		// 			$scope.currentUser = newUser
-		// 			getUser();
-		// 		})
 		
 	}
 
@@ -265,8 +238,6 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			$scope.saveBoard(board);
 		}
 
-		// $scope.saveButton = true;
-		// $scope.saved = false;
 	}
 
 	$scope.addToEstBudget = function(total){
