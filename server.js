@@ -111,8 +111,8 @@ var authenticateUser = function(req, res, next){
 var requireAuth = function(req, res, next){
     
     if(!req.isAuthenticated()){
-
-        return res.status(401).end();
+        next();
+        //return res.status(401).end();
 
     } else {
        next(); 
