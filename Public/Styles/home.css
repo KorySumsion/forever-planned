@@ -6,6 +6,7 @@
 body {
 	background-image: url(http://1.bp.blogspot.com/-zQzTjKEmEDo/UD5xYi5PgCI/AAAAAAAAHSU/Lu15yYieWzA/s640/natalie-barrett-texas-wedding-079-1.jpeg);
 	background-size: cover;
+	overflow-x: none;
 
 }
 
@@ -22,6 +23,7 @@ body {
 .weird-margin-issues {
 	margin-top: -10rem;
 	background-color: rgba(0,0,0,0.7);
+	padding-bottom: 10rem;
 }
 
 
