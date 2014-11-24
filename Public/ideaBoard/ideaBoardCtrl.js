@@ -8,15 +8,14 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	$scope.itemQty = false;
 	$scope.itemPrice = false;
 	$scope.editRow = false;
-	//$scope.saveButton = true;
-	//$scope.saved = false;
-	
 	$scope.activeItem;
 	$scope.activeSave;	
 	$scope.activeSaveButton;
-	$scope.quantity;
-	$scope.price;
-	$scope.name;
+	$scope.activeQty;
+	$scope.activePrice;
+	// $scope.quantity;
+	// $scope.price;
+	// $scope.name;
 
 	$scope.newBoard = {};
 
@@ -26,12 +25,12 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		if($scope.currentUser){
 			ideaBoardService.getUser($scope.currentUser)
 		.then(function(results){
-			console.log('results ', results)
+			//console.log('results ', results)
 			$scope.boards = results.ideas.reverse();
 			
 			$scope.items = results.ideas
 			$scope.currentUser = results
-			console.log($scope.currentUser)
+			//console.log($scope.currentUser)
 		})
 		}
 		
@@ -40,7 +39,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	
 	$scope.addBoard = function(){
 		//$scope.board.title.toUpperCase();
-		console.log($scope.hello)
+		//console.log($scope.hello)
 		$scope.newBoard.title = $scope.hello.toUpperCase();
 		//console.log($scope.board.title);
 		ideaBoardService.addBoard($scope.newBoard, $scope.currentUser)
@@ -53,7 +52,28 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			$scope.newBoardTitle = false;
 		})
 	}
+	$scope.addToList = function(i, board, n, p, q){
+		var newItem = {
+			name: n[i],
+			price: p[i],
+			quantity: q[i],
+		}
 
+		if(!p || !q){
+			newItem.total = 0;
+		} else {
+			newItem.total = q * p;
+		}
+		//when the newidea get's pushed I think it somehow gets confused and adds a title . . 
+		board.boardItems.push(newItem);
+		
+		$scope.saveBoard(board, i);
+		n[i] = '';
+		p[i] = '';
+		q[i] = '';
+
+		
+	}
 	//TODO: not passing i . . . to change active save. Right now, it's reloading
 	$scope.saveBoard = function(board, i){
 
@@ -62,24 +82,24 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		then(function(res){
 			ideaBoardService.saveBoard(board, $scope.currentUser)
 			.then(function(user){
-				console.log(user)
 				$scope.currentUser = user;
 				$scope.boards = user.ideas.reverse();
 				//$scope.activeSave = i;
 				//$scope.activeSaveButton = false;
 				$scope.editRow = false;
-
-				
-				
-
+				$scope.activeQty = false;
+				$scope.activePrice = false;
+				$scope.activeItem = false;
+			
 			})
-			//$state.reload
 		});
-		
-		
-
 	};
-
+	
+	// $scope.clearBoard = function(){
+	// 	$scope.price = ''; 
+	// 	$scope.quantity[1] = '';
+	// 	$scope.name[1] = '';
+	// }
 
 
   /*WORKING RIGHT HERE ON EDITSSSS!!!! Our button issue might be event bubbling issue on the DOM*/
@@ -199,41 +219,23 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		return $scope.activeSaveButton === i;
 	}
 
-	$scope.clearBoard = function(board, cb, i){
-		// $scope.price = ''; 
-		// $scope.quantity = '';
-		// $scope.name = '';
-		cb(board, i)
+
+	$scope.showQty = function(i){
+		$scope.activeQty = i;
 	}
+	$scope.itemQty = function(i){
+		return $scope.activeQty === i;
+	}
+
+	$scope.showPrice = function(i){
+		$scope.activePrice = i;
+	}
+
+	$scope.itemPrice = function(i){
+		return $scope.activePrice === i;
+	}
+
 	
-
-	$scope.addToList = function(i, board, cb, n, p, q){
-		
-		$scope.activeSaveButton = i;
-		$scope.activeSave = false;
-		
-		var newItem = {
-			name: n,
-			price: p,
-			quantity: q,
-		}
-
-		if(!p || !q){
-			newItem.total = 0;
-		} else {
-			newItemTotal = q * p;
-		}
-		//when the newidea get's pushed I think it somehow gets confused and adds a title . . 
-		board.boardItems.push(newItem);
-		console.log('the board ', board)
-		
-		
-		cb(board, $scope.saveBoard, i);
-		n = ''
-		p = ''
-		q = ''
-	}
-
 	$scope.deleteBoard = function(board){
 		console.log(board)
 		ideaBoardService.deleteBoard(board, $scope.currentUser).then(function(){
@@ -242,7 +244,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 	}
 
 	$scope.deleteRow = function(i, item, board){
-		console.log(i, item, board)
+		//console.log(i, item, board)
 
 		if(item.includeBudget === true && item.purchased === false){
 			$scope.currentUser.estimatedBudget -= item.total
@@ -258,7 +260,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			$scope.saveBoard(board);
 		} else {
 			board.boardItems.splice(i, 1);
-			console.log('deleted? ', board)
+			//console.log('deleted? ', board)
 
 			$scope.saveBoard(board);
 		}
