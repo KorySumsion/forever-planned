@@ -1,21 +1,10 @@
-<<<<<<< HEAD
 
-/*#navigation {
-=======
-button {
-  background-color: #EA4677;
-  color: white;
-}
-#navigation {
->>>>>>> 03d8ab6364b57d1c004c4c27db3b300e71968b56
-	background-color: #8C8C8C
-}
-*/
 #navigation li {
 	list-style: none;
 	display: block;
 	/*float: left;*/
 	/*margin: 1em;*/
+
 }
 
 #navigation li p{
@@ -25,14 +14,13 @@ button {
         color: #f0f0f0;
         font-size: 2.8em;
         margin: -.25em 3.3em;
-        text-align: center;
+        padding-left: 157px;
         font-family: cursive;
+        width: 100%;
 }
 
 #navigation a {
 	color: white;
-	text-align: center;
-
 }
 
 
@@ -133,7 +121,7 @@ button {
 
 .board-title {
   display: inline-block;
-  color: black;
+  color: white;
   font-size: 25px;
   font-family: cursive;
 

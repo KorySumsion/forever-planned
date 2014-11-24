@@ -4,7 +4,8 @@
 
 
 <div class="container setup-font">
-
+<div class="row">
+<div class="col-md-10 col-md-offset-1 col-xs-10 col-xs-offset-1">
 	<div id="navigation_container">
 	 <div class="l-triangle-top"></div>
 	   <div class="l-triangle-bottom"></div>
@@ -17,9 +18,11 @@
 		<div class="r-triangle-top"></div>
 	    <div class="r-triangle-bottom"></div>
 	</div>
+</div>
+</div>
 
 	<div class="row clearfix">
-		<div class="col-md-6 col-sm-10 col-md-offset-3 col-sm-offset-1" ng-init="showStep1()">
+		<div class="col-md-6 col-sm-10 col-xs-12 col-md-offset-3 col-sm-offset-1" ng-init="showStep1()">
 			<div class="panel goRight" style="background-color: #5F808D;" ng-show="step1">
 
 				<div class="panel-heading">
@@ -28,12 +31,12 @@
 				
 				<div class="panel-body">
 					<form class="form" role="form">
-						<div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1">
+						<div class="col-md-5 col-md-offset-1 col-sm-5 col-sm-offset-1 col-xs-5 col-xs-offset-1">
 							<div class="form-group input-group-lg">
 							  	<input type="text" class="form-control" placeholder="Mrs.Her" ng-model="currentUser.bride">	
 						    </div>
 						</div>
-						<div class="col-md-5 col-sm-5">
+						<div class="col-md-5 col-sm-5 col-xs-5">
 						    <div class="form-group input-group-lg">
 	    						<input type="text" class="form-control" placeholder="Mr.Him" ng-model="currentUser.groom">
 	 						</div>
@@ -41,7 +44,7 @@
 								skip setup
 							</div>
 	 					</div>
-	 					<div class="col-md-1 col-sm-1">	
+	 					<div class="col-md-1 col-sm-1 col-xs-1">	
 	 						<div class="goRight" style="float: right; font-size: 62px; cursor: pointer; margin-top: -27px;" ng-click="showStep2()"> >
 							</div>
 						</div>
@@ -51,7 +54,7 @@
 			</div>
 		</div>
 
-		<div class="col-md-6 col-md-offset-3">			
+		<div class="col-md-6 col-sm-10 col-xs-12 col-md-offset-3 col-sm-offset-1">			
 			<div class="panel {{oneD}}" style="background-color: #5F808D;" ng-show="step2">
 
 				<div class="panel-heading">
@@ -59,16 +62,16 @@
 				</div>
 
 				<div class="panel-body">	
-					<div class="col-md-1">
+					<div class="col-md-1 col-xs-1">
 						<div ng-click="goToNames()" style="float: left; font-size: 62px; margin-top: -27px; cursor: pointer;"> <
 						</div>
 					</div>
-					<div class="col-md-6 col-md-offset-2">
+					<div class="col-md-6 col-md-offset-2 col-xs-8 col-xs-offset-1">
 						<form class="form input-group-lg" role="form">
 	                    	<input type='date' class=" form-control" style="margin-left: none;" ng-model="currentUser.weddingDate">
 	                    </form>
                     </div>
-                    <div class="col-md-1 col-md-offset-2">
+                    <div class="col-md-1 col-md-offset-2 col-xs-1 col-xs-offset-1">
                 		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -27px; cursor: pointer;" ng-click="showStep3()"> >
 						</div>
 					</div>
@@ -76,19 +79,25 @@
 			</div>
 		</div>
 
-		<div class="col-md-6 col-md-offset-3">			
+		<div class="col-md-6 col-sm-10 col-xs-12 col-md-offset-3 col-sm-offset-1">			
 			<div class="panel {{stepD}}" style="background-color: #5F808D;" ng-show="step3">
 				<div class="panel-heading">
 					<h4 class="panel-title text-center">$ Budget $</h4>
 				</div>
 				<div class="panel-body" style="text-align: center;">
-					<form class="form-inline input-group-lg" role="form">
+					<div class="col-md-1 col-xs-1">					
 						<div ng-click="goToDate()" style="float: left; font-size: 62px; margin-top: -27px; cursor: pointer;"> <
 						</div>
+					</div>
+					<div class="col-md-6 col-md-offset-2 col-xs-8 col-xs-offset-1">
+						<form class="input-group-lg" role="form">
                     	<input type='text' class="form-control" style="margin-left: none;" ng-model="currentUser.budget" placeholder="$$$$$">
+                    	</form>
+                    </div>
+                    <div class="col-md-1 col-md-offset-2 col-xs-1 col-xs-offset-1">
                 		 <div class="goRight" style="float: right; font-size: 62px; margin-top: -27px; cursor: pointer;" ng-click="addWedInfo()"> >
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
