@@ -28,31 +28,31 @@
 		
 			<div ng-show="addItemInput($index)">
 				<form class="input-group">
-					<input class="form-control" type="text" placeholder="New Item" ng-model="name"/>
+					<input class="form-control" type="text" placeholder="New Item" ng-model="name[$index]"/>
 					<span class="input-group-btn">
-					<button class="btn" ng-click="itemQty = !itemQty"><i class="fa fa-plus"></i></button>
+					<button class="btn" ng-click="showQty($index)"><i class="fa fa-plus"></i></button>
 					</span>
 				</form>
 			</div>
 
 			
 			
-			<div ng-show="itemQty">
+			<div ng-show="itemQty($index)">
 				<form class="input-group">
-					<input class="form-control" type="number" placeholder="How Many?" ng-model="quantity"/>
+					<input class="form-control" type="number" placeholder="How Many?" ng-model="quantity[$index]"/>
 					<span class="input-group-btn">
-					<button class="btn" ng-click="itemPrice = !itemPrice"><i class="fa fa-plus"></i></button>
+					<button class="btn" ng-click="showPrice($index)"><i class="fa fa-plus"></i></button>
 					</span>
 				</form>
 			
 			</div> 
 
-			<div ng-show="itemPrice">
+			<div ng-show="itemPrice($index)">
 				<form class="input-group">
-					<input class="form-control" type="number" placeholder="Individual Price" ng-model="price" novalidate/>
+					<input class="form-control" type="number" placeholder="Individual Price" ng-model="price[$index]" novalidate/>
 					<span class="input-group-btn">
 
-					<button class="btn" ng-click="addToList($index, board, clearBoard, name, price, quantity)"><i class="fa fa-plus"></i></button>
+					<button class="btn" ng-click="addToList($index, board, name, price, quantity)"><i class="fa fa-plus"></i></button>
 
 					</span>
 				</form>
@@ -64,7 +64,7 @@
 
 		<!-- </div> -->
 			
-			<li class="list-group-items" ng-repeat="item in board.boardItems">
+			<li class="list-group-items" ng-repeat="item in board.boardItems track by $index">
 				
 
 				<div class="list-group-item" ng-model="board.boardItems"> 
@@ -92,9 +92,9 @@
 	
 			
 			<li class="list-group-item idea-board-ind">
-				<span style='color: white' ng-show='saved($index)'>SAVED!</span>
+				<!-- <span style='color: white' ng-show='saved($index)'>SAVED!</span> -->
 
-				<button class="btn save-icon" ng-click="saveBoard(board, itemIndex, boardIndex)" ng-show="saveButton($index)"><i class="fa fa-floppy-o font-icon-size "></i></button>
+				<!-- <button class="btn save-icon" ng-click="saveBoard(board, itemIndex, boardIndex)" ng-show="saveButton($index)"><i class="fa fa-floppy-o font-icon-size "></i></button> -->
 				<button class="btn btn-warning" ng-click="deleteBoard(board)"><i class="fa fa-trash-o font-icon-size"></i></button>
 			</li>
 			
