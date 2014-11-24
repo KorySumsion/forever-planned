@@ -17,12 +17,12 @@
 
 	<div class="idea-board" ng-repeat="(boardIndex, board) in boards track by $index">
 		
-		<div class="list-group">
+		<ul class="list-group">
 			<li class="list-group-item idea-board-ind">
 				<p class="board-title">{{board.title}}</p>
-				<!-- {{board}} {{boards}} -->
 				<button class="btn add-button-position" ng-click="showItemInput($index)">Add Item</button>
 			</li>
+
 		
 			<div ng-show="addItemInput($index)">
 				<form class="input-group">
@@ -60,12 +60,12 @@
 
 
 
-		</div>
+		<!-- </div> -->
 			
-			<div class="list-group-items" ng-repeat="item in board.boardItems">
+			<li class="list-group-items" ng-repeat="item in board.boardItems">
 				
 
-				<p class="list-group-item" ng-model="board.boardItems"> 
+				<div class="list-group-item" ng-model="board.boardItems"> 
 					
 					<b>Item: <span style="color: #aa3939">{{item.name}}</span></b>
 					&nbsp;	<b>Qty: <span style='color: #aa3939'>{{item.quantity}}</span></b>
@@ -79,26 +79,26 @@
 					<button class='btn' ng-click='editRow = !editRow'>Edit</button>
 					
 					<p ng-show="editRow">
-					<input type='text'  ng-model='editName' placeholder='Edit Name' />
-					<input type='number'  ng-model='editQuantity' placeholder='Edit Quantity' />
-					<input type='number'  ng-model='editPrice' placeholder='Edit Price' />
-					<button class='btn btn-group-sm'  ng-click="saveEditedItem(board, item, editName, editQuantity, editPrice)">Done</button>
-				</p>
+						<input type='text'  ng-model='editName' placeholder='Edit Name' />
+						<input type='number'  ng-model='editQuantity' placeholder='Edit Quantity' />
+						<input type='number'  ng-model='editPrice' placeholder='Edit Price' />
+						<button class='btn btn-group-sm'  ng-click="saveEditedItem(board, item, editName, editQuantity, editPrice)">Done</button>
+					</p>
 				
-				</p>
-			</div>
+				</div>
+			</li>
 	
 			
-			<div class="list-group-item idea-board-ind">
+			<li class="list-group-item idea-board-ind">
 				<span style='color: white' ng-show='saved($index)'>SAVED!</span>
 
 				<button class="btn save-icon" ng-click="saveBoard(board, itemIndex, boardIndex)" ng-show="saveButton($index)"><i class="fa fa-floppy-o font-icon-size "></i></button>
 				<button class="btn btn-warning" ng-click="deleteBoard(board)"><i class="fa fa-trash-o font-icon-size"></i></button>
-			</div>
+			</li>
 			
 
 
-	</div>
+	</ul>
 
 
 						
