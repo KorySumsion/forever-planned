@@ -29,7 +29,7 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			$scope.items = results.ideas
 			$scope.currentUser = results
 			
-		})
+			})
 		}
 		
 	};
@@ -41,10 +41,10 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		
 		ideaBoardService.addBoard($scope.newBoard, $scope.currentUser)
 		.then(function(results){
-			console.log("the Results ", results)
+			//console.log("the Results ", results)
 			$scope.boards = results.ideas.reverse();
 			var arr = $scope.boards.ideas
-			console.log(arr)
+			//console.log(arr)
 			$scope.newBoard.title = '';
 			$scope.newBoardTitle = false;
 		})
@@ -125,9 +125,9 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 			if(editQuantity && editPrice){
 				newTotal = editQuantity * editPrice
 			}
-			console.log('new total ', newTotal)
+			//console.log('new total ', newTotal)
 
-			console.log('came to edit');
+			//console.log('came to edit');
 			item.name = editName
 			item.price = editPrice
 			item.quantity = editQuantity
@@ -210,10 +210,23 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 
 	
 	$scope.deleteBoard = function(board){
-		console.log(board)
-		ideaBoardService.deleteBoard(board, $scope.currentUser).then(function(){
-			getUser();
+
+		var arr = board.boardItems
+		for(var i = 0; i < arr.length; i++){
+			
+			if(arr[i].includeBudget === true && arr[i].purchased === false){
+				//("came here ", arr[i].total)
+				$scope.currentUser.estimatedBudget -= arr[i].total;
+			} else if (arr[i].includeBudget === true && arr[i].purchased === true){
+				$scope.currentUser.purchasedBudget += arr[i].total;
+			}
+		}
+		authService.updateUser($scope.currentUser).then(function(){
+			ideaBoardService.deleteBoard(board, $scope.currentUser).then(function(){
+				getUser();
+			})
 		})
+
 	}
 
 	$scope.deleteRow = function(i, item, board){
@@ -222,13 +235,13 @@ app.controller('ideaBoardCtrl', function($scope, ideaBoardService, authService, 
 		if(item.includeBudget === true && item.purchased === false){
 			$scope.currentUser.estimatedBudget -= item.total
 			board.boardItems.splice(i, 1);
-			console.log('deleted? ', board)
+			//console.log('deleted? ', board)
 			$scope.saveBoard(board);
 		}
 		else if(item.purchased === true){
 			$scope.currentUser.purchasedBudget += item.total;
 			board.boardItems.splice(i, 1);
-			console.log('deleted? ', board)
+			//console.log('deleted? ', board)
 
 			$scope.saveBoard(board);
 		} else {

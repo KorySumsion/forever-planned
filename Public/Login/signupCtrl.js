@@ -14,8 +14,8 @@ app.controller('signupCtrl', function($scope, $cookieStore, $state, authService)
 		authService.signupUser($scope.user)
 		
 		.then(function(user){
-			console.log('user in controller ', user)
-			console.log("pw ", $scope.user.password)
+			//console.log('user in controller ', user)
+			//console.log("pw ", $scope.user.password)
 			var userObj = {
 				email: user.email,
 				password: $scope.user.password

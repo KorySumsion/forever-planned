@@ -30,7 +30,7 @@ $scope.todoosieGroom = false;
 		if($scope.brideTask.length > 0 && $scope.brideTask !== "You already have this task!" && $scope.brideList.indexOf($scope.brideTask) === -1 && $scope.brideComplete.indexOf($scope.brideTask) === -1){
 			$scope.brideList.push($scope.brideTask)
 
-			console.log($scope.currentUser)
+			//console.log($scope.currentUser)
 			$scope.currentUser.brideList = $scope.brideList;
 			
 			$scope.brideTask = '';
