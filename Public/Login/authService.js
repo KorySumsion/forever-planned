@@ -57,7 +57,7 @@ app.service('authService', function($http, $q, $cookieStore, $location){
 			url: '/api/updateUser/' + user._id,
 			data: user
 		}).then(function(res){
-
+			setUser(res.data)
 			return deferred.resolve(res.data);
 		})
 		return deferred.promise;

@@ -62,7 +62,7 @@ app.service("ideaBoardService", function($http, $q, authService){
 	}
 
 	this.updateBudget = function(user){
-		console.log(user);
+		//console.log(user);
 		var deferred = $q.defer();
 		$http({
 			method: 'PUT',

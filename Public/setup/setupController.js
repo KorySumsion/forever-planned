@@ -6,7 +6,7 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $state, aut
 	$scope.step2 = false;
 	$scope.step3 = false;
 
-	console.log($scope.currentUser);
+	//console.log($scope.currentUser);
 
 	$scope.showStep1 = function(){
 		$timeout(function(){
@@ -44,7 +44,7 @@ app.controller('setupCtrl', function($scope, $timeout, setupService, $state, aut
 	$scope.addWedInfo= function(){
 		if($scope.currentUser.budget){
 			$scope.currentUser.budget = parseInt($scope.currentUser.budget.replace('$', '').replace(',', ''));
-			console.log('budget ', $scope.currentUser.budget)
+			//console.log('budget ', $scope.currentUser.budget)
 			setupService.addWedInfo($scope.currentUser)
 			.then(function(res){
 				
